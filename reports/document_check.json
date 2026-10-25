@@ -1,0 +1,89 @@
+{
+  "status": "pass",
+  "created_utc": "2026-10-24T21:28:19.281267+00:00",
+  "docx": {
+    "path": "reports/Системы_больших_данных_Индивидуальная_2_Бондаренко.docx",
+    "sha256": "4bb5c4d558b6355d98f33b7b552047bdd849e011c07720e6b7be02b549741a5c",
+    "bytes": 1146282
+  },
+  "pdf": {
+    "path": "reports/Системы_больших_данных_Индивидуальная_2_Бондаренко.pdf",
+    "sha256": "842869ce1b57db78d3b951b9a63bf1e5ff68c8f885b52e28c97b73c43e603922",
+    "bytes": 1077677,
+    "pages": 30
+  },
+  "structural": {
+    "status": "pass",
+    "paper": "A4 portrait",
+    "body_font": "Times New Roman",
+    "body_font_pt": 14,
+    "body_line_spacing": 1.5,
+    "tables": 7,
+    "embedded_images": 13,
+    "analysis_charts": 9,
+    "actual_UI_screenshots": 4,
+    "native_OMML_equations": 2,
+    "all_final_PNG_bytes_embedded": true,
+    "decorative_paragraph_borders": 0,
+    "TOC_updated": true,
+    "blank_pages": 0
+  },
+  "visual": {
+    "status": "pass",
+    "all_pages_reviewed": true,
+    "pages": 30,
+    "method": "Canonical render_docx.py using actual Microsoft Word PDF export followed by individual original-resolution PNG review; no contact-sheet-only review",
+    "page_png_sha256": {
+      "1": "27603cb4604571943f9f464995fad5b4fa6804badd361b0f9cd1376c6a16b42f",
+      "2": "2c36dff99d1e8accec6e4c10a2f789dc268d0aebae95f4f3d67724dfc10a58bc",
+      "3": "911766c83d8e67969ac975a1da92dd53aee96e4d2ac7d71063a81f8943f9971c",
+      "4": "48a29341351f28ac53ac84952e900792b330006aa04a242654ed3ef9e063cee4",
+      "5": "0ef431e2588b5fefe0fb37da5be728e39fcf1a9b9e0b257c99058d92461d1bf2",
+      "6": "0043b4eb79db991fde48048a78d1d98d5da2b204cc0e853ea73cfcc5813d0f23",
+      "7": "2a22a48df0ce7f4f36ca254303bf8dffeed649462df19ecdc8c12a0f38f21461",
+      "8": "5db85271ff0638f95873eb4ec4a276393f345ebb347153da8c305795bd33c4fd",
+      "9": "8ffc84874732fa2cba1beca60dc54a782b9baa7712d331abfa893c462c753f35",
+      "10": "51ac192789c7ae9e7cdfdaf040194cf70a0bedf5035b0a92912ff730ddd3e91f",
+      "11": "66a7729ddfa5a3a5876de16a1d82b3515735db85ca8c1fca0de604a084ed7fd6",
+      "12": "f6ebf1aa04255d889bee88d45af47300aef495a680b187882fcc8075a72e5ab3",
+      "13": "550e167ad0fe5f3fb32debad999bbe735415c7d802e73be2f3e950c998840534",
+      "14": "b2c0a495339a273896fadc915282582e37844a99eaa238677d8365a2a225c8fd",
+      "15": "c3f28e4e23b21e166596b7335dbe7092521c85ff7ef5d573f383579f2c8d3748",
+      "16": "ffc502145875808d7be73810fc72adc09da23451ab8e7ddf572ea792270c9c77",
+      "17": "f61e41c9a4c659fa6f532e4e3bbcc43d5aa469067ba4520f55e14c9f5d8a8ad7",
+      "18": "777179ee3be380305256de7cd9c0f44e9bbb41ed04f01317d95e3be629d11d4c",
+      "19": "2a81f922e902e18a21a9e72fcfaa3474c13267148e4a2c7a6eb816b29cede820",
+      "20": "b0febec3702bae62cd6a1fb322f4b066b93955c9717585a1797da28d9b7669d8",
+      "21": "b14fbf864bb88f2295035456ada82c79444d1984f2c93e9de9d82425db99844d",
+      "22": "0a4baacac06356ff470b3d751cd1a200a19a0ced5d68f79275265ce0e9da887a",
+      "23": "4da79b24ee38a21073f0a17eae653d03767d40ca26e8e3b5b216893896b63c80",
+      "24": "b868b0493b1e7aac28ac70d20638c9725fdac257f2ad940b8676c39252b756ca",
+      "25": "39b0955bedfb8b2b766736c123b913b1ea973ed0c5d4953f785d06108257b329",
+      "26": "e4cf4ae740b2e5268b0725ad3e613e27d81c14fcdc79a9e78614c4d6e8d81af5",
+      "27": "e6b3b8562758e34f9a1de93be67e6d1e447b376c3e5370d5b151b55d07900d21",
+      "28": "8e05a895a1b22fa9479d3e3cd6e676ec68f15dedc3fa13aedbfabbfbcefdd51c",
+      "29": "2a43ee1df5da104d8d7554313f88683ee4cca90cb9c4321c228cc079c7937d07",
+      "30": "ce8eb8e97d8c14a22d4addcfd7655c9ffe27d54dd5dd0df1eb38b69678137e3b"
+    },
+    "resolved": [
+      "Removed inherited blue Title border",
+      "Replaced incomplete home screenshot with fully loaded real UI",
+      "Increased graph axis labels to about 9 pt on printed page"
+    ]
+  },
+  "content_audit": {
+    "status": "pass",
+    "numeric_checks": 32,
+    "editorial_findings_resolved": [
+      "C01",
+      "C02"
+    ],
+    "source_data_unchanged": true,
+    "graph_trace_series_unchanged": true
+  },
+  "notes": [
+    "Photo placeholder is explicitly authorized by user; no fake personal photograph",
+    "Demonstration bank card contains no payment details",
+    "KDD99 is a historical controlled simulation, and unique feature profiles are not proven distinct real-world sessions"
+  ]
+}

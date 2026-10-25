@@ -1,0 +1,17 @@
+:root { color-scheme: dark; }
+.block-container { max-width: 1260px; padding-top: 2rem; padding-bottom: 3.5rem; }
+.eyebrow { font-size: .75rem; font-weight: 650; letter-spacing: .14em; color: #D9A441; text-transform: uppercase; margin-bottom: .8rem; }
+.hero { border-bottom: 1px solid #35392D; padding: .3rem 0 1.6rem; margin-bottom: 1.8rem; }
+.hero h1 { color: #F0F0E9; font-size: clamp(2rem, 4vw, 3.4rem); font-weight: 700; line-height: 1.12; letter-spacing: -.035em; margin: 0 0 1rem; max-width: 850px; }
+.hero p { color: #B6BAAB; font-size: 1.02rem; line-height: 1.65; max-width: 850px; margin: 0; }
+.badge { display: inline-block; border: 1px solid #3C4433; padding: .3rem .7rem; border-radius: 999px; font-size: .75rem; color: #C5D2B3; margin: .9rem .4rem 0 0; }
+.quiet-card { border: 1px solid #35392D; background: #1A1C17; border-radius: 14px; padding: 1.25rem 1.4rem; height: 100%; }
+.quiet-card h3 { font-size: 1rem; color: #E8E9E2; margin: 0 0 .55rem; }
+.quiet-card p { color: #B6BAAB; font-size: .9rem; line-height: 1.6; margin: 0; }
+.profile-placeholder { border: 1px dashed #525944; border-radius: 16px; background: #1A1C17; height: 190px; display: flex; align-items: center; justify-content: center; text-align: center; color: #AEB79D; padding: 1.5rem; }
+.demo-card { margin-top: 1rem; max-width: 410px; border: 1px solid #5A5439; border-radius: 18px; background: #25251B; padding: 1.6rem; }
+.demo-card strong { display: block; color: #D9A441; letter-spacing: .06em; font-size: .77rem; margin-bottom: 1.2rem; }
+.demo-card span { display: block; font-size: 1.1rem; color: #F0EAD6; margin-bottom: 1rem; }
+.demo-card p { color: #B7B49E; font-size: .8rem; line-height: 1.5; margin: 0; }
+.footer-note { color: #8D9583; font-size: .78rem; border-top: 1px solid #35392D; padding-top: 1rem; margin-top: 2rem; }
+@media (max-width: 700px) { .block-container { padding-top: 1rem; } .hero { padding-bottom: 1rem; } }

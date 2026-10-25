@@ -1,0 +1,1123 @@
+{
+  "dataset": "KDD99 dataset / Kaggle toobajamal/kdd99-dataset",
+  "shape": [
+    494020,
+    42
+  ],
+  "source_csv_sha256": "e411f3bb295d2be602f9288b333c15afee0f4cf85f7928916975d7b90b71917f",
+  "official_feature_order_source": "https://kdd.ics.uci.edu/databases/kddcup99/kddcup.names",
+  "source_definitions": "https://kdd.ics.uci.edu/databases/kddcup99/task.html",
+  "alias_map": {
+    "lnum_compromised": "num_compromised",
+    "lroot_shell": "root_shell",
+    "lsu_attempted": "su_attempted",
+    "lnum_root": "num_root",
+    "lnum_file_creations": "num_file_creations",
+    "lnum_shells": "num_shells",
+    "lnum_access_files": "num_access_files",
+    "lnum_outbound_cmds": "num_outbound_cmds"
+  },
+  "fields": [
+    {
+      "index_1based": 1,
+      "original_name": "duration",
+      "canonical_name": "duration",
+      "description_ru": "Продолжительность соединения",
+      "unit": "с",
+      "semantic_type": "duration",
+      "role": "feature",
+      "source_urls": [
+        "https://kdd.ics.uci.edu/databases/kddcup99/kddcup.names",
+        "https://kdd.ics.uci.edu/databases/kddcup99/task.html"
+      ],
+      "source_uci_type": "continuous",
+      "recommended_storage": "unsigned integer after observed range validation",
+      "notes": [],
+      "observed_statistics": {
+        "min": 0.0,
+        "max": 58329.0,
+        "sum": 23702783.0,
+        "zero_count": 481670
+      }
+    },
+    {
+      "index_1based": 2,
+      "original_name": "protocol_type",
+      "canonical_name": "protocol_type",
+      "description_ru": "Сетевой протокол соединения",
+      "unit": "категория",
+      "semantic_type": "category",
+      "role": "feature",
+      "source_urls": [
+        "https://kdd.ics.uci.edu/databases/kddcup99/kddcup.names",
+        "https://kdd.ics.uci.edu/databases/kddcup99/task.html"
+      ],
+      "source_uci_type": "symbolic",
+      "recommended_storage": "category",
+      "notes": [],
+      "observed_domain_counts": {
+        "tcp": 190064,
+        "udp": 20354,
+        "icmp": 283602
+      }
+    },
+    {
+      "index_1based": 3,
+      "original_name": "service",
+      "canonical_name": "service",
+      "description_ru": "Сервис на стороне получателя",
+      "unit": "категория",
+      "semantic_type": "category",
+      "role": "feature",
+      "source_urls": [
+        "https://kdd.ics.uci.edu/databases/kddcup99/kddcup.names",
+        "https://kdd.ics.uci.edu/databases/kddcup99/task.html"
+      ],
+      "source_uci_type": "symbolic",
+      "recommended_storage": "category",
+      "notes": [],
+      "observed_domain_counts": {
+        "http": 64292,
+        "smtp": 9723,
+        "finger": 670,
+        "domain_u": 5863,
+        "auth": 328,
+        "telnet": 513,
+        "ftp": 798,
+        "eco_i": 1642,
+        "ntp_u": 380,
+        "ecr_i": 281400,
+        "other": 7237,
+        "private": 110893,
+        "pop_3": 202,
+        "ftp_data": 4721,
+        "rje": 111,
+        "time": 157,
+        "mtp": 107,
+        "link": 102,
+        "remote_job": 120,
+        "gopher": 117,
+        "ssh": 105,
+        "name": 98,
+        "whois": 110,
+        "domain": 116,
+        "login": 104,
+        "imap4": 117,
+        "daytime": 103,
+        "ctf": 97,
+        "nntp": 108,
+        "shell": 112,
+        "IRC": 43,
+        "nnsp": 105,
+        "http_443": 99,
+        "exec": 99,
+        "printer": 109,
+        "efs": 103,
+        "courier": 108,
+        "uucp": 106,
+        "klogin": 106,
+        "kshell": 98,
+        "echo": 112,
+        "discard": 116,
+        "systat": 115,
+        "supdup": 105,
+        "iso_tsap": 115,
+        "hostnames": 104,
+        "csnet_ns": 126,
+        "pop_2": 101,
+        "sunrpc": 107,
+        "uucp_path": 106,
+        "netbios_ns": 102,
+        "netbios_ssn": 107,
+        "netbios_dgm": 99,
+        "sql_net": 110,
+        "vmnet": 106,
+        "bgp": 106,
+        "Z39_50": 92,
+        "ldap": 101,
+        "netstat": 95,
+        "urh_i": 14,
+        "X11": 11,
+        "urp_i": 538,
+        "pm_dump": 1,
+        "tftp_u": 1,
+        "tim_i": 7,
+        "red_i": 1
+      }
+    },
+    {
+      "index_1based": 4,
+      "original_name": "flag",
+      "canonical_name": "flag",
+      "description_ru": "Код нормального завершения или ошибки соединения",
+      "unit": "категория",
+      "semantic_type": "category",
+      "role": "feature",
+      "source_urls": [
+        "https://kdd.ics.uci.edu/databases/kddcup99/kddcup.names",
+        "https://kdd.ics.uci.edu/databases/kddcup99/task.html"
+      ],
+      "source_uci_type": "symbolic",
+      "recommended_storage": "category",
+      "notes": [],
+      "observed_domain_counts": {
+        "SF": 378439,
+        "S1": 57,
+        "REJ": 26875,
+        "S2": 24,
+        "S0": 87007,
+        "S3": 10,
+        "RSTO": 579,
+        "RSTR": 903,
+        "RSTOS0": 11,
+        "OTH": 8,
+        "SH": 107
+      }
+    },
+    {
+      "index_1based": 5,
+      "original_name": "src_bytes",
+      "canonical_name": "src_bytes",
+      "description_ru": "Объём данных от источника к получателю",
+      "unit": "байт",
+      "semantic_type": "bytes",
+      "role": "feature",
+      "source_urls": [
+        "https://kdd.ics.uci.edu/databases/kddcup99/kddcup.names",
+        "https://kdd.ics.uci.edu/databases/kddcup99/task.html"
+      ],
+      "source_uci_type": "continuous",
+      "recommended_storage": "unsigned integer after observed range validation",
+      "notes": [],
+      "observed_statistics": {
+        "min": 0.0,
+        "max": 693375640.0,
+        "sum": 1494714690.0,
+        "zero_count": 115342
+      }
+    },
+    {
+      "index_1based": 6,
+      "original_name": "dst_bytes",
+      "canonical_name": "dst_bytes",
+      "description_ru": "Объём данных от получателя к источнику",
+      "unit": "байт",
+      "semantic_type": "bytes",
+      "role": "feature",
+      "source_urls": [
+        "https://kdd.ics.uci.edu/databases/kddcup99/kddcup.names",
+        "https://kdd.ics.uci.edu/databases/kddcup99/task.html"
+      ],
+      "source_uci_type": "continuous",
+      "recommended_storage": "unsigned integer after observed range validation",
+      "notes": [],
+      "observed_statistics": {
+        "min": 0.0,
+        "max": 5155468.0,
+        "sum": 429071573.0,
+        "zero_count": 408258
+      }
+    },
+    {
+      "index_1based": 7,
+      "original_name": "land",
+      "canonical_name": "land",
+      "description_ru": "Индикатор совпадения узла и порта источника и получателя",
+      "unit": "код 0/1",
+      "semantic_type": "indicator",
+      "role": "feature",
+      "source_urls": [
+        "https://kdd.ics.uci.edu/databases/kddcup99/kddcup.names",
+        "https://kdd.ics.uci.edu/databases/kddcup99/task.html"
+      ],
+      "source_uci_type": "symbolic",
+      "recommended_storage": "unsigned integer after observed range validation",
+      "notes": [],
+      "observed_statistics": {
+        "min": 0.0,
+        "max": 1.0,
+        "sum": 22.0,
+        "zero_count": 493998
+      },
+      "observed_domain_counts": {
+        "0": 493998,
+        "1": 22
+      }
+    },
+    {
+      "index_1based": 8,
+      "original_name": "wrong_fragment",
+      "canonical_name": "wrong_fragment",
+      "description_ru": "Число некорректных фрагментов",
+      "unit": "фрагмент",
+      "semantic_type": "count",
+      "role": "feature",
+      "source_urls": [
+        "https://kdd.ics.uci.edu/databases/kddcup99/kddcup.names",
+        "https://kdd.ics.uci.edu/databases/kddcup99/task.html"
+      ],
+      "source_uci_type": "continuous",
+      "recommended_storage": "unsigned integer after observed range validation",
+      "notes": [],
+      "observed_statistics": {
+        "min": 0.0,
+        "max": 3.0,
+        "sum": 3178.0,
+        "zero_count": 492782
+      }
+    },
+    {
+      "index_1based": 9,
+      "original_name": "urgent",
+      "canonical_name": "urgent",
+      "description_ru": "Число срочных пакетов",
+      "unit": "пакет",
+      "semantic_type": "count",
+      "role": "feature",
+      "source_urls": [
+        "https://kdd.ics.uci.edu/databases/kddcup99/kddcup.names",
+        "https://kdd.ics.uci.edu/databases/kddcup99/task.html"
+      ],
+      "source_uci_type": "continuous",
+      "recommended_storage": "unsigned integer after observed range validation",
+      "notes": [],
+      "observed_statistics": {
+        "min": 0.0,
+        "max": 3.0,
+        "sum": 7.0,
+        "zero_count": 494016
+      }
+    },
+    {
+      "index_1based": 10,
+      "original_name": "hot",
+      "canonical_name": "hot",
+      "description_ru": "Число индикаторов чувствительных или подозрительных действий (hot)",
+      "unit": "индикатор",
+      "semantic_type": "count",
+      "role": "feature",
+      "source_urls": [
+        "https://kdd.ics.uci.edu/databases/kddcup99/kddcup.names",
+        "https://kdd.ics.uci.edu/databases/kddcup99/task.html"
+      ],
+      "source_uci_type": "continuous",
+      "recommended_storage": "unsigned integer after observed range validation",
+      "notes": [],
+      "observed_statistics": {
+        "min": 0.0,
+        "max": 30.0,
+        "sum": 17053.0,
+        "zero_count": 490828
+      }
+    },
+    {
+      "index_1based": 11,
+      "original_name": "num_failed_logins",
+      "canonical_name": "num_failed_logins",
+      "description_ru": "Число неудачных попыток входа",
+      "unit": "попытка",
+      "semantic_type": "count",
+      "role": "feature",
+      "source_urls": [
+        "https://kdd.ics.uci.edu/databases/kddcup99/kddcup.names",
+        "https://kdd.ics.uci.edu/databases/kddcup99/task.html"
+      ],
+      "source_uci_type": "continuous",
+      "recommended_storage": "unsigned integer after observed range validation",
+      "notes": [],
+      "observed_statistics": {
+        "min": 0.0,
+        "max": 5.0,
+        "sum": 75.0,
+        "zero_count": 493957
+      }
+    },
+    {
+      "index_1based": 12,
+      "original_name": "logged_in",
+      "canonical_name": "logged_in",
+      "description_ru": "Индикатор успешного входа",
+      "unit": "код 0/1",
+      "semantic_type": "indicator",
+      "role": "feature",
+      "source_urls": [
+        "https://kdd.ics.uci.edu/databases/kddcup99/kddcup.names",
+        "https://kdd.ics.uci.edu/databases/kddcup99/task.html"
+      ],
+      "source_uci_type": "symbolic",
+      "recommended_storage": "unsigned integer after observed range validation",
+      "notes": [],
+      "observed_statistics": {
+        "min": 0.0,
+        "max": 1.0,
+        "sum": 73236.0,
+        "zero_count": 420784
+      },
+      "observed_domain_counts": {
+        "1": 73236,
+        "0": 420784
+      }
+    },
+    {
+      "index_1based": 13,
+      "original_name": "lnum_compromised",
+      "canonical_name": "num_compromised",
+      "description_ru": "Число зафиксированных условий компрометации",
+      "unit": "условие",
+      "semantic_type": "count",
+      "role": "feature",
+      "source_urls": [
+        "https://kdd.ics.uci.edu/databases/kddcup99/kddcup.names",
+        "https://kdd.ics.uci.edu/databases/kddcup99/task.html"
+      ],
+      "source_uci_type": "continuous",
+      "recommended_storage": "unsigned integer after observed range validation",
+      "notes": [
+        "Исходное имя Kaggle сопоставлено с официальным UCI именем по неизменному порядку 41 признака; меняется только имя колонки в обработанной копии."
+      ],
+      "observed_statistics": {
+        "min": 0.0,
+        "max": 884.0,
+        "sum": 5045.0,
+        "zero_count": 491796
+      }
+    },
+    {
+      "index_1based": 14,
+      "original_name": "lroot_shell",
+      "canonical_name": "root_shell",
+      "description_ru": "Индикатор получения командной оболочки с правами root",
+      "unit": "код 0/1",
+      "semantic_type": "indicator",
+      "role": "feature",
+      "source_urls": [
+        "https://kdd.ics.uci.edu/databases/kddcup99/kddcup.names",
+        "https://kdd.ics.uci.edu/databases/kddcup99/task.html"
+      ],
+      "source_uci_type": "continuous",
+      "recommended_storage": "unsigned integer after observed range validation",
+      "notes": [
+        "Исходное имя Kaggle сопоставлено с официальным UCI именем по неизменному порядку 41 признака; меняется только имя колонки в обработанной копии."
+      ],
+      "observed_statistics": {
+        "min": 0.0,
+        "max": 1.0,
+        "sum": 55.0,
+        "zero_count": 493965
+      },
+      "observed_domain_counts": {
+        "0": 493965,
+        "1": 55
+      }
+    },
+    {
+      "index_1based": 15,
+      "original_name": "lsu_attempted",
+      "canonical_name": "su_attempted",
+      "description_ru": "Код попытки выполнения su root",
+      "unit": "код признака",
+      "semantic_type": "coded_indicator",
+      "role": "feature",
+      "source_urls": [
+        "https://kdd.ics.uci.edu/databases/kddcup99/kddcup.names",
+        "https://kdd.ics.uci.edu/databases/kddcup99/task.html"
+      ],
+      "source_uci_type": "continuous",
+      "recommended_storage": "unsigned integer after observed range validation",
+      "notes": [
+        "Исходное имя Kaggle сопоставлено с официальным UCI именем по неизменному порядку 41 признака; меняется только имя колонки в обработанной копии.",
+        "Документация описывает индикатор попытки su root; фактически имеются коды 0, 1 и 2. Код 2 сохранять, не признавать автоматически неверным и не превращать молча в 0/1."
+      ],
+      "observed_statistics": {
+        "min": 0.0,
+        "max": 2.0,
+        "sum": 18.0,
+        "zero_count": 494008
+      },
+      "observed_domain_counts": {
+        "0": 494008,
+        "1": 6,
+        "2": 6
+      }
+    },
+    {
+      "index_1based": 16,
+      "original_name": "lnum_root",
+      "canonical_name": "num_root",
+      "description_ru": "Число обращений с правами root",
+      "unit": "обращение",
+      "semantic_type": "count",
+      "role": "feature",
+      "source_urls": [
+        "https://kdd.ics.uci.edu/databases/kddcup99/kddcup.names",
+        "https://kdd.ics.uci.edu/databases/kddcup99/task.html"
+      ],
+      "source_uci_type": "continuous",
+      "recommended_storage": "unsigned integer after observed range validation",
+      "notes": [
+        "Исходное имя Kaggle сопоставлено с официальным UCI именем по неизменному порядку 41 признака; меняется только имя колонки в обработанной копии."
+      ],
+      "observed_statistics": {
+        "min": 0.0,
+        "max": 993.0,
+        "sum": 5608.0,
+        "zero_count": 493435
+      }
+    },
+    {
+      "index_1based": 17,
+      "original_name": "lnum_file_creations",
+      "canonical_name": "num_file_creations",
+      "description_ru": "Число операций создания файлов",
+      "unit": "операция",
+      "semantic_type": "count",
+      "role": "feature",
+      "source_urls": [
+        "https://kdd.ics.uci.edu/databases/kddcup99/kddcup.names",
+        "https://kdd.ics.uci.edu/databases/kddcup99/task.html"
+      ],
+      "source_uci_type": "continuous",
+      "recommended_storage": "unsigned integer after observed range validation",
+      "notes": [
+        "Исходное имя Kaggle сопоставлено с официальным UCI именем по неизменному порядку 41 признака; меняется только имя колонки в обработанной копии."
+      ],
+      "observed_statistics": {
+        "min": 0.0,
+        "max": 28.0,
+        "sum": 535.0,
+        "zero_count": 493755
+      }
+    },
+    {
+      "index_1based": 18,
+      "original_name": "lnum_shells",
+      "canonical_name": "num_shells",
+      "description_ru": "Число командных оболочек",
+      "unit": "оболочка",
+      "semantic_type": "count",
+      "role": "feature",
+      "source_urls": [
+        "https://kdd.ics.uci.edu/databases/kddcup99/kddcup.names",
+        "https://kdd.ics.uci.edu/databases/kddcup99/task.html"
+      ],
+      "source_uci_type": "continuous",
+      "recommended_storage": "unsigned integer after observed range validation",
+      "notes": [
+        "Исходное имя Kaggle сопоставлено с официальным UCI именем по неизменному порядку 41 признака; меняется только имя колонки в обработанной копии."
+      ],
+      "observed_statistics": {
+        "min": 0.0,
+        "max": 2.0,
+        "sum": 54.0,
+        "zero_count": 493969
+      }
+    },
+    {
+      "index_1based": 19,
+      "original_name": "lnum_access_files",
+      "canonical_name": "num_access_files",
+      "description_ru": "Число обращений к файлам контроля доступа",
+      "unit": "операция",
+      "semantic_type": "count",
+      "role": "feature",
+      "source_urls": [
+        "https://kdd.ics.uci.edu/databases/kddcup99/kddcup.names",
+        "https://kdd.ics.uci.edu/databases/kddcup99/task.html"
+      ],
+      "source_uci_type": "continuous",
+      "recommended_storage": "unsigned integer after observed range validation",
+      "notes": [
+        "Исходное имя Kaggle сопоставлено с официальным UCI именем по неизменному порядку 41 признака; меняется только имя колонки в обработанной копии."
+      ],
+      "observed_statistics": {
+        "min": 0.0,
+        "max": 8.0,
+        "sum": 498.0,
+        "zero_count": 493566
+      }
+    },
+    {
+      "index_1based": 20,
+      "original_name": "lnum_outbound_cmds",
+      "canonical_name": "num_outbound_cmds",
+      "description_ru": "Число исходящих команд в FTP-сессии",
+      "unit": "команда",
+      "semantic_type": "count",
+      "role": "feature",
+      "source_urls": [
+        "https://kdd.ics.uci.edu/databases/kddcup99/kddcup.names",
+        "https://kdd.ics.uci.edu/databases/kddcup99/task.html"
+      ],
+      "source_uci_type": "continuous",
+      "recommended_storage": "unsigned integer after observed range validation",
+      "notes": [
+        "Исходное имя Kaggle сопоставлено с официальным UCI именем по неизменному порядку 41 признака; меняется только имя колонки в обработанной копии."
+      ],
+      "observed_statistics": {
+        "min": 0.0,
+        "max": 0.0,
+        "sum": 0.0,
+        "zero_count": 494020
+      }
+    },
+    {
+      "index_1based": 21,
+      "original_name": "is_host_login",
+      "canonical_name": "is_host_login",
+      "description_ru": "Индикатор входа, отнесённого к списку hot; имя в схеме is_host_login",
+      "unit": "код 0/1",
+      "semantic_type": "indicator",
+      "role": "feature",
+      "source_urls": [
+        "https://kdd.ics.uci.edu/databases/kddcup99/kddcup.names",
+        "https://kdd.ics.uci.edu/databases/kddcup99/task.html"
+      ],
+      "source_uci_type": "symbolic",
+      "recommended_storage": "unsigned integer after observed range validation",
+      "notes": [
+        "Официальный task.html называет признак is_hot_login, а kddcup.names — is_host_login. Это несовпадение в исходной документации; не интерпретировать как IP или имя реального пользователя."
+      ],
+      "observed_statistics": {
+        "min": 0.0,
+        "max": 0.0,
+        "sum": 0.0,
+        "zero_count": 494020
+      },
+      "observed_domain_counts": {
+        "0": 494020
+      }
+    },
+    {
+      "index_1based": 22,
+      "original_name": "is_guest_login",
+      "canonical_name": "is_guest_login",
+      "description_ru": "Индикатор гостевого входа",
+      "unit": "код 0/1",
+      "semantic_type": "indicator",
+      "role": "feature",
+      "source_urls": [
+        "https://kdd.ics.uci.edu/databases/kddcup99/kddcup.names",
+        "https://kdd.ics.uci.edu/databases/kddcup99/task.html"
+      ],
+      "source_uci_type": "symbolic",
+      "recommended_storage": "unsigned integer after observed range validation",
+      "notes": [],
+      "observed_statistics": {
+        "min": 0.0,
+        "max": 1.0,
+        "sum": 685.0,
+        "zero_count": 493335
+      },
+      "observed_domain_counts": {
+        "0": 493335,
+        "1": 685
+      }
+    },
+    {
+      "index_1based": 23,
+      "original_name": "count",
+      "canonical_name": "count",
+      "description_ru": "Число соединений к тому же узлу за предшествующие две секунды",
+      "unit": "соединение / окно 2 с",
+      "semantic_type": "count",
+      "role": "feature",
+      "source_urls": [
+        "https://kdd.ics.uci.edu/databases/kddcup99/kddcup.names",
+        "https://kdd.ics.uci.edu/databases/kddcup99/task.html"
+      ],
+      "source_uci_type": "continuous",
+      "recommended_storage": "unsigned integer after observed range validation",
+      "notes": [],
+      "observed_statistics": {
+        "min": 0.0,
+        "max": 511.0,
+        "sum": 164156108.0,
+        "zero_count": 2
+      }
+    },
+    {
+      "index_1based": 24,
+      "original_name": "srv_count",
+      "canonical_name": "srv_count",
+      "description_ru": "Число соединений к тому же сервису за предшествующие две секунды",
+      "unit": "соединение / окно 2 с",
+      "semantic_type": "count",
+      "role": "feature",
+      "source_urls": [
+        "https://kdd.ics.uci.edu/databases/kddcup99/kddcup.names",
+        "https://kdd.ics.uci.edu/databases/kddcup99/task.html"
+      ],
+      "source_uci_type": "continuous",
+      "recommended_storage": "unsigned integer after observed range validation",
+      "notes": [],
+      "observed_statistics": {
+        "min": 0.0,
+        "max": 511.0,
+        "sum": 144701981.0,
+        "zero_count": 2
+      }
+    },
+    {
+      "index_1based": 25,
+      "original_name": "serror_rate",
+      "canonical_name": "serror_rate",
+      "description_ru": "Доля SYN-ошибок среди соединений к тому же узлу",
+      "unit": "доля 0–1",
+      "semantic_type": "ratio",
+      "role": "feature",
+      "source_urls": [
+        "https://kdd.ics.uci.edu/databases/kddcup99/kddcup.names",
+        "https://kdd.ics.uci.edu/databases/kddcup99/task.html"
+      ],
+      "source_uci_type": "continuous",
+      "recommended_storage": "float32",
+      "notes": [
+        "В исходном CSV доля закодирована в диапазоне 0–1; для показа процентов умножать на 100 и явно подписывать %."
+      ],
+      "observed_statistics": {
+        "min": 0.0,
+        "max": 1.0,
+        "sum": 87286.91999999982,
+        "zero_count": 404786
+      }
+    },
+    {
+      "index_1based": 26,
+      "original_name": "srv_serror_rate",
+      "canonical_name": "srv_serror_rate",
+      "description_ru": "Доля SYN-ошибок среди соединений к тому же сервису",
+      "unit": "доля 0–1",
+      "semantic_type": "ratio",
+      "role": "feature",
+      "source_urls": [
+        "https://kdd.ics.uci.edu/databases/kddcup99/kddcup.names",
+        "https://kdd.ics.uci.edu/databases/kddcup99/task.html"
+      ],
+      "source_uci_type": "continuous",
+      "recommended_storage": "float32",
+      "notes": [
+        "В исходном CSV доля закодирована в диапазоне 0–1; для показа процентов умножать на 100 и явно подписывать %."
+      ],
+      "observed_statistics": {
+        "min": 0.0,
+        "max": 1.0,
+        "sum": 87248.46000000006,
+        "zero_count": 405685
+      }
+    },
+    {
+      "index_1based": 27,
+      "original_name": "rerror_rate",
+      "canonical_name": "rerror_rate",
+      "description_ru": "Доля REJ-ошибок среди соединений к тому же узлу",
+      "unit": "доля 0–1",
+      "semantic_type": "ratio",
+      "role": "feature",
+      "source_urls": [
+        "https://kdd.ics.uci.edu/databases/kddcup99/kddcup.names",
+        "https://kdd.ics.uci.edu/databases/kddcup99/task.html"
+      ],
+      "source_uci_type": "continuous",
+      "recommended_storage": "float32",
+      "notes": [
+        "В исходном CSV доля закодирована в диапазоне 0–1; для показа процентов умножать на 100 и явно подписывать %."
+      ],
+      "observed_statistics": {
+        "min": 0.0,
+        "max": 1.0,
+        "sum": 28373.310000000023,
+        "zero_count": 464947
+      }
+    },
+    {
+      "index_1based": 28,
+      "original_name": "srv_rerror_rate",
+      "canonical_name": "srv_rerror_rate",
+      "description_ru": "Доля REJ-ошибок среди соединений к тому же сервису",
+      "unit": "доля 0–1",
+      "semantic_type": "ratio",
+      "role": "feature",
+      "source_urls": [
+        "https://kdd.ics.uci.edu/databases/kddcup99/kddcup.names",
+        "https://kdd.ics.uci.edu/databases/kddcup99/task.html"
+      ],
+      "source_uci_type": "continuous",
+      "recommended_storage": "float32",
+      "notes": [
+        "В исходном CSV доля закодирована в диапазоне 0–1; для показа процентов умножать на 100 и явно подписывать %."
+      ],
+      "observed_statistics": {
+        "min": 0.0,
+        "max": 1.0,
+        "sum": 28514.370000000024,
+        "zero_count": 464319
+      }
+    },
+    {
+      "index_1based": 29,
+      "original_name": "same_srv_rate",
+      "canonical_name": "same_srv_rate",
+      "description_ru": "Доля соединений к тому же сервису среди соединений к текущему узлу",
+      "unit": "доля 0–1",
+      "semantic_type": "ratio",
+      "role": "feature",
+      "source_urls": [
+        "https://kdd.ics.uci.edu/databases/kddcup99/kddcup.names",
+        "https://kdd.ics.uci.edu/databases/kddcup99/task.html"
+      ],
+      "source_uci_type": "continuous",
+      "recommended_storage": "float32",
+      "notes": [
+        "В исходном CSV доля закодирована в диапазоне 0–1; для показа процентов умножать на 100 и явно подписывать %."
+      ],
+      "observed_statistics": {
+        "min": 0.0,
+        "max": 1.0,
+        "sum": 391040.01000024227,
+        "zero_count": 3627
+      }
+    },
+    {
+      "index_1based": 30,
+      "original_name": "diff_srv_rate",
+      "canonical_name": "diff_srv_rate",
+      "description_ru": "Доля соединений к другим сервисам среди соединений к текущему узлу",
+      "unit": "доля 0–1",
+      "semantic_type": "ratio",
+      "role": "feature",
+      "source_urls": [
+        "https://kdd.ics.uci.edu/databases/kddcup99/kddcup.names",
+        "https://kdd.ics.uci.edu/databases/kddcup99/task.html"
+      ],
+      "source_uci_type": "continuous",
+      "recommended_storage": "float32",
+      "notes": [
+        "В исходном CSV доля закодирована в диапазоне 0–1; для показа процентов умножать на 100 и явно подписывать %."
+      ],
+      "observed_statistics": {
+        "min": 0.0,
+        "max": 1.0,
+        "sum": 10365.740000003094,
+        "zero_count": 382020
+      }
+    },
+    {
+      "index_1based": 31,
+      "original_name": "srv_diff_host_rate",
+      "canonical_name": "srv_diff_host_rate",
+      "description_ru": "Доля соединений к другим узлам среди соединений к текущему сервису",
+      "unit": "доля 0–1",
+      "semantic_type": "ratio",
+      "role": "feature",
+      "source_urls": [
+        "https://kdd.ics.uci.edu/databases/kddcup99/kddcup.names",
+        "https://kdd.ics.uci.edu/databases/kddcup99/task.html"
+      ],
+      "source_uci_type": "continuous",
+      "recommended_storage": "float32",
+      "notes": [
+        "В исходном CSV доля закодирована в диапазоне 0–1; для показа процентов умножать на 100 и явно подписывать %."
+      ],
+      "observed_statistics": {
+        "min": 0.0,
+        "max": 1.0,
+        "sum": 14324.70000000046,
+        "zero_count": 459377
+      }
+    },
+    {
+      "index_1based": 32,
+      "original_name": "dst_host_count",
+      "canonical_name": "dst_host_count",
+      "description_ru": "Оконный счётчик соединений к текущему узлу назначения",
+      "unit": "соединение",
+      "semantic_type": "count",
+      "role": "feature",
+      "source_urls": [
+        "https://kdd.ics.uci.edu/databases/kddcup99/kddcup.names",
+        "https://kdd.ics.uci.edu/databases/kddcup99/task.html"
+      ],
+      "source_uci_type": "continuous",
+      "recommended_storage": "unsigned integer after observed range validation",
+      "notes": [
+        "Host-based признаки даны составителями. UCI описывает окно соединений, но исходные адреса/время отсутствуют, поэтому окно здесь не восстанавливается. Счётчики фактически доходят до 255; порог 100 не использовать как правило удаления."
+      ],
+      "observed_statistics": {
+        "min": 0.0,
+        "max": 255.0,
+        "sum": 114845446.0,
+        "zero_count": 2
+      }
+    },
+    {
+      "index_1based": 33,
+      "original_name": "dst_host_srv_count",
+      "canonical_name": "dst_host_srv_count",
+      "description_ru": "Оконный счётчик соединений к текущему узлу и сервису назначения",
+      "unit": "соединение",
+      "semantic_type": "count",
+      "role": "feature",
+      "source_urls": [
+        "https://kdd.ics.uci.edu/databases/kddcup99/kddcup.names",
+        "https://kdd.ics.uci.edu/databases/kddcup99/task.html"
+      ],
+      "source_uci_type": "continuous",
+      "recommended_storage": "unsigned integer after observed range validation",
+      "notes": [
+        "Host-based признаки даны составителями. UCI описывает окно соединений, но исходные адреса/время отсутствуют, поэтому окно здесь не восстанавливается. Счётчики фактически доходят до 255; порог 100 не использовать как правило удаления."
+      ],
+      "observed_statistics": {
+        "min": 0.0,
+        "max": 255.0,
+        "sum": 93204803.0,
+        "zero_count": 2
+      }
+    },
+    {
+      "index_1based": 34,
+      "original_name": "dst_host_same_srv_rate",
+      "canonical_name": "dst_host_same_srv_rate",
+      "description_ru": "Доля соединений к тому же сервису в host-based группе",
+      "unit": "доля 0–1",
+      "semantic_type": "ratio",
+      "role": "feature",
+      "source_urls": [
+        "https://kdd.ics.uci.edu/databases/kddcup99/kddcup.names",
+        "https://kdd.ics.uci.edu/databases/kddcup99/task.html"
+      ],
+      "source_uci_type": "continuous",
+      "recommended_storage": "float32",
+      "notes": [
+        "Host-based признаки даны составителями. UCI описывает окно соединений, но исходные адреса/время отсутствуют, поэтому окно здесь не восстанавливается. Счётчики фактически доходят до 255; порог 100 не использовать как правило удаления.",
+        "В исходном CSV доля закодирована в диапазоне 0–1; для показа процентов умножать на 100 и явно подписывать %."
+      ],
+      "observed_statistics": {
+        "min": 0.0,
+        "max": 1.0,
+        "sum": 372383.00000029075,
+        "zero_count": 11468
+      }
+    },
+    {
+      "index_1based": 35,
+      "original_name": "dst_host_diff_srv_rate",
+      "canonical_name": "dst_host_diff_srv_rate",
+      "description_ru": "Доля соединений к другим сервисам в host-based группе",
+      "unit": "доля 0–1",
+      "semantic_type": "ratio",
+      "role": "feature",
+      "source_urls": [
+        "https://kdd.ics.uci.edu/databases/kddcup99/kddcup.names",
+        "https://kdd.ics.uci.edu/databases/kddcup99/task.html"
+      ],
+      "source_uci_type": "continuous",
+      "recommended_storage": "float32",
+      "notes": [
+        "Host-based признаки даны составителями. UCI описывает окно соединений, но исходные адреса/время отсутствуют, поэтому окно здесь не восстанавливается. Счётчики фактически доходят до 255; порог 100 не использовать как правило удаления.",
+        "В исходном CSV доля закодирована в диапазоне 0–1; для показа процентов умножать на 100 и явно подписывать %."
+      ],
+      "observed_statistics": {
+        "min": 0.0,
+        "max": 1.0,
+        "sum": 15268.079999980566,
+        "zero_count": 347030
+      }
+    },
+    {
+      "index_1based": 36,
+      "original_name": "dst_host_same_src_port_rate",
+      "canonical_name": "dst_host_same_src_port_rate",
+      "description_ru": "Доля соединений с тем же портом источника в host-based группе",
+      "unit": "доля 0–1",
+      "semantic_type": "ratio",
+      "role": "feature",
+      "source_urls": [
+        "https://kdd.ics.uci.edu/databases/kddcup99/kddcup.names",
+        "https://kdd.ics.uci.edu/databases/kddcup99/task.html"
+      ],
+      "source_uci_type": "continuous",
+      "recommended_storage": "float32",
+      "notes": [
+        "Host-based признаки даны составителями. UCI описывает окно соединений, но исходные адреса/время отсутствуют, поэтому окно здесь не восстанавливается. Счётчики фактически доходят до 255; порог 100 не использовать как правило удаления.",
+        "В исходном CSV доля закодирована в диапазоне 0–1; для показа процентов умножать на 100 и явно подписывать %."
+      ],
+      "observed_statistics": {
+        "min": 0.0,
+        "max": 1.0,
+        "sum": 297368.4100000717,
+        "zero_count": 142859
+      }
+    },
+    {
+      "index_1based": 37,
+      "original_name": "dst_host_srv_diff_host_rate",
+      "canonical_name": "dst_host_srv_diff_host_rate",
+      "description_ru": "Доля соединений к другим узлам в host-based группе того же сервиса",
+      "unit": "доля 0–1",
+      "semantic_type": "ratio",
+      "role": "feature",
+      "source_urls": [
+        "https://kdd.ics.uci.edu/databases/kddcup99/kddcup.names",
+        "https://kdd.ics.uci.edu/databases/kddcup99/task.html"
+      ],
+      "source_uci_type": "continuous",
+      "recommended_storage": "float32",
+      "notes": [
+        "Host-based признаки даны составителями. UCI описывает окно соединений, но исходные адреса/время отсутствуют, поэтому окно здесь не восстанавливается. Счётчики фактически доходят до 255; порог 100 не использовать как правило удаления.",
+        "В исходном CSV доля закодирована в диапазоне 0–1; для показа процентов умножать на 100 и явно подписывать %."
+      ],
+      "observed_statistics": {
+        "min": 0.0,
+        "max": 1.0,
+        "sum": 3301.7900000001746,
+        "zero_count": 441888
+      }
+    },
+    {
+      "index_1based": 38,
+      "original_name": "dst_host_serror_rate",
+      "canonical_name": "dst_host_serror_rate",
+      "description_ru": "Доля SYN-ошибок в host-based группе текущего узла",
+      "unit": "доля 0–1",
+      "semantic_type": "ratio",
+      "role": "feature",
+      "source_urls": [
+        "https://kdd.ics.uci.edu/databases/kddcup99/kddcup.names",
+        "https://kdd.ics.uci.edu/databases/kddcup99/task.html"
+      ],
+      "source_uci_type": "continuous",
+      "recommended_storage": "float32",
+      "notes": [
+        "Host-based признаки даны составителями. UCI описывает окно соединений, но исходные адреса/время отсутствуют, поэтому окно здесь не восстанавливается. Счётчики фактически доходят до 255; порог 100 не использовать как правило удаления.",
+        "В исходном CSV доля закодирована в диапазоне 0–1; для показа процентов умножать на 100 и явно подписывать %."
+      ],
+      "observed_statistics": {
+        "min": 0.0,
+        "max": 1.0,
+        "sum": 87320.16999999457,
+        "zero_count": 399809
+      }
+    },
+    {
+      "index_1based": 39,
+      "original_name": "dst_host_srv_serror_rate",
+      "canonical_name": "dst_host_srv_serror_rate",
+      "description_ru": "Доля SYN-ошибок в host-based группе текущего узла и сервиса",
+      "unit": "доля 0–1",
+      "semantic_type": "ratio",
+      "role": "feature",
+      "source_urls": [
+        "https://kdd.ics.uci.edu/databases/kddcup99/kddcup.names",
+        "https://kdd.ics.uci.edu/databases/kddcup99/task.html"
+      ],
+      "source_uci_type": "continuous",
+      "recommended_storage": "float32",
+      "notes": [
+        "Host-based признаки даны составителями. UCI описывает окно соединений, но исходные адреса/время отсутствуют, поэтому окно здесь не восстанавливается. Счётчики фактически доходят до 255; порог 100 не использовать как правило удаления.",
+        "В исходном CSV доля закодирована в диапазоне 0–1; для показа процентов умножать на 100 и явно подписывать %."
+      ],
+      "observed_statistics": {
+        "min": 0.0,
+        "max": 1.0,
+        "sum": 87166.35999999357,
+        "zero_count": 400944
+      }
+    },
+    {
+      "index_1based": 40,
+      "original_name": "dst_host_rerror_rate",
+      "canonical_name": "dst_host_rerror_rate",
+      "description_ru": "Доля REJ-ошибок в host-based группе текущего узла",
+      "unit": "доля 0–1",
+      "semantic_type": "ratio",
+      "role": "feature",
+      "source_urls": [
+        "https://kdd.ics.uci.edu/databases/kddcup99/kddcup.names",
+        "https://kdd.ics.uci.edu/databases/kddcup99/task.html"
+      ],
+      "source_uci_type": "continuous",
+      "recommended_storage": "float32",
+      "notes": [
+        "Host-based признаки даны составителями. UCI описывает окно соединений, но исходные адреса/время отсутствуют, поэтому окно здесь не восстанавливается. Счётчики фактически доходят до 255; порог 100 не использовать как правило удаления.",
+        "В исходном CSV доля закодирована в диапазоне 0–1; для показа процентов умножать на 100 и явно подписывать %."
+      ],
+      "observed_statistics": {
+        "min": 0.0,
+        "max": 1.0,
+        "sum": 28711.319999999872,
+        "zero_count": 458791
+      }
+    },
+    {
+      "index_1based": 41,
+      "original_name": "dst_host_srv_rerror_rate",
+      "canonical_name": "dst_host_srv_rerror_rate",
+      "description_ru": "Доля REJ-ошибок в host-based группе текущего узла и сервиса",
+      "unit": "доля 0–1",
+      "semantic_type": "ratio",
+      "role": "feature",
+      "source_urls": [
+        "https://kdd.ics.uci.edu/databases/kddcup99/kddcup.names",
+        "https://kdd.ics.uci.edu/databases/kddcup99/task.html"
+      ],
+      "source_uci_type": "continuous",
+      "recommended_storage": "float32",
+      "notes": [
+        "Host-based признаки даны составителями. UCI описывает окно соединений, но исходные адреса/время отсутствуют, поэтому окно здесь не восстанавливается. Счётчики фактически доходят до 255; порог 100 не использовать как правило удаления.",
+        "В исходном CSV доля закодирована в диапазоне 0–1; для показа процентов умножать на 100 и явно подписывать %."
+      ],
+      "observed_statistics": {
+        "min": 0.0,
+        "max": 1.0,
+        "sum": 28362.56999999955,
+        "zero_count": 459804
+      }
+    },
+    {
+      "index_1based": 42,
+      "original_name": "label",
+      "canonical_name": "label",
+      "description_ru": "Метка нормального соединения или конкретного типа атаки",
+      "unit": "категория",
+      "semantic_type": "target",
+      "role": "target",
+      "source_urls": [
+        "https://kdd.ics.uci.edu/databases/kddcup99/task.html",
+        "https://kdd.ics.uci.edu/databases/kddcup99/training_attack_types"
+      ],
+      "source_uci_type": "class label",
+      "recommended_storage": "category",
+      "notes": [],
+      "observed_domain_counts": {
+        "normal": 97277,
+        "buffer_overflow": 30,
+        "loadmodule": 9,
+        "perl": 3,
+        "neptune": 107201,
+        "smurf": 280790,
+        "guess_passwd": 53,
+        "pod": 264,
+        "teardrop": 979,
+        "portsweep": 1040,
+        "ipsweep": 1247,
+        "land": 21,
+        "ftp_write": 8,
+        "back": 2203,
+        "imap": 12,
+        "satan": 1589,
+        "phf": 4,
+        "nmap": 231,
+        "multihop": 7,
+        "warezmaster": 20,
+        "warezclient": 1020,
+        "spy": 2,
+        "rootkit": 10
+      }
+    }
+  ],
+  "limitations": [
+    "Нет календарного времени, IP-адресов или реальных персональных идентификаторов.",
+    "duration относится к соединению, count/srv_count — уже вычисленные оконные признаки; по ним нельзя восстановить календарную частоту атак.",
+    "Host-based определения последних 10 признаков изложены как описания предоставленных агрегатов; исходные пакеты и окна здесь не пересчитываются."
+  ]
+}

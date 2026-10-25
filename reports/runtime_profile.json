@@ -1,0 +1,31 @@
+{
+  "status": "pass",
+  "platform": "Windows-11-10.0.26100-SP0",
+  "measurement_scope": "Fresh QA process loads one prepared Parquet dataframe and builds all nine charts; excludes browser, setup and pytest child processes.",
+  "rows": 145585,
+  "columns": 57,
+  "dataframe_deep_bytes": 32329428,
+  "pipeline_dataframe_deep_bytes_before_serialization": 33494029,
+  "memory_phase_note": "Loaded Parquet dataframe may have a RangeIndex and smaller categorical metadata than the pre-serialization pipeline dataframe; these are distinct real measurements.",
+  "parquet_bytes": 2256299,
+  "parquet_sha256": "bb2c9f7acf03f355a24af300691f34bd1d5a10af357b39dbf692fbe3eb88a98d",
+  "raw_csv_bytes": 74890223,
+  "process_peak_working_set_bytes": 251183104,
+  "process_current_working_set_bytes": 217448448,
+  "process_private_bytes": 691539968,
+  "target_RAM_bytes": 17179869184,
+  "peak_fraction_of_16GB": 0.014620780944824219,
+  "read_and_charts_seconds": 0.5765111000000616,
+  "chart_ids": [
+    "01_class",
+    "02_attacks",
+    "03_protocols",
+    "04_duration",
+    "05_bytes",
+    "06_correlation",
+    "07_services",
+    "08_normalized",
+    "09_outliers"
+  ],
+  "cached_UI_frame": "app.main.dataset_bundle uses st.cache_resource; this read-only check does not launch a second server."
+}

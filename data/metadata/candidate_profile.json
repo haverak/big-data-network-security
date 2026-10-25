@@ -1,0 +1,336 @@
+{
+  "created_utc": "2026-10-24T20:24:16.327803+00:00",
+  "zip": {
+    "path": "data/raw/kdd99_kaggle.zip",
+    "bytes": 2298679,
+    "sha256": "a50c9ce5d83ac5d70e7d0ff986b3abf09a4412b7ca4b5edf63e3d52a850448e8"
+  },
+  "csv": {
+    "path": "data/raw/kddcup99_csv.csv",
+    "bytes": 74890223,
+    "sha256": "e411f3bb295d2be602f9288b333c15afee0f4cf85f7928916975d7b90b71917f",
+    "sha256_without_header": "35c9711435846f642f0898c4caed95f79c91364b022f15a28ee828eec19b5ace",
+    "header_bytes": 620
+  },
+  "header": [
+    "duration",
+    "protocol_type",
+    "service",
+    "flag",
+    "src_bytes",
+    "dst_bytes",
+    "land",
+    "wrong_fragment",
+    "urgent",
+    "hot",
+    "num_failed_logins",
+    "logged_in",
+    "lnum_compromised",
+    "lroot_shell",
+    "lsu_attempted",
+    "lnum_root",
+    "lnum_file_creations",
+    "lnum_shells",
+    "lnum_access_files",
+    "lnum_outbound_cmds",
+    "is_host_login",
+    "is_guest_login",
+    "count",
+    "srv_count",
+    "serror_rate",
+    "srv_serror_rate",
+    "rerror_rate",
+    "srv_rerror_rate",
+    "same_srv_rate",
+    "diff_srv_rate",
+    "srv_diff_host_rate",
+    "dst_host_count",
+    "dst_host_srv_count",
+    "dst_host_same_srv_rate",
+    "dst_host_diff_srv_rate",
+    "dst_host_same_src_port_rate",
+    "dst_host_srv_diff_host_rate",
+    "dst_host_serror_rate",
+    "dst_host_srv_serror_rate",
+    "dst_host_rerror_rate",
+    "dst_host_srv_rerror_rate",
+    "label"
+  ],
+  "shape": [
+    494020,
+    42
+  ],
+  "field_counts": {
+    "42": 494020
+  },
+  "empty_lines": 0,
+  "exact_duplicate_rows_excluding_first_occurrence": 348435,
+  "unique_complete_rows": 145585,
+  "labels": {
+    "normal": 97277,
+    "buffer_overflow": 30,
+    "loadmodule": 9,
+    "perl": 3,
+    "neptune": 107201,
+    "smurf": 280790,
+    "guess_passwd": 53,
+    "pod": 264,
+    "teardrop": 979,
+    "portsweep": 1040,
+    "ipsweep": 1247,
+    "land": 21,
+    "ftp_write": 8,
+    "back": 2203,
+    "imap": 12,
+    "satan": 1589,
+    "phf": 4,
+    "nmap": 231,
+    "multihop": 7,
+    "warezmaster": 20,
+    "warezclient": 1020,
+    "spy": 2,
+    "rootkit": 10
+  },
+  "protocols": {
+    "tcp": 190064,
+    "udp": 20354,
+    "icmp": 283602
+  },
+  "missing_cells_by_column": {},
+  "numeric_invalid_by_column": {},
+  "negative_numeric_by_column": {},
+  "numeric_stats": {
+    "duration": {
+      "min": 0.0,
+      "max": 58329.0,
+      "sum": 23702783.0,
+      "zero_count": 481670
+    },
+    "src_bytes": {
+      "min": 0.0,
+      "max": 693375640.0,
+      "sum": 1494714690.0,
+      "zero_count": 115342
+    },
+    "dst_bytes": {
+      "min": 0.0,
+      "max": 5155468.0,
+      "sum": 429071573.0,
+      "zero_count": 408258
+    },
+    "land": {
+      "min": 0.0,
+      "max": 1.0,
+      "sum": 22.0,
+      "zero_count": 493998
+    },
+    "wrong_fragment": {
+      "min": 0.0,
+      "max": 3.0,
+      "sum": 3178.0,
+      "zero_count": 492782
+    },
+    "urgent": {
+      "min": 0.0,
+      "max": 3.0,
+      "sum": 7.0,
+      "zero_count": 494016
+    },
+    "hot": {
+      "min": 0.0,
+      "max": 30.0,
+      "sum": 17053.0,
+      "zero_count": 490828
+    },
+    "num_failed_logins": {
+      "min": 0.0,
+      "max": 5.0,
+      "sum": 75.0,
+      "zero_count": 493957
+    },
+    "logged_in": {
+      "min": 0.0,
+      "max": 1.0,
+      "sum": 73236.0,
+      "zero_count": 420784
+    },
+    "lnum_compromised": {
+      "min": 0.0,
+      "max": 884.0,
+      "sum": 5045.0,
+      "zero_count": 491796
+    },
+    "lroot_shell": {
+      "min": 0.0,
+      "max": 1.0,
+      "sum": 55.0,
+      "zero_count": 493965
+    },
+    "lsu_attempted": {
+      "min": 0.0,
+      "max": 2.0,
+      "sum": 18.0,
+      "zero_count": 494008
+    },
+    "lnum_root": {
+      "min": 0.0,
+      "max": 993.0,
+      "sum": 5608.0,
+      "zero_count": 493435
+    },
+    "lnum_file_creations": {
+      "min": 0.0,
+      "max": 28.0,
+      "sum": 535.0,
+      "zero_count": 493755
+    },
+    "lnum_shells": {
+      "min": 0.0,
+      "max": 2.0,
+      "sum": 54.0,
+      "zero_count": 493969
+    },
+    "lnum_access_files": {
+      "min": 0.0,
+      "max": 8.0,
+      "sum": 498.0,
+      "zero_count": 493566
+    },
+    "lnum_outbound_cmds": {
+      "min": 0.0,
+      "max": 0.0,
+      "sum": 0.0,
+      "zero_count": 494020
+    },
+    "is_host_login": {
+      "min": 0.0,
+      "max": 0.0,
+      "sum": 0.0,
+      "zero_count": 494020
+    },
+    "is_guest_login": {
+      "min": 0.0,
+      "max": 1.0,
+      "sum": 685.0,
+      "zero_count": 493335
+    },
+    "count": {
+      "min": 0.0,
+      "max": 511.0,
+      "sum": 164156108.0,
+      "zero_count": 2
+    },
+    "srv_count": {
+      "min": 0.0,
+      "max": 511.0,
+      "sum": 144701981.0,
+      "zero_count": 2
+    },
+    "serror_rate": {
+      "min": 0.0,
+      "max": 1.0,
+      "sum": 87286.91999999982,
+      "zero_count": 404786
+    },
+    "srv_serror_rate": {
+      "min": 0.0,
+      "max": 1.0,
+      "sum": 87248.46000000006,
+      "zero_count": 405685
+    },
+    "rerror_rate": {
+      "min": 0.0,
+      "max": 1.0,
+      "sum": 28373.310000000023,
+      "zero_count": 464947
+    },
+    "srv_rerror_rate": {
+      "min": 0.0,
+      "max": 1.0,
+      "sum": 28514.370000000024,
+      "zero_count": 464319
+    },
+    "same_srv_rate": {
+      "min": 0.0,
+      "max": 1.0,
+      "sum": 391040.01000024227,
+      "zero_count": 3627
+    },
+    "diff_srv_rate": {
+      "min": 0.0,
+      "max": 1.0,
+      "sum": 10365.740000003094,
+      "zero_count": 382020
+    },
+    "srv_diff_host_rate": {
+      "min": 0.0,
+      "max": 1.0,
+      "sum": 14324.70000000046,
+      "zero_count": 459377
+    },
+    "dst_host_count": {
+      "min": 0.0,
+      "max": 255.0,
+      "sum": 114845446.0,
+      "zero_count": 2
+    },
+    "dst_host_srv_count": {
+      "min": 0.0,
+      "max": 255.0,
+      "sum": 93204803.0,
+      "zero_count": 2
+    },
+    "dst_host_same_srv_rate": {
+      "min": 0.0,
+      "max": 1.0,
+      "sum": 372383.00000029075,
+      "zero_count": 11468
+    },
+    "dst_host_diff_srv_rate": {
+      "min": 0.0,
+      "max": 1.0,
+      "sum": 15268.079999980566,
+      "zero_count": 347030
+    },
+    "dst_host_same_src_port_rate": {
+      "min": 0.0,
+      "max": 1.0,
+      "sum": 297368.4100000717,
+      "zero_count": 142859
+    },
+    "dst_host_srv_diff_host_rate": {
+      "min": 0.0,
+      "max": 1.0,
+      "sum": 3301.7900000001746,
+      "zero_count": 441888
+    },
+    "dst_host_serror_rate": {
+      "min": 0.0,
+      "max": 1.0,
+      "sum": 87320.16999999457,
+      "zero_count": 399809
+    },
+    "dst_host_srv_serror_rate": {
+      "min": 0.0,
+      "max": 1.0,
+      "sum": 87166.35999999357,
+      "zero_count": 400944
+    },
+    "dst_host_rerror_rate": {
+      "min": 0.0,
+      "max": 1.0,
+      "sum": 28711.319999999872,
+      "zero_count": 458791
+    },
+    "dst_host_srv_rerror_rate": {
+      "min": 0.0,
+      "max": 1.0,
+      "sum": 28362.56999999955,
+      "zero_count": 459804
+    }
+  },
+  "encoding": "UTF-8 strict read successful; values are ASCII",
+  "source_untouched": true,
+  "zip_traversal_checked": true,
+  "row_identity": "all 42 raw field strings; SHA256 keys; no preprocessing"
+}

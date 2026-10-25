@@ -1,0 +1,53 @@
+{
+  "mapping": {
+    "back": "dos",
+    "buffer_overflow": "u2r",
+    "ftp_write": "r2l",
+    "guess_passwd": "r2l",
+    "imap": "r2l",
+    "ipsweep": "probe",
+    "land": "dos",
+    "loadmodule": "u2r",
+    "multihop": "r2l",
+    "neptune": "dos",
+    "nmap": "probe",
+    "perl": "u2r",
+    "phf": "r2l",
+    "pod": "dos",
+    "portsweep": "probe",
+    "rootkit": "u2r",
+    "satan": "probe",
+    "smurf": "dos",
+    "spy": "r2l",
+    "teardrop": "dos",
+    "warezclient": "r2l",
+    "warezmaster": "r2l",
+    "normal": "normal"
+  },
+  "source_url": "https://kdd.ics.uci.edu/databases/kddcup99/training_attack_types",
+  "source_path": "data/metadata/license_evidence/uci_attack_types.txt",
+  "source_sha256": "0762f0d4405ef457e60b0179145e5fca328b5103a9364a81e63b99d9f0620c74",
+  "normal_extension": "normal -> normal: отдельное нормальное состояние из официального task.html, не тип атаки.",
+  "family_names_ru": {
+    "normal": "Нормальный трафик",
+    "dos": "Отказ в обслуживании (DoS)",
+    "probe": "Разведка (Probe)",
+    "r2l": "Удалённый доступ к локальной учётной записи (R2L)",
+    "u2r": "Повышение привилегий до root (U2R)"
+  },
+  "raw_family_counts": {
+    "normal": 97277,
+    "u2r": 52,
+    "dos": 391458,
+    "r2l": 1126,
+    "probe": 4107
+  },
+  "unique_vector_family_counts": {
+    "normal": 87831,
+    "u2r": 52,
+    "dos": 54572,
+    "r2l": 999,
+    "probe": 2131
+  },
+  "all_observed_labels_mapped": true
+}

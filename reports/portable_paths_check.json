@@ -1,0 +1,17 @@
+{
+  "status": "pass",
+  "runtime_and_metadata_files_checked": 26,
+  "absolute_machine_paths_found": [],
+  "optional_standard_OS_fallbacks": [
+    {
+      "file": "scripts/export_report_figures.py",
+      "path": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+      "reason": "Optional standard Windows Edge location for static figure export, guarded by exists() and overridden by BROWSER_PATH; app/data startup does not depend on this path."
+    }
+  ],
+  "excluded_from_runtime_path_rule": [
+    "reports execution logs/QA audit: exact executed working paths are evidence",
+    ".venv/.dependency_cache/.wheelhouse: rebuildable, excluded from final distribution",
+    "README illustrative C:\\Учеба path: documented example, not hard-coded runtime dependency"
+  ]
+}

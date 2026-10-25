@@ -1,0 +1,49 @@
+{
+  "command": [
+    "cmd.exe",
+    "/d",
+    "/c",
+    "setup_windows.cmd"
+  ],
+  "cwd": ".",
+  "BIGDATA_NO_PAUSE": "1",
+  "started_utc": "2026-10-24T20:44:41.586988+00:00",
+  "finished_utc": "2026-10-24T20:50:50.064432+00:00",
+  "elapsed_seconds": 368.47663470000407,
+  "exit_code": 0,
+  "status": "pass",
+  "platform": "Windows-11-10.0.26100-SP0",
+  "windows_version": [
+    "11",
+    "10.0.26100",
+    "SP0",
+    "Multiprocessor Free"
+  ],
+  "raw_before": {
+    "data/raw/kdd99_kaggle.zip": {
+      "sha256": "a50c9ce5d83ac5d70e7d0ff986b3abf09a4412b7ca4b5edf63e3d52a850448e8",
+      "bytes": 2298679
+    },
+    "data/raw/kddcup99_csv.csv": {
+      "sha256": "e411f3bb295d2be602f9288b333c15afee0f4cf85f7928916975d7b90b71917f",
+      "bytes": 74890223
+    }
+  },
+  "raw_after": {
+    "data/raw/kdd99_kaggle.zip": {
+      "sha256": "a50c9ce5d83ac5d70e7d0ff986b3abf09a4412b7ca4b5edf63e3d52a850448e8",
+      "bytes": 2298679
+    },
+    "data/raw/kddcup99_csv.csv": {
+      "sha256": "e411f3bb295d2be602f9288b333c15afee0f4cf85f7928916975d7b90b71917f",
+      "bytes": 74890223
+    }
+  },
+  "raw_unchanged": true,
+  "log": "reports/setup_windows_cold_test.txt",
+  "log_sha256": "a9749e423a1e7986870095c5f0c86bb451068f51e6e9c31da7caff6f9358a68a",
+  "tokens_requested": false,
+  "stdin_connected": false,
+  "installer_script_sha256": "7201df5de114d20ad6fd4c3f06f0ce856f27f782ee62399f699f47df3dc07304",
+  "setup_cmd_sha256": "cda8854633a6b444eedf08cd1474af5c750968bedfff3dcce4b3c6805e4e8d09"
+}

@@ -1,0 +1,979 @@
+{
+  "decision": "selected and downloaded",
+  "dataset_ref": "toobajamal/kdd99-dataset",
+  "dataset_url": "https://www.kaggle.com/datasets/toobajamal/kdd99-dataset",
+  "title": "KDD99 dataset",
+  "kaggle_owner": "Tooba Jamal",
+  "kaggle_dataset_id": 1660759,
+  "version": 1,
+  "last_updated": "2021-10-20T15:22:38.123Z",
+  "checked_utc": "2026-10-24T20:31:44.983972+00:00",
+  "requirements_read": {
+    "user_attachment": "Источник, проверенный при подготовке: Вставленный текст.txt",
+    "method_pdf": "Источник, проверенный при подготовке: Индивидуальная №2.pdf",
+    "extracted_text": "Источник, проверенный при подготовке: method_extracted.txt",
+    "minimum_rows_specified": false,
+    "minimum_visualizations": 8
+  },
+  "primary_sources": {
+    "kaggle": "https://www.kaggle.com/datasets/toobajamal/kdd99-dataset",
+    "metadata_api": "https://www.kaggle.com/api/v1/datasets/metadata/toobajamal/kdd99-dataset",
+    "uci": "https://archive.ics.uci.edu/dataset/130/kdd+cup+1999+data",
+    "task": "https://kdd.ics.uci.edu/databases/kddcup99/task.html",
+    "feature_order": "https://kdd.ics.uci.edu/databases/kddcup99/kddcup.names",
+    "attack_families": "https://kdd.ics.uci.edu/databases/kddcup99/training_attack_types",
+    "official_10_percent": "https://kdd.org/cupfiles/KDDCupData/1999/kddcup.data_10_percent.zip"
+  },
+  "license": {
+    "kaggle_declaration": "CC0-1.0",
+    "kaggle_evidence": "data/metadata/license_evidence/kaggle_toobajamal_metadata.json",
+    "metadata_license_path": "info.licenses[0].name",
+    "original_license": "CC BY 4.0",
+    "original_license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "original_evidence": "data/metadata/license_evidence/uci_page.txt",
+    "redistribution_supported": true,
+    "redistribution_basis": "UCI explicitly permits sharing and adaptation under CC BY 4.0 with appropriate credit. Kaggle uploader declares CC0-1.0 for the mirror; this declaration does not remove underlying original attribution. Include the UCI creators/DOI/source/license and distinguish raw from processed copies.",
+    "license_files": [
+      {
+        "url": "https://creativecommons.org/licenses/by/4.0/legalcode.txt",
+        "download_http_status": 403,
+        "saved": false,
+        "note": "Правовой текст просмотрен через web tool; ссылки на лицензии и первичные UCI/Kaggle доказательства сохранены. Авторизация или обход ограничений не применялись."
+      },
+      {
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/legalcode.txt",
+        "download_http_status": 403,
+        "saved": false,
+        "note": "Правовой текст просмотрен через web tool; ссылки на лицензии и первичные UCI/Kaggle доказательства сохранены. Авторизация или обход ограничений не применялись."
+      }
+    ],
+    "attribution": "KDD Cup 1999 Data. Salvatore Stolfo, Wei Fan, Wenke Lee, Andreas Prodromidis and Philip Chan (1999). UCI Machine Learning Repository. DOI: 10.24432/C51C7N. Original data: CC BY 4.0, https://creativecommons.org/licenses/by/4.0/. Kaggle mirror: Tooba Jamal, KDD99 dataset, version 1 (2021-10-20), https://www.kaggle.com/datasets/toobajamal/kdd99-dataset ; uploader metadata declares CC0-1.0. This project retains the original UCI attribution and CC BY 4.0 notice. Raw Kaggle archive and CSV are unchanged. Processed copies rename eight l-prefixed field aliases, normalize representations and document cleaning separately."
+  },
+  "download": {
+    "url": "https://www.kaggle.com/api/v1/datasets/download/toobajamal/kdd99-dataset",
+    "path": "data/raw/kdd99_kaggle.zip",
+    "status": 200,
+    "content_type": "application/zip",
+    "bytes": 2298679,
+    "sha256": "a50c9ce5d83ac5d70e7d0ff986b3abf09a4412b7ca4b5edf63e3d52a850448e8",
+    "authentication_used": false,
+    "request_headers": {
+      "Host": "www.kaggle.com",
+      "User-agent": "Mozilla/5.0 research dataset verification"
+    },
+    "redirect_host": "storage.googleapis.com:443",
+    "version_pinned_url": {
+      "url": "https://www.kaggle.com/api/v1/datasets/download/toobajamal/kdd99-dataset?datasetVersionNumber=1",
+      "http_status": 200,
+      "bytes": 2298679,
+      "sha256": "a50c9ce5d83ac5d70e7d0ff986b3abf09a4412b7ca4b5edf63e3d52a850448e8",
+      "authentication_used": false,
+      "cookies_used": false
+    },
+    "instructions_python": "Use urllib.request.urlopen(public_url), write bytes, verify archive SHA256. No Kaggle API key, login, cookies or credentials were used or needed.",
+    "archive_traversal_check": "Exactly one known relative member kddcup99_csv.csv; no absolute paths or ..; extraction targets workspace raw directory only."
+  },
+  "files": {
+    "zip": {
+      "path": "data/raw/kdd99_kaggle.zip",
+      "bytes": 2298679,
+      "sha256": "a50c9ce5d83ac5d70e7d0ff986b3abf09a4412b7ca4b5edf63e3d52a850448e8"
+    },
+    "csv": {
+      "path": "data/raw/kddcup99_csv.csv",
+      "bytes": 74890223,
+      "sha256": "e411f3bb295d2be602f9288b333c15afee0f4cf85f7928916975d7b90b71917f",
+      "sha256_without_header": "35c9711435846f642f0898c4caed95f79c91364b022f15a28ee828eec19b5ace",
+      "header_bytes": 620
+    }
+  },
+  "shape": [
+    494020,
+    42
+  ],
+  "original_to_canonical_aliases": {
+    "lnum_compromised": "num_compromised",
+    "lroot_shell": "root_shell",
+    "lsu_attempted": "su_attempted",
+    "lnum_root": "num_root",
+    "lnum_file_creations": "num_file_creations",
+    "lnum_shells": "num_shells",
+    "lnum_access_files": "num_access_files",
+    "lnum_outbound_cmds": "num_outbound_cmds"
+  },
+  "headers": [
+    "duration",
+    "protocol_type",
+    "service",
+    "flag",
+    "src_bytes",
+    "dst_bytes",
+    "land",
+    "wrong_fragment",
+    "urgent",
+    "hot",
+    "num_failed_logins",
+    "logged_in",
+    "lnum_compromised",
+    "lroot_shell",
+    "lsu_attempted",
+    "lnum_root",
+    "lnum_file_creations",
+    "lnum_shells",
+    "lnum_access_files",
+    "lnum_outbound_cmds",
+    "is_host_login",
+    "is_guest_login",
+    "count",
+    "srv_count",
+    "serror_rate",
+    "srv_serror_rate",
+    "rerror_rate",
+    "srv_rerror_rate",
+    "same_srv_rate",
+    "diff_srv_rate",
+    "srv_diff_host_rate",
+    "dst_host_count",
+    "dst_host_srv_count",
+    "dst_host_same_srv_rate",
+    "dst_host_diff_srv_rate",
+    "dst_host_same_src_port_rate",
+    "dst_host_srv_diff_host_rate",
+    "dst_host_serror_rate",
+    "dst_host_srv_serror_rate",
+    "dst_host_rerror_rate",
+    "dst_host_srv_rerror_rate",
+    "label"
+  ],
+  "origin": {
+    "source_benchmark": "KDD Cup 1999 derived from DARPA 1998 Intrusion Detection Evaluation, MIT Lincoln Laboratory controlled simulated military LAN.",
+    "current_live_traffic": false,
+    "provided_subset": "Published supplied 10% subset, not a random sample newly drawn by this project.",
+    "csv_vs_official": {
+      "original_rows": 494021,
+      "kaggle_rows": 494020,
+      "original_labels": {
+        "normal": 97278,
+        "buffer_overflow": 30,
+        "loadmodule": 9,
+        "perl": 3,
+        "neptune": 107201,
+        "smurf": 280790,
+        "guess_passwd": 53,
+        "pod": 264,
+        "teardrop": 979,
+        "portsweep": 1040,
+        "ipsweep": 1247,
+        "land": 21,
+        "ftp_write": 8,
+        "back": 2203,
+        "imap": 12,
+        "satan": 1589,
+        "phf": 4,
+        "nmap": 231,
+        "multihop": 7,
+        "warezmaster": 20,
+        "warezclient": 1020,
+        "spy": 2,
+        "rootkit": 10
+      },
+      "kaggle_missing_record_occurrences_relative_to_original": 1,
+      "kaggle_added_record_occurrences_relative_to_original": 0,
+      "normalization_for_comparison": "Only remove terminal dot from the label; feature strings, order and multiplicities unchanged.",
+      "original_field_counts": {
+        "42": 494020,
+        "56": 1
+      },
+      "after_filtering_original_to_42_fields_ordered_row_mismatches": 0,
+      "original_first_two": [
+        [
+          "0",
+          "tcp",
+          "http",
+          "SF",
+          "181",
+          "5450",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "1",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "8",
+          "8",
+          "0.00",
+          "0.00",
+          "0.00",
+          "0.00",
+          "1.00",
+          "0.00",
+          "0.00",
+          "9",
+          "9",
+          "1.00",
+          "0.00",
+          "0.11",
+          "0.00",
+          "0.00",
+          "0.00",
+          "0.00",
+          "0.00",
+          "normal."
+        ],
+        [
+          "0",
+          "tcp",
+          "http",
+          "SF",
+          "239",
+          "486",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "1",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "8",
+          "8",
+          "0.00",
+          "0.00",
+          "0.00",
+          "0.00",
+          "1.00",
+          "0.00",
+          "0.00",
+          "19",
+          "19",
+          "1.00",
+          "0.00",
+          "0.05",
+          "0.00",
+          "0.00",
+          "0.00",
+          "0.00",
+          "0.00",
+          "normal."
+        ]
+      ],
+      "kaggle_first_two": [
+        [
+          "0",
+          "tcp",
+          "http",
+          "SF",
+          "181",
+          "5450",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "1",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "8",
+          "8",
+          "0.00",
+          "0.00",
+          "0.00",
+          "0.00",
+          "1.00",
+          "0.00",
+          "0.00",
+          "9",
+          "9",
+          "1.00",
+          "0.00",
+          "0.11",
+          "0.00",
+          "0.00",
+          "0.00",
+          "0.00",
+          "0.00",
+          "normal"
+        ],
+        [
+          "0",
+          "tcp",
+          "http",
+          "SF",
+          "239",
+          "486",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "1",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "8",
+          "8",
+          "0.00",
+          "0.00",
+          "0.00",
+          "0.00",
+          "1.00",
+          "0.00",
+          "0.00",
+          "19",
+          "19",
+          "1.00",
+          "0.00",
+          "0.05",
+          "0.00",
+          "0.00",
+          "0.00",
+          "0.00",
+          "0.00",
+          "normal"
+        ]
+      ],
+      "missing_record_examples": [
+        [
+          "0",
+          "tcp",
+          "private",
+          "S0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "00",
+          "tcp",
+          "http",
+          "SF",
+          "334",
+          "1684",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "1",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "1",
+          "9",
+          "0.00",
+          "0.00",
+          "0.00",
+          "0.00",
+          "1.00",
+          "0.00",
+          "0.33",
+          "0",
+          "0",
+          "0.00",
+          "0.00",
+          "0.00",
+          "0.00",
+          "0.00",
+          "0.00",
+          "0.00",
+          "0.00",
+          "normal."
+        ]
+      ],
+      "added_record_examples": [],
+      "conclusion": "Kaggle CSV has exactly all 494020 valid 42-field rows of the official SIGKDD supplied 10% subset, in identical order after stripping terminal dots from labels. The SIGKDD ZIP additionally contains one malformed 56-field line labelled normal.; that line is absent from Kaggle. Kaggle adds its own 42-field header and uses CRLF."
+    },
+    "calendar_timestamps": false,
+    "IP_addresses_or_personal_identifiers": false
+  },
+  "profile": {
+    "created_utc": "2026-10-24T20:24:16.327803+00:00",
+    "zip": {
+      "path": "data/raw/kdd99_kaggle.zip",
+      "bytes": 2298679,
+      "sha256": "a50c9ce5d83ac5d70e7d0ff986b3abf09a4412b7ca4b5edf63e3d52a850448e8"
+    },
+    "csv": {
+      "path": "data/raw/kddcup99_csv.csv",
+      "bytes": 74890223,
+      "sha256": "e411f3bb295d2be602f9288b333c15afee0f4cf85f7928916975d7b90b71917f",
+      "sha256_without_header": "35c9711435846f642f0898c4caed95f79c91364b022f15a28ee828eec19b5ace",
+      "header_bytes": 620
+    },
+    "header": [
+      "duration",
+      "protocol_type",
+      "service",
+      "flag",
+      "src_bytes",
+      "dst_bytes",
+      "land",
+      "wrong_fragment",
+      "urgent",
+      "hot",
+      "num_failed_logins",
+      "logged_in",
+      "lnum_compromised",
+      "lroot_shell",
+      "lsu_attempted",
+      "lnum_root",
+      "lnum_file_creations",
+      "lnum_shells",
+      "lnum_access_files",
+      "lnum_outbound_cmds",
+      "is_host_login",
+      "is_guest_login",
+      "count",
+      "srv_count",
+      "serror_rate",
+      "srv_serror_rate",
+      "rerror_rate",
+      "srv_rerror_rate",
+      "same_srv_rate",
+      "diff_srv_rate",
+      "srv_diff_host_rate",
+      "dst_host_count",
+      "dst_host_srv_count",
+      "dst_host_same_srv_rate",
+      "dst_host_diff_srv_rate",
+      "dst_host_same_src_port_rate",
+      "dst_host_srv_diff_host_rate",
+      "dst_host_serror_rate",
+      "dst_host_srv_serror_rate",
+      "dst_host_rerror_rate",
+      "dst_host_srv_rerror_rate",
+      "label"
+    ],
+    "shape": [
+      494020,
+      42
+    ],
+    "field_counts": {
+      "42": 494020
+    },
+    "empty_lines": 0,
+    "exact_duplicate_rows_excluding_first_occurrence": 348435,
+    "unique_complete_rows": 145585,
+    "labels": {
+      "normal": 97277,
+      "buffer_overflow": 30,
+      "loadmodule": 9,
+      "perl": 3,
+      "neptune": 107201,
+      "smurf": 280790,
+      "guess_passwd": 53,
+      "pod": 264,
+      "teardrop": 979,
+      "portsweep": 1040,
+      "ipsweep": 1247,
+      "land": 21,
+      "ftp_write": 8,
+      "back": 2203,
+      "imap": 12,
+      "satan": 1589,
+      "phf": 4,
+      "nmap": 231,
+      "multihop": 7,
+      "warezmaster": 20,
+      "warezclient": 1020,
+      "spy": 2,
+      "rootkit": 10
+    },
+    "protocols": {
+      "tcp": 190064,
+      "udp": 20354,
+      "icmp": 283602
+    },
+    "missing_cells_by_column": {},
+    "numeric_invalid_by_column": {},
+    "negative_numeric_by_column": {},
+    "numeric_stats": {
+      "duration": {
+        "min": 0.0,
+        "max": 58329.0,
+        "sum": 23702783.0,
+        "zero_count": 481670
+      },
+      "src_bytes": {
+        "min": 0.0,
+        "max": 693375640.0,
+        "sum": 1494714690.0,
+        "zero_count": 115342
+      },
+      "dst_bytes": {
+        "min": 0.0,
+        "max": 5155468.0,
+        "sum": 429071573.0,
+        "zero_count": 408258
+      },
+      "land": {
+        "min": 0.0,
+        "max": 1.0,
+        "sum": 22.0,
+        "zero_count": 493998
+      },
+      "wrong_fragment": {
+        "min": 0.0,
+        "max": 3.0,
+        "sum": 3178.0,
+        "zero_count": 492782
+      },
+      "urgent": {
+        "min": 0.0,
+        "max": 3.0,
+        "sum": 7.0,
+        "zero_count": 494016
+      },
+      "hot": {
+        "min": 0.0,
+        "max": 30.0,
+        "sum": 17053.0,
+        "zero_count": 490828
+      },
+      "num_failed_logins": {
+        "min": 0.0,
+        "max": 5.0,
+        "sum": 75.0,
+        "zero_count": 493957
+      },
+      "logged_in": {
+        "min": 0.0,
+        "max": 1.0,
+        "sum": 73236.0,
+        "zero_count": 420784
+      },
+      "lnum_compromised": {
+        "min": 0.0,
+        "max": 884.0,
+        "sum": 5045.0,
+        "zero_count": 491796
+      },
+      "lroot_shell": {
+        "min": 0.0,
+        "max": 1.0,
+        "sum": 55.0,
+        "zero_count": 493965
+      },
+      "lsu_attempted": {
+        "min": 0.0,
+        "max": 2.0,
+        "sum": 18.0,
+        "zero_count": 494008
+      },
+      "lnum_root": {
+        "min": 0.0,
+        "max": 993.0,
+        "sum": 5608.0,
+        "zero_count": 493435
+      },
+      "lnum_file_creations": {
+        "min": 0.0,
+        "max": 28.0,
+        "sum": 535.0,
+        "zero_count": 493755
+      },
+      "lnum_shells": {
+        "min": 0.0,
+        "max": 2.0,
+        "sum": 54.0,
+        "zero_count": 493969
+      },
+      "lnum_access_files": {
+        "min": 0.0,
+        "max": 8.0,
+        "sum": 498.0,
+        "zero_count": 493566
+      },
+      "lnum_outbound_cmds": {
+        "min": 0.0,
+        "max": 0.0,
+        "sum": 0.0,
+        "zero_count": 494020
+      },
+      "is_host_login": {
+        "min": 0.0,
+        "max": 0.0,
+        "sum": 0.0,
+        "zero_count": 494020
+      },
+      "is_guest_login": {
+        "min": 0.0,
+        "max": 1.0,
+        "sum": 685.0,
+        "zero_count": 493335
+      },
+      "count": {
+        "min": 0.0,
+        "max": 511.0,
+        "sum": 164156108.0,
+        "zero_count": 2
+      },
+      "srv_count": {
+        "min": 0.0,
+        "max": 511.0,
+        "sum": 144701981.0,
+        "zero_count": 2
+      },
+      "serror_rate": {
+        "min": 0.0,
+        "max": 1.0,
+        "sum": 87286.91999999982,
+        "zero_count": 404786
+      },
+      "srv_serror_rate": {
+        "min": 0.0,
+        "max": 1.0,
+        "sum": 87248.46000000006,
+        "zero_count": 405685
+      },
+      "rerror_rate": {
+        "min": 0.0,
+        "max": 1.0,
+        "sum": 28373.310000000023,
+        "zero_count": 464947
+      },
+      "srv_rerror_rate": {
+        "min": 0.0,
+        "max": 1.0,
+        "sum": 28514.370000000024,
+        "zero_count": 464319
+      },
+      "same_srv_rate": {
+        "min": 0.0,
+        "max": 1.0,
+        "sum": 391040.01000024227,
+        "zero_count": 3627
+      },
+      "diff_srv_rate": {
+        "min": 0.0,
+        "max": 1.0,
+        "sum": 10365.740000003094,
+        "zero_count": 382020
+      },
+      "srv_diff_host_rate": {
+        "min": 0.0,
+        "max": 1.0,
+        "sum": 14324.70000000046,
+        "zero_count": 459377
+      },
+      "dst_host_count": {
+        "min": 0.0,
+        "max": 255.0,
+        "sum": 114845446.0,
+        "zero_count": 2
+      },
+      "dst_host_srv_count": {
+        "min": 0.0,
+        "max": 255.0,
+        "sum": 93204803.0,
+        "zero_count": 2
+      },
+      "dst_host_same_srv_rate": {
+        "min": 0.0,
+        "max": 1.0,
+        "sum": 372383.00000029075,
+        "zero_count": 11468
+      },
+      "dst_host_diff_srv_rate": {
+        "min": 0.0,
+        "max": 1.0,
+        "sum": 15268.079999980566,
+        "zero_count": 347030
+      },
+      "dst_host_same_src_port_rate": {
+        "min": 0.0,
+        "max": 1.0,
+        "sum": 297368.4100000717,
+        "zero_count": 142859
+      },
+      "dst_host_srv_diff_host_rate": {
+        "min": 0.0,
+        "max": 1.0,
+        "sum": 3301.7900000001746,
+        "zero_count": 441888
+      },
+      "dst_host_serror_rate": {
+        "min": 0.0,
+        "max": 1.0,
+        "sum": 87320.16999999457,
+        "zero_count": 399809
+      },
+      "dst_host_srv_serror_rate": {
+        "min": 0.0,
+        "max": 1.0,
+        "sum": 87166.35999999357,
+        "zero_count": 400944
+      },
+      "dst_host_rerror_rate": {
+        "min": 0.0,
+        "max": 1.0,
+        "sum": 28711.319999999872,
+        "zero_count": 458791
+      },
+      "dst_host_srv_rerror_rate": {
+        "min": 0.0,
+        "max": 1.0,
+        "sum": 28362.56999999955,
+        "zero_count": 459804
+      }
+    },
+    "encoding": "UTF-8 strict read successful; values are ASCII",
+    "source_untouched": true,
+    "zip_traversal_checked": true,
+    "row_identity": "all 42 raw field strings; SHA256 keys; no preprocessing"
+  },
+  "attack_family_counts": {
+    "normal": 97277,
+    "u2r": 52,
+    "dos": 391458,
+    "r2l": 1126,
+    "probe": 4107
+  },
+  "unique_vector_family_counts": {
+    "normal": 87831,
+    "u2r": 52,
+    "dos": 54572,
+    "r2l": 999,
+    "probe": 2131
+  },
+  "unique_vector_label_counts": {
+    "normal": 87831,
+    "buffer_overflow": 30,
+    "loadmodule": 9,
+    "perl": 3,
+    "neptune": 51820,
+    "smurf": 641,
+    "guess_passwd": 53,
+    "pod": 206,
+    "teardrop": 918,
+    "portsweep": 416,
+    "ipsweep": 651,
+    "land": 19,
+    "ftp_write": 8,
+    "back": 968,
+    "imap": 12,
+    "satan": 906,
+    "phf": 4,
+    "nmap": 158,
+    "multihop": 7,
+    "warezmaster": 20,
+    "warezclient": 893,
+    "spy": 2,
+    "rootkit": 10
+  },
+  "potential_visualizations": [
+    {
+      "id": 1,
+      "title": "Нормальный трафик и атаки",
+      "fields": [
+        "label"
+      ],
+      "view": "столбцы количества и доли",
+      "units": "соединение / %",
+      "question": "Какова доля атак среди записей выбранного набора?",
+      "sampling": "нет; полная выбранная таблица"
+    },
+    {
+      "id": 2,
+      "title": "Семейства и типы атак",
+      "fields": [
+        "label"
+      ],
+      "view": "ранжированный bar chart, группировка по официальной семье",
+      "units": "соединение",
+      "question": "Какие типы и семьи атак преобладают?",
+      "sampling": "нет"
+    },
+    {
+      "id": 3,
+      "title": "Протокол и категория трафика",
+      "fields": [
+        "protocol_type",
+        "label"
+      ],
+      "view": "накопленные столбцы / условные доли",
+      "units": "соединение / % внутри протокола",
+      "question": "Как связаны tcp/udp/icmp с метками?",
+      "sampling": "нет"
+    },
+    {
+      "id": 4,
+      "title": "Продолжительность соединений",
+      "fields": [
+        "duration",
+        "label"
+      ],
+      "view": "гистограмма log1p или box plot с отдельной долей нулей",
+      "units": "секунда; шкала log1p явно подписана",
+      "question": "Чем различаются длительности и доли нулевых duration?",
+      "sampling": "нет для агрегатов; boxplot через заранее посчитанные квантили"
+    },
+    {
+      "id": 5,
+      "title": "Объём переданных данных",
+      "fields": [
+        "src_bytes",
+        "dst_bytes",
+        "label"
+      ],
+      "view": "ECDF/гистограмма либо боксплоты по категории и направлению",
+      "units": "байт",
+      "question": "Как различаются объёмы source→destination и обратно?",
+      "sampling": "нет для агрегатов"
+    },
+    {
+      "id": 6,
+      "title": "Взаимосвязи числовых признаков",
+      "fields": [
+        "duration",
+        "src_bytes",
+        "dst_bytes",
+        "count",
+        "srv_count",
+        "serror_rate",
+        "rerror_rate",
+        "same_srv_rate"
+      ],
+      "view": "Spearman correlation heatmap, константы исключены с объяснением",
+      "units": "коэффициент −1…1",
+      "question": "Какие признаки изменяются совместно?",
+      "sampling": "нет; расчёт на всей выбранной таблице, кешируемый"
+    },
+    {
+      "id": 7,
+      "title": "Сервисы и доля атак",
+      "fields": [
+        "service",
+        "label"
+      ],
+      "view": "bar chart attack rate с числом наблюдений и порогом min N",
+      "units": "% атак; N соединений",
+      "question": "Для каких сервисов чаще встречаются метки атак в этом benchmark?",
+      "sampling": "нет; редкие категории явно помечаются"
+    },
+    {
+      "id": 8,
+      "title": "Длительность и суммарный объём",
+      "fields": [
+        "duration",
+        "src_bytes",
+        "dst_bytes",
+        "label"
+      ],
+      "view": "scatter/hexbin по категориям, log1p-оси",
+      "units": "секунда / байт",
+      "question": "Есть ли группы длинных/объёмных соединений?",
+      "sampling": "если scatter ограничен, фиксированный seed и объём должны быть показаны; KPI остаются полными"
+    },
+    {
+      "id": 9,
+      "title": "Экстремальные значения",
+      "fields": [
+        "duration",
+        "src_bytes",
+        "dst_bytes",
+        "label"
+      ],
+      "view": "таблица/столбцы IQR или квантильных флагов по категориям",
+      "units": "наблюдение / %",
+      "question": "Где сосредоточены экстремальные характеристики?",
+      "sampling": "нет; флаги диагностические, не доказательство атаки и не правило удаления"
+    },
+    {
+      "id": 10,
+      "title": "Оконные SYN/REJ-ошибки и интенсивность",
+      "fields": [
+        "count",
+        "srv_count",
+        "serror_rate",
+        "rerror_rate",
+        "label"
+      ],
+      "view": "тепловая карта/боксплоты условных распределений",
+      "units": "соединение за окно 2 с / доля ошибок",
+      "question": "Как оконные счётчики и ошибки связаны с типом трафика?",
+      "sampling": "нет; это предоставленные агрегаты, не календарная временная серия"
+    }
+  ],
+  "normalization_plan": {
+    "structural": "Keep raw unchanged. Eight aliases mapped by official position. Strip harmless string whitespace, validate UTF-8, label vocabulary and numeric finite/nonnegative values.",
+    "numeric": "Retain physical units in main processed columns; add log1p/minmax derived columns for analysis where justified and document formula/zero-range behavior. Do not normalize categorical codes as numbers.",
+    "duplicates": "Assignment requires deduplicated prepared view; present removed count and before/after distributions. Identical 41-feature+label vectors cannot be proven repeated capture of one event because no timestamp/IP is provided.",
+    "outliers": "Keep extremes and zero-duration connections. Add diagnostic flags, never equate statistical outlier with an attack by definition."
+  },
+  "performance": {
+    "target": "Windows 11 / 16 GB RAM",
+    "raw_csv_MB": 74.890223,
+    "raw_zip_MB": 2.298679,
+    "working_rows": 494020,
+    "recommended": "Single cached dataframe with category dtype for nominal fields, float32 ratios and safe unsigned integers for counts; parquet prepared store; cached aggregates; deterministic limited scatter sample with visible N. Avoid duplicate full-frame copies.",
+    "memory_estimate_not_measured": "42 float64-equivalent columns at 494020 rows ~166 MB before object/string overhead; category/downcast reduces footprint. Actual memory/RSS must be measured in final pipeline."
+  },
+  "limitations": [
+    "Historical controlled benchmark, not observed current Internet threat prevalence.",
+    "No calendar timestamps, real addresses, or session identifiers; cannot plot true attacks per day/hour or reconstruct chronology.",
+    "The supplied 10% subset is unbalanced and is not a new random sample of full KDD.",
+    "Kaggle metadata description is empty; field/origin claims are supported instead by official UCI/SIGKDD documents and ordered row comparison.",
+    "One malformed 56-field line in the downloaded official SIGKDD zip is absent from the Kaggle mirror; Kaggle itself contains 494020 well-formed rows.",
+    "The same dataset must not duplicate classmates’ choices, but classmates’ selections are unavailable and uniqueness cannot be independently verified.",
+    "KDD features include documented quirks: su_attempted value2, is_host_login/is_hot_login alias ambiguity, host counters up to255. Do not silently discard these as invalid."
+  ],
+  "rejected_or_not_selected": [
+    {
+      "ref": "galaxyh/kdd-cup-1999-data",
+      "reason": "Public and well documented, but Kaggle license metadata Unknown and archive larger; selected mirror explicitly CC0."
+    },
+    {
+      "ref": "mrwellsdavid/unsw-nb15",
+      "reason": "Kaggle license Unknown. Original UNSW grants perpetual academic research use, commercial permission separately, without a clear open redistribution license on the cited page; not selected for a self-contained redistributed archive.",
+      "primary_source": "https://research.unsw.edu.au/projects/unsw-nb15-dataset"
+    }
+  ],
+  "data_dictionary": "data/data_dictionary.json",
+  "attack_family_map": "data/attack_family_map.json"
+}

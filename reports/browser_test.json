@@ -1,0 +1,149 @@
+{
+  "status": "pass",
+  "created_utc": "2026-10-24T21:25:27.118749+00:00",
+  "method": "Actual running Streamlit UI operated and captured through CUA browser API; screenshots are not generated mockups",
+  "launcher": {
+    "command": "cmd.exe /d /c start_app.cmd",
+    "environment": "Windows 11, Python 3.12",
+    "server": "127.0.0.1:8501",
+    "http_status": 200,
+    "health": {
+      "status": 200,
+      "body": "ok"
+    },
+    "last_start_local": "2026-10-25 00:05:41"
+  },
+  "flows": [
+    {
+      "id": "main",
+      "observed": {
+        "rows": 145585,
+        "attacks": 57754,
+        "normal": 87831,
+        "attack_share_display": "39,7 %"
+      }
+    },
+    {
+      "id": "preparation",
+      "observed": {
+        "raw": 494020,
+        "invalid_removed": 0,
+        "duplicates_removed": 348435,
+        "prepared": 145585,
+        "raw_unchanged": true
+      }
+    },
+    {
+      "id": "empty_protocol_selection",
+      "actions": "All protocols unchecked; multiselect empty",
+      "observed": {
+        "rows": 0,
+        "attacks": 0,
+        "normal": 0,
+        "warning": true,
+        "charts_absent": true
+      }
+    },
+    {
+      "id": "tcp_filter",
+      "actions": "Select tcp; wait for recalculated chart conclusion",
+      "observed": {
+        "rows": 130912,
+        "attacks": 55124,
+        "normal": 75788,
+        "attack_share": "42.11%",
+        "protocol": "tcp",
+        "protocol_fraction": 1.0
+      }
+    },
+    {
+      "id": "filter_reset",
+      "observed": {
+        "rows": 145585,
+        "attacks": 57754
+      }
+    },
+    {
+      "id": "duration_cdf",
+      "observed": "Actual two curves; medians zero; normal zero share 88.66%, attack zero share 98.87%"
+    },
+    {
+      "id": "data",
+      "observed": "500-row preview explicitly labelled, full-filter CSV export explained, source and schema present"
+    },
+    {
+      "id": "author",
+      "observed": "Student, group, teacher, honest photo placeholder and upload; demonstration bank card labelled not for payments with no payment details"
+    },
+    {
+      "id": "responsive",
+      "observed": {
+        "viewport_width": 390,
+        "viewport_height": 844,
+        "document_scroll_width": 390,
+        "main_width": 390,
+        "chart_count": 9,
+        "sidebar_collapses": true
+      },
+      "restored_desktop_viewport": true
+    }
+  ],
+  "coverage_note": "AppTest separately verifies all six pages, all four filters, group selector, CSV row IDs, missing files, photo validation and empty states. Browser steps above are actually performed flows, not claims based only on source inspection.",
+  "source_sha256": {
+    "app/main.py": "3b11ab4330aaba8edb8458ea7b2dda593ad97f6adc36640d550b15a050554ca5",
+    "app/styles.css": "754fdcbcfcd31c09bf08ae957ad3fafdad0fcbabc282f5d6776c9127e799a30f",
+    "analysis/analytics.py": "382bf5f120263727e6ac705a434df4859f42346a04a8406858dce17622f0335a"
+  },
+  "screenshots": [
+    {
+      "path": "reports/screenshots/01_home.png",
+      "bytes": 92103,
+      "sha256": "2e7b5e965613b3b05c2c50e1f1e884af9fe2f4903cd608f76c577733b95785f2"
+    },
+    {
+      "path": "reports/screenshots/02_preparation.png",
+      "bytes": 116820,
+      "sha256": "6057dbc45ddbc2a06396921c6c53fc2a4074f09a9582eb0203b9195c63575646"
+    },
+    {
+      "path": "reports/screenshots/03_empty_filter.png",
+      "bytes": 77900,
+      "sha256": "25b19d712574e166f102aa7c74a5fcbff2928284653bdb126798088d9f0c14e1"
+    },
+    {
+      "path": "reports/screenshots/04_tcp_filter.png",
+      "bytes": 109340,
+      "sha256": "e5d777025bc014310bd21e25da568f2ac366c2f06f7cfb5d4b20b2ea5226692f"
+    },
+    {
+      "path": "reports/screenshots/05_analytics_duration.png",
+      "bytes": 115962,
+      "sha256": "5da10eae011bc2600952ae0b40b397148b6867f5bbde910c04c10ec9f830df12"
+    },
+    {
+      "path": "reports/screenshots/06_author.png",
+      "bytes": 97683,
+      "sha256": "9d6a6d4c1a79a3100845a323f9df46a848929994bad86cb2ea4da2e5d9f41430"
+    },
+    {
+      "path": "reports/screenshots/07_data.png",
+      "bytes": 114401,
+      "sha256": "dac797fd181c1dcb4853ee2045380bf93ec8d5e78958f026943ba1e26a595da8"
+    },
+    {
+      "path": "reports/screenshots/08_mobile_home.png",
+      "bytes": 31493,
+      "sha256": "f5f1fa809663fba0b980e1f8210155c1dbf8d5950dcdb653c32ba107941eed99"
+    },
+    {
+      "path": "reports/screenshots/09_mobile_analytics.png",
+      "bytes": 43482,
+      "sha256": "52fe2cf65750d94b2a27e4f7a81fe5de3b6301f02a86865d52777ec0495e0e60"
+    },
+    {
+      "path": "reports/screenshots/10_author_card.png",
+      "bytes": 97683,
+      "sha256": "9d6a6d4c1a79a3100845a323f9df46a848929994bad86cb2ea4da2e5d9f41430"
+    }
+  ]
+}

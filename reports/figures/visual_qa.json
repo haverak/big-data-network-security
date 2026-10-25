@@ -1,0 +1,139 @@
+{
+  "generated_utc": "2026-10-24T21:23:43.554616+00:00",
+  "status": "passed",
+  "inspection": "Every current PNG opened separately with view_image detail original.",
+  "manifest_sha256": "02d3c7baf820e4402cbb6351f0c97753626aad670b1a575bae40d919d3122707",
+  "print_layout": {
+    "canvas_width_px": 1200,
+    "canvas_height_px": 675,
+    "heatmap_height_px": 900,
+    "font_px": 26,
+    "tick_font_px": 24,
+    "axis_title_px": 26,
+    "legend_px": 26,
+    "chart_title_px": 32,
+    "inserted_width_cm": 16.5,
+    "approx_tick_size_pt": 9.35,
+    "approx_axis_title_size_pt": 10.13
+  },
+  "series_unchanged_from_prior_exports": true,
+  "figures": [
+    {
+      "number": 1,
+      "png": "reports/figures/chart_01.png",
+      "sha256": "9da4fd801dbbdfabf9cea2dcbf34d563ce04990e8ec511647bfe40953c934d31",
+      "dimensions": [
+        1200,
+        675
+      ],
+      "inspected_individually_original": true,
+      "passed": true,
+      "finding": "Readable enlarged labels; no clipping or legend/title/axis intersections.",
+      "specific": "Normal-label auto-placement outside donut is readable and complete."
+    },
+    {
+      "number": 2,
+      "png": "reports/figures/chart_02.png",
+      "sha256": "726bbc32674c070434f59b258a997478f52f6fd07d97f9bc4881621aa824c72c",
+      "dimensions": [
+        1200,
+        675
+      ],
+      "inspected_individually_original": true,
+      "passed": true,
+      "finding": "Readable enlarged labels; no clipping or legend/title/axis intersections.",
+      "specific": "All15 attack labels fit with distinct rows and complete y-axis title."
+    },
+    {
+      "number": 3,
+      "png": "reports/figures/chart_03.png",
+      "sha256": "76b4cb476b8063c73b6132f54d9fcfc050e2316009e51ff5812e4d9ec6af1536",
+      "dimensions": [
+        1200,
+        675
+      ],
+      "inspected_individually_original": true,
+      "passed": true,
+      "finding": "Readable enlarged labels; no clipping or legend/title/axis intersections.",
+      "specific": ""
+    },
+    {
+      "number": 4,
+      "png": "reports/figures/chart_04.png",
+      "sha256": "383a391880bf8cf638a2b24f2e3123ead4198d44be0887bcaff9444c329f5531",
+      "dimensions": [
+        1200,
+        675
+      ],
+      "inspected_individually_original": true,
+      "passed": true,
+      "finding": "Readable enlarged labels; no clipping or legend/title/axis intersections.",
+      "specific": ""
+    },
+    {
+      "number": 5,
+      "png": "reports/figures/chart_05.png",
+      "sha256": "3e3c60dd8bedd18ba8242e4be926ec0c5ecfc8001e201343a70e36441e7970fc",
+      "dimensions": [
+        1200,
+        675
+      ],
+      "inspected_individually_original": true,
+      "passed": true,
+      "finding": "Readable enlarged labels; no clipping or legend/title/axis intersections.",
+      "specific": ""
+    },
+    {
+      "number": 6,
+      "png": "reports/figures/chart_06.png",
+      "sha256": "9ead5087fcf9905249a654b11225f9fac8a04b02cd0964e74e21a99798ecffbb",
+      "dimensions": [
+        1200,
+        900
+      ],
+      "inspected_individually_original": true,
+      "passed": true,
+      "finding": "Readable enlarged labels; no clipping or legend/title/axis intersections.",
+      "specific": "All9 rotated long labels and colorbar ticks remain inside image."
+    },
+    {
+      "number": 7,
+      "png": "reports/figures/chart_07.png",
+      "sha256": "3e65c3e46c489a034a4df6839171d6d6a2c7f05144d45ce145d927ffbff4f8cc",
+      "dimensions": [
+        1200,
+        675
+      ],
+      "inspected_individually_original": true,
+      "passed": true,
+      "finding": "Readable enlarged labels; no clipping or legend/title/axis intersections.",
+      "specific": ""
+    },
+    {
+      "number": 8,
+      "png": "reports/figures/chart_08.png",
+      "sha256": "16e88f880733579050e9279814f7e55941e4d67b0b1eed68ebb701a20b287129",
+      "dimensions": [
+        1200,
+        675
+      ],
+      "inspected_individually_original": true,
+      "passed": true,
+      "finding": "Readable enlarged labels; no clipping or legend/title/axis intersections.",
+      "specific": "Radial ticks and five angular labels remain separated."
+    },
+    {
+      "number": 9,
+      "png": "reports/figures/chart_09.png",
+      "sha256": "1cbda68c7cd85f4e75040dc74b0865723edeb258f87986ddf647f6aa9b93879a",
+      "dimensions": [
+        1200,
+        675
+      ],
+      "inspected_individually_original": true,
+      "passed": true,
+      "finding": "Readable enlarged labels; no clipping or legend/title/axis intersections.",
+      "specific": "Two-line connection labels avoid overlap."
+    }
+  ]
+}

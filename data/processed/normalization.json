@@ -1,0 +1,42 @@
+{
+  "duration": {
+    "method": "log1p_then_minmax",
+    "raw_unit_preserved": true,
+    "log_min": 0.0,
+    "log_max": 10.973871819747684,
+    "constant": false,
+    "fit_scope": "all prepared unique profiles"
+  },
+  "src_bytes": {
+    "method": "log1p_then_minmax",
+    "raw_unit_preserved": true,
+    "log_min": 0.0,
+    "log_max": 20.357082460802918,
+    "constant": false,
+    "fit_scope": "all prepared unique profiles"
+  },
+  "dst_bytes": {
+    "method": "log1p_then_minmax",
+    "raw_unit_preserved": true,
+    "log_min": 0.0,
+    "log_max": 15.455568650926228,
+    "constant": false,
+    "fit_scope": "all prepared unique profiles"
+  },
+  "count": {
+    "method": "log1p_then_minmax",
+    "raw_unit_preserved": true,
+    "log_min": 0.0,
+    "log_max": 6.238324625039508,
+    "constant": false,
+    "fit_scope": "all prepared unique profiles"
+  },
+  "srv_count": {
+    "method": "log1p_then_minmax",
+    "raw_unit_preserved": true,
+    "log_min": 0.0,
+    "log_max": 6.238324625039508,
+    "constant": false,
+    "fit_scope": "all prepared unique profiles"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "url": "https://kdd.org/cupfiles/KDDCupData/1999/kddcup.data_10_percent.zip",
+  "archive": "data/metadata/provenance/official_kdd_10_percent.zip",
+  "bytes": 2145702,
+  "sha256": "99d8262ac52fbd7637ad57fd9a7de372e1e781167a7222f8681c1d91b42dbb7d",
+  "members": [
+    {
+      "filename": "kddcup.data_10_percent.txt",
+      "bytes": 74889787
+    }
+  ],
+  "raw_data_sha256": "6e4fb18b2e55c674812949513dd6b099a5aeebf2a79228b547d1e842b836d3ae",
+  "raw_data_bytes": 74889787,
+  "kaggle_csv_body_matches_original": false
+}

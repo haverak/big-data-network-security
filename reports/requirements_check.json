@@ -1,0 +1,4327 @@
+{
+  "stage": "final artifact aggregation; delivery remains prepared, not asserted sent",
+  "overall_status": "prepared_for_delivery",
+  "created_utc": "2026-10-24T21:02:23.726967+00:00",
+  "requirements_count": 72,
+  "status_counts": {
+    "pass": 69,
+    "user_confirmed": 1,
+    "not_applicable": 1,
+    "prepared_for_delivery": 1
+  },
+  "requirements_source_sha256": "6ffa2f6fa7c5318864cf0a7e0e8d1e002be1036c7ad15d95fc23a4c41f8e5a61",
+  "windows_setup": {
+    "cold_seconds": 368.47663470000407,
+    "final_cached_seconds": 10.241067700000713,
+    "status": "pass",
+    "raw_unchanged": true,
+    "cold_log": "reports/setup_windows_cold_test.txt",
+    "final_log": "reports/setup_windows_test.txt"
+  },
+  "pytest_primary_passed": 55,
+  "pytest_subtests_passed": 7,
+  "health": {
+    "status": 200,
+    "body": "ok"
+  },
+  "launcher_evidence": "Actual Windows launcher, HTTP200/health and CUA browser flows are recorded in reports/browser_test.json.",
+  "memory": "reports/runtime_profile.json",
+  "portable_paths": "reports/portable_paths_check.json",
+  "requirements": [
+    {
+      "id": "M01",
+      "category": "dataset",
+      "level": "mandatory",
+      "requirement": "Выбрать на Kaggle реально существующий датасет, описывающий реальные данные.",
+      "source_references": [
+        {
+          "source": "method_pdf",
+          "pdf_page": 1,
+          "item": "вводный абзац"
+        }
+      ],
+      "acceptance_criteria": [
+        "Источник действительно находится на Kaggle; страница и скачанный набор относятся к одной версии данных.",
+        "В проекте отсутствуют вымышленные данные и статистика."
+      ],
+      "status": "pass",
+      "evidence": [
+        "data/raw/kdd99_kaggle.zip",
+        "data/raw/kddcup99_csv.csv",
+        "data/metadata/dataset_research.json",
+        "data/data_dictionary.json",
+        "data/attack_family_map.json",
+        "data/metadata/original_row_comparison.json",
+        "data/metadata/license_evidence/uci_task.txt"
+      ],
+      "finding": "Проверенный опубликованный Kaggle benchmark KDD99 версии1; 494020 записей,42 поля. Историческая контролируемая DARPA1998 сеть явно отличена от современного реального потока.",
+      "evidence_files": [
+        {
+          "path": "data/raw/kdd99_kaggle.zip",
+          "sha256": "a50c9ce5d83ac5d70e7d0ff986b3abf09a4412b7ca4b5edf63e3d52a850448e8"
+        },
+        {
+          "path": "data/raw/kddcup99_csv.csv",
+          "sha256": "e411f3bb295d2be602f9288b333c15afee0f4cf85f7928916975d7b90b71917f"
+        },
+        {
+          "path": "data/metadata/dataset_research.json",
+          "sha256": "cbdb9ac5c53218a248e7a6182844a21409c378c65243d9b69f48a5da9afb8138"
+        },
+        {
+          "path": "data/data_dictionary.json",
+          "sha256": "15d6b1511bac03fe97f969edea818faf06ea8e276513cb7f100f01ef593c4cc7"
+        },
+        {
+          "path": "data/attack_family_map.json",
+          "sha256": "19830b7dcc01de43f3db04cb7481c929fbae56ba5f65448f6f652f97f77031af"
+        },
+        {
+          "path": "data/metadata/original_row_comparison.json",
+          "sha256": "8732e61b1333282e3a43394f42720d3052581b88fe1605a432b64efb05b5107e"
+        },
+        {
+          "path": "data/metadata/license_evidence/uci_task.txt",
+          "sha256": "5f6ce7015f9d41d37b7955ecd92ec0a0362deaa36ef6b4978627555c5ae916ef"
+        }
+      ]
+    },
+    {
+      "id": "M02",
+      "category": "dataset",
+      "level": "mandatory",
+      "requirement": "Датасет должен быть индивидуальным, без повторов у разных студентов.",
+      "source_references": [
+        {
+          "source": "method_pdf",
+          "pdf_page": 1,
+          "item": "вводный абзац"
+        }
+      ],
+      "acceptance_criteria": [
+        "Название набора и тема явно зафиксированы; неизвестность выбора одногруппников отражена как ограничение, а уникальность не объявлена подтверждённой без доказательств."
+      ],
+      "interpretation_notes": "Проверить выбор всех одногруппников по имеющимся файлам нельзя. Это внешнее условие; самостоятельно придумывать факт уникальности запрещено.",
+      "status": "user_confirmed",
+      "evidence": [],
+      "finding": "Пользователь подтвердил, что одногруппники KDD99 не использовали. Это подтверждение пользователя, а не независимый просмотр работ группы.",
+      "evidence_files": []
+    },
+    {
+      "id": "M03",
+      "category": "processing",
+      "level": "mandatory",
+      "requirement": "Выполнить нормализацию данных.",
+      "source_references": [
+        {
+          "source": "method_pdf",
+          "pdf_page": 1,
+          "item": "1"
+        }
+      ],
+      "acceptance_criteria": [
+        "Есть воспроизводимое нормализующее преобразование и его объяснение.",
+        "Показано, какие поля и каким способом нормализованы; исходные значения доступны для графиков в физических единицах."
+      ],
+      "interpretation_notes": "PDF не определяет конкретный вид нормализации. Min–max/стандартизация числовых признаков — возможное решение, а не дословное требование. Пользовательское «когда обоснованно» не позволяет полностью пропустить явно требуемый этап.",
+      "status": "pass",
+      "evidence": [
+        "analysis/pipeline.py",
+        "data/processed/quality.json",
+        "data/processed/normalization.json",
+        "tests/test_pipeline.py"
+      ],
+      "finding": "Для пяти признаков сохранены отдельные log1p/minmax столбцы и параметры, исходные физические величины сохранены; причины преобразований раскрыты в журнале.",
+      "evidence_files": [
+        {
+          "path": "analysis/pipeline.py",
+          "sha256": "16090c063bd5c71fc1291dcaf77fc1199107db631639e6795eed40ee138ffd1d"
+        },
+        {
+          "path": "data/processed/quality.json",
+          "sha256": "18ff0576278fc269d2d41e006e244c78116e6b58fda9fdd1bef68c64d611b7d2"
+        },
+        {
+          "path": "data/processed/normalization.json",
+          "sha256": "03f05b589f4cf100942334f39e5a87ba4a99e6134c1510ffbebc876522ab8d36"
+        },
+        {
+          "path": "tests/test_pipeline.py",
+          "sha256": "5e77e0dc0d7a51b612beb0bc0bbc80fbf6784e0fb6bcf3ec38b4d12ea618aee5"
+        }
+      ]
+    },
+    {
+      "id": "M04",
+      "category": "processing",
+      "level": "mandatory",
+      "requirement": "Избавиться от артефактов: пустых строк, повторов, неверной кодировки и аналогичных ошибок.",
+      "source_references": [
+        {
+          "source": "method_pdf",
+          "pdf_page": 1,
+          "item": "2"
+        }
+      ],
+      "acceptance_criteria": [
+        "Проверены пустые строки, дубликаты и декодирование текста.",
+        "Обнаруженные артефакты обработаны; количество изменений и отсутствие проблем, если их не было, описаны честно."
+      ],
+      "status": "pass",
+      "evidence": [
+        "analysis/pipeline.py",
+        "data/processed/quality.json",
+        "data/processed/normalization.json",
+        "tests/test_pipeline.py"
+      ],
+      "finding": "494020 исходных строк,0 недопустимых,348435 полных повторов-профилей удалено,145585 осталось; реальные пропуски/ошибки кодировки не обнаружены. su_attempted=2 сохранён с предупреждением.",
+      "evidence_files": [
+        {
+          "path": "analysis/pipeline.py",
+          "sha256": "16090c063bd5c71fc1291dcaf77fc1199107db631639e6795eed40ee138ffd1d"
+        },
+        {
+          "path": "data/processed/quality.json",
+          "sha256": "18ff0576278fc269d2d41e006e244c78116e6b58fda9fdd1bef68c64d611b7d2"
+        },
+        {
+          "path": "data/processed/normalization.json",
+          "sha256": "03f05b589f4cf100942334f39e5a87ba4a99e6134c1510ffbebc876522ab8d36"
+        },
+        {
+          "path": "tests/test_pipeline.py",
+          "sha256": "5e77e0dc0d7a51b612beb0bc0bbc80fbf6784e0fb6bcf3ec38b4d12ea618aee5"
+        }
+      ]
+    },
+    {
+      "id": "M05",
+      "category": "analysis",
+      "level": "mandatory",
+      "requirement": "Проанализировать выбранные реальные данные.",
+      "source_references": [
+        {
+          "source": "method_pdf",
+          "pdf_page": 1,
+          "item": "3"
+        }
+      ],
+      "acceptance_criteria": [
+        "В приложении есть вычисленные показатели и содержательный разбор, а не только загрузчик и внешний вид."
+      ],
+      "status": "pass",
+      "evidence": [
+        "analysis/analytics.py",
+        "tests/test_analytics.py",
+        "reports/final_test_results.xml",
+        "app/main.py",
+        "app/styles.css",
+        ".streamlit/config.toml",
+        "tests/test_app.py",
+        "data/processed/connections.parquet",
+        "data/processed/summary.json",
+        "data/processed/attack_counts.csv"
+      ],
+      "finding": "Аналитика и выводы вычислены по сохранённым данным и текущим фильтрам; дисбаланс, повторы, исторический характер и отсутствие календарных дат раскрыты.",
+      "evidence_files": [
+        {
+          "path": "analysis/analytics.py",
+          "sha256": "382bf5f120263727e6ac705a434df4859f42346a04a8406858dce17622f0335a"
+        },
+        {
+          "path": "tests/test_analytics.py",
+          "sha256": "c6587bf2f0d0532bdb1a680f376253da31c4d6be1b7c69c3a0c117dff99a4ee3"
+        },
+        {
+          "path": "reports/final_test_results.xml",
+          "sha256": "7a8e48ee63979397d3abbc50101c03b8e4271a6f71dd6fe2ed99f51ca20c7e2e"
+        },
+        {
+          "path": "app/main.py",
+          "sha256": "3b11ab4330aaba8edb8458ea7b2dda593ad97f6adc36640d550b15a050554ca5"
+        },
+        {
+          "path": "app/styles.css",
+          "sha256": "754fdcbcfcd31c09bf08ae957ad3fafdad0fcbabc282f5d6776c9127e799a30f"
+        },
+        {
+          "path": ".streamlit/config.toml",
+          "sha256": "0bd5cefe8cfc197bd849f3da21ad9adcaa84770c735514d3d5823cd1598025aa"
+        },
+        {
+          "path": "tests/test_app.py",
+          "sha256": "1c91a0aa76ebdb64cc6e494398dcaf6a48e79d8d2eba3a5c85a742aebb2b4f9d"
+        },
+        {
+          "path": "data/processed/connections.parquet",
+          "sha256": "bb2c9f7acf03f355a24af300691f34bd1d5a10af357b39dbf692fbe3eb88a98d"
+        },
+        {
+          "path": "data/processed/summary.json",
+          "sha256": "057bd3fb4c338334a21d7ec13700f23d960f7d5578e25fecaf73dafdaf2464da"
+        },
+        {
+          "path": "data/processed/attack_counts.csv",
+          "sha256": "83c7bf57db126c601bdd415c719875d2fea51aefdd555b6d61fdf72d9eabea42"
+        }
+      ]
+    },
+    {
+      "id": "M06",
+      "category": "visualization",
+      "level": "mandatory",
+      "requirement": "Построить не меньше восьми разных графиков или визуальных структур по аспектам выбранной темы.",
+      "source_references": [
+        {
+          "source": "method_pdf",
+          "pdf_page": 1,
+          "item": "4"
+        }
+      ],
+      "acceptance_criteria": [
+        "В работающем интерфейсе доступны минимум8 содержательно разных визуализаций по реальным полям набора."
+      ],
+      "status": "pass",
+      "evidence": [
+        "analysis/analytics.py",
+        "tests/test_analytics.py",
+        "reports/final_test_results.xml"
+      ],
+      "finding": "Реализованы9 разных аналитических представлений на реальных полях. График04 — точная CDF длительности вместо вырожденного boxplot; независимые данные графиков проверены тестами.",
+      "evidence_files": [
+        {
+          "path": "analysis/analytics.py",
+          "sha256": "382bf5f120263727e6ac705a434df4859f42346a04a8406858dce17622f0335a"
+        },
+        {
+          "path": "tests/test_analytics.py",
+          "sha256": "c6587bf2f0d0532bdb1a680f376253da31c4d6be1b7c69c3a0c117dff99a4ee3"
+        },
+        {
+          "path": "reports/final_test_results.xml",
+          "sha256": "7a8e48ee63979397d3abbc50101c03b8e4271a6f71dd6fe2ed99f51ca20c7e2e"
+        }
+      ]
+    },
+    {
+      "id": "M07",
+      "category": "visualization",
+      "level": "mandatory",
+      "requirement": "Структурировать графики и кратко описать, что показывает каждый.",
+      "source_references": [
+        {
+          "source": "method_pdf",
+          "pdf_page": 1,
+          "item": "5"
+        }
+      ],
+      "acceptance_criteria": [
+        "Есть понятные аналитические разделы/блоки.",
+        "Каждый из минимум8 графиков имеет собственное описание показателя."
+      ],
+      "status": "pass",
+      "evidence": [
+        "analysis/analytics.py",
+        "tests/test_analytics.py",
+        "reports/final_test_results.xml",
+        "app/main.py",
+        "app/styles.css",
+        ".streamlit/config.toml",
+        "tests/test_app.py",
+        "reports/figures/manifest.json",
+        "reports/figures/visual_qa.json",
+        "reports/browser_test.json",
+        "reports/app_test_results.xml"
+      ],
+      "finding": "Девять графиков имеют подписи, единицы, индивидуальные выводы и три групповых пояснения. Финальные печатные экспорты и реальное приложение визуально проверены.",
+      "evidence_files": [
+        {
+          "path": "analysis/analytics.py",
+          "sha256": "382bf5f120263727e6ac705a434df4859f42346a04a8406858dce17622f0335a"
+        },
+        {
+          "path": "tests/test_analytics.py",
+          "sha256": "c6587bf2f0d0532bdb1a680f376253da31c4d6be1b7c69c3a0c117dff99a4ee3"
+        },
+        {
+          "path": "reports/final_test_results.xml",
+          "sha256": "7a8e48ee63979397d3abbc50101c03b8e4271a6f71dd6fe2ed99f51ca20c7e2e"
+        },
+        {
+          "path": "app/main.py",
+          "sha256": "3b11ab4330aaba8edb8458ea7b2dda593ad97f6adc36640d550b15a050554ca5"
+        },
+        {
+          "path": "app/styles.css",
+          "sha256": "754fdcbcfcd31c09bf08ae957ad3fafdad0fcbabc282f5d6776c9127e799a30f"
+        },
+        {
+          "path": ".streamlit/config.toml",
+          "sha256": "0bd5cefe8cfc197bd849f3da21ad9adcaa84770c735514d3d5823cd1598025aa"
+        },
+        {
+          "path": "tests/test_app.py",
+          "sha256": "1c91a0aa76ebdb64cc6e494398dcaf6a48e79d8d2eba3a5c85a742aebb2b4f9d"
+        },
+        {
+          "path": "reports/figures/manifest.json",
+          "sha256": "02d3c7baf820e4402cbb6351f0c97753626aad670b1a575bae40d919d3122707"
+        },
+        {
+          "path": "reports/figures/visual_qa.json",
+          "sha256": "815d135ed820edb70d9fe54e01179c5b1c9d52234e23359687579db9dc15dcc0"
+        },
+        {
+          "path": "reports/browser_test.json",
+          "sha256": "ca3e00c09c7f7241d4e1a643b0ca2f0b9904b79a4dbb1a2bc862ed82b22d4f88"
+        },
+        {
+          "path": "reports/app_test_results.xml",
+          "sha256": "f5f3aac5340ca779a4e8947bdf87c9e934fed070ab844bc30e2a063b33d62fae"
+        }
+      ]
+    },
+    {
+      "id": "M08",
+      "category": "visualization",
+      "level": "conditional",
+      "requirement": "Если для ответа на один вопрос нужны несколько графиков, сгруппировать их и описать как каждый, так и группу.",
+      "source_references": [
+        {
+          "source": "method_pdf",
+          "pdf_page": 1,
+          "item": "5"
+        }
+      ],
+      "acceptance_criteria": [
+        "У каждой смысловой группы из нескольких графиков есть общее пояснение; индивидуальные пояснения сохранены."
+      ],
+      "condition": "Несколько графиков совместно отвечают на один аналитический вопрос.",
+      "status": "pass",
+      "evidence": [
+        "analysis/analytics.py",
+        "tests/test_analytics.py",
+        "reports/final_test_results.xml",
+        "app/main.py",
+        "app/styles.css",
+        ".streamlit/config.toml",
+        "tests/test_app.py",
+        "reports/figures/manifest.json",
+        "reports/figures/visual_qa.json",
+        "reports/browser_test.json",
+        "reports/app_test_results.xml"
+      ],
+      "finding": "Девять графиков имеют подписи, единицы, индивидуальные выводы и три групповых пояснения. Финальные печатные экспорты и реальное приложение визуально проверены.",
+      "evidence_files": [
+        {
+          "path": "analysis/analytics.py",
+          "sha256": "382bf5f120263727e6ac705a434df4859f42346a04a8406858dce17622f0335a"
+        },
+        {
+          "path": "tests/test_analytics.py",
+          "sha256": "c6587bf2f0d0532bdb1a680f376253da31c4d6be1b7c69c3a0c117dff99a4ee3"
+        },
+        {
+          "path": "reports/final_test_results.xml",
+          "sha256": "7a8e48ee63979397d3abbc50101c03b8e4271a6f71dd6fe2ed99f51ca20c7e2e"
+        },
+        {
+          "path": "app/main.py",
+          "sha256": "3b11ab4330aaba8edb8458ea7b2dda593ad97f6adc36640d550b15a050554ca5"
+        },
+        {
+          "path": "app/styles.css",
+          "sha256": "754fdcbcfcd31c09bf08ae957ad3fafdad0fcbabc282f5d6776c9127e799a30f"
+        },
+        {
+          "path": ".streamlit/config.toml",
+          "sha256": "0bd5cefe8cfc197bd849f3da21ad9adcaa84770c735514d3d5823cd1598025aa"
+        },
+        {
+          "path": "tests/test_app.py",
+          "sha256": "1c91a0aa76ebdb64cc6e494398dcaf6a48e79d8d2eba3a5c85a742aebb2b4f9d"
+        },
+        {
+          "path": "reports/figures/manifest.json",
+          "sha256": "02d3c7baf820e4402cbb6351f0c97753626aad670b1a575bae40d919d3122707"
+        },
+        {
+          "path": "reports/figures/visual_qa.json",
+          "sha256": "815d135ed820edb70d9fe54e01179c5b1c9d52234e23359687579db9dc15dcc0"
+        },
+        {
+          "path": "reports/browser_test.json",
+          "sha256": "ca3e00c09c7f7241d4e1a643b0ca2f0b9904b79a4dbb1a2bc862ed82b22d4f88"
+        },
+        {
+          "path": "reports/app_test_results.xml",
+          "sha256": "f5f3aac5340ca779a4e8947bdf87c9e934fed070ab844bc30e2a063b33d62fae"
+        }
+      ]
+    },
+    {
+      "id": "M09",
+      "category": "conclusions",
+      "level": "mandatory",
+      "requirement": "Написать собственные выводы: что и почему анализировалось, что предшествовало результату и что отображено на графиках.",
+      "source_references": [
+        {
+          "source": "method_pdf",
+          "pdf_page": 1,
+          "item": "6"
+        }
+      ],
+      "acceptance_criteria": [
+        "Выводы опираются на реальные рассчитанные величины.",
+        "Объяснены выбранные аспекты и наблюдаемые зависимости/причины с оговоркой границ данных."
+      ],
+      "interpretation_notes": "Этот пункт не разрешает придумывать причинность или хронологию, которой в наборе нет.",
+      "status": "pass",
+      "evidence": [
+        "analysis/analytics.py",
+        "tests/test_analytics.py",
+        "reports/final_test_results.xml",
+        "app/main.py",
+        "app/styles.css",
+        ".streamlit/config.toml",
+        "tests/test_app.py",
+        "data/processed/connections.parquet",
+        "data/processed/summary.json",
+        "data/processed/attack_counts.csv"
+      ],
+      "finding": "Аналитика и выводы вычислены по сохранённым данным и текущим фильтрам; дисбаланс, повторы, исторический характер и отсутствие календарных дат раскрыты.",
+      "evidence_files": [
+        {
+          "path": "analysis/analytics.py",
+          "sha256": "382bf5f120263727e6ac705a434df4859f42346a04a8406858dce17622f0335a"
+        },
+        {
+          "path": "tests/test_analytics.py",
+          "sha256": "c6587bf2f0d0532bdb1a680f376253da31c4d6be1b7c69c3a0c117dff99a4ee3"
+        },
+        {
+          "path": "reports/final_test_results.xml",
+          "sha256": "7a8e48ee63979397d3abbc50101c03b8e4271a6f71dd6fe2ed99f51ca20c7e2e"
+        },
+        {
+          "path": "app/main.py",
+          "sha256": "3b11ab4330aaba8edb8458ea7b2dda593ad97f6adc36640d550b15a050554ca5"
+        },
+        {
+          "path": "app/styles.css",
+          "sha256": "754fdcbcfcd31c09bf08ae957ad3fafdad0fcbabc282f5d6776c9127e799a30f"
+        },
+        {
+          "path": ".streamlit/config.toml",
+          "sha256": "0bd5cefe8cfc197bd849f3da21ad9adcaa84770c735514d3d5823cd1598025aa"
+        },
+        {
+          "path": "tests/test_app.py",
+          "sha256": "1c91a0aa76ebdb64cc6e494398dcaf6a48e79d8d2eba3a5c85a742aebb2b4f9d"
+        },
+        {
+          "path": "data/processed/connections.parquet",
+          "sha256": "bb2c9f7acf03f355a24af300691f34bd1d5a10af357b39dbf692fbe3eb88a98d"
+        },
+        {
+          "path": "data/processed/summary.json",
+          "sha256": "057bd3fb4c338334a21d7ec13700f23d960f7d5578e25fecaf73dafdaf2464da"
+        },
+        {
+          "path": "data/processed/attack_counts.csv",
+          "sha256": "83c7bf57db126c601bdd415c719875d2fea51aefdd555b6d61fdf72d9eabea42"
+        }
+      ]
+    },
+    {
+      "id": "M10",
+      "category": "interface",
+      "level": "mandatory",
+      "requirement": "Реализовать интерфейс, содержащий данные, графики и все перечисленные результаты.",
+      "source_references": [
+        {
+          "source": "method_pdf",
+          "pdf_page": 1,
+          "item": "7"
+        }
+      ],
+      "acceptance_criteria": [
+        "Проект запускается; пользователь может просматривать данные, подготовку, визуализации и выводы через приложение."
+      ],
+      "interpretation_notes": "PDF разрешает любой язык и приводит лендинг/desktop-приложение как примеры. Пользователь отдельно выбрал локальное Python-веб-приложение.",
+      "status": "pass",
+      "evidence": [
+        "app/main.py",
+        "app/styles.css",
+        ".streamlit/config.toml",
+        "tests/test_app.py",
+        "data/processed/connections.parquet",
+        "data/processed/summary.json",
+        "data/processed/attack_counts.csv",
+        "reports/browser_test.json",
+        "reports/app_test_results.xml"
+      ],
+      "finding": "Проверки исходников, AppTest и фактического браузера разделены. Реальные разделы/фильтры/пустое состояние/автор проверены; фото остаётся честной загрузкой своего изображения, карта явно учебная без платёжных реквизитов.",
+      "evidence_files": [
+        {
+          "path": "app/main.py",
+          "sha256": "3b11ab4330aaba8edb8458ea7b2dda593ad97f6adc36640d550b15a050554ca5"
+        },
+        {
+          "path": "app/styles.css",
+          "sha256": "754fdcbcfcd31c09bf08ae957ad3fafdad0fcbabc282f5d6776c9127e799a30f"
+        },
+        {
+          "path": ".streamlit/config.toml",
+          "sha256": "0bd5cefe8cfc197bd849f3da21ad9adcaa84770c735514d3d5823cd1598025aa"
+        },
+        {
+          "path": "tests/test_app.py",
+          "sha256": "1c91a0aa76ebdb64cc6e494398dcaf6a48e79d8d2eba3a5c85a742aebb2b4f9d"
+        },
+        {
+          "path": "data/processed/connections.parquet",
+          "sha256": "bb2c9f7acf03f355a24af300691f34bd1d5a10af357b39dbf692fbe3eb88a98d"
+        },
+        {
+          "path": "data/processed/summary.json",
+          "sha256": "057bd3fb4c338334a21d7ec13700f23d960f7d5578e25fecaf73dafdaf2464da"
+        },
+        {
+          "path": "data/processed/attack_counts.csv",
+          "sha256": "83c7bf57db126c601bdd415c719875d2fea51aefdd555b6d61fdf72d9eabea42"
+        },
+        {
+          "path": "reports/browser_test.json",
+          "sha256": "ca3e00c09c7f7241d4e1a643b0ca2f0b9904b79a4dbb1a2bc862ed82b22d4f88"
+        },
+        {
+          "path": "reports/app_test_results.xml",
+          "sha256": "f5f3aac5340ca779a4e8947bdf87c9e934fed070ab844bc30e2a063b33d62fae"
+        }
+      ]
+    },
+    {
+      "id": "M11",
+      "category": "author",
+      "level": "mandatory",
+      "requirement": "Разместить ФИО, группу, фото и банковскую карту автора как элементы представления.",
+      "source_references": [
+        {
+          "source": "method_pdf",
+          "pdf_page": 1,
+          "item": "7"
+        }
+      ],
+      "acceptance_criteria": [
+        "В разделе автора указаны реальные предоставленные ФИО и группа.",
+        "Есть место для собственной фотографии и инструкция её добавления.",
+        "Есть явно демонстрационный макет банковской карты без платёжных реквизитов."
+      ],
+      "interpretation_notes": "Безопасное исполнение формы фото/карты прямо уточнено пользователем. Методичка не требует настоящих реквизитов карты и не задаёт других конкретных полей за словами «и т.д.».",
+      "status": "pass",
+      "evidence": [
+        "app/main.py",
+        "app/styles.css",
+        ".streamlit/config.toml",
+        "tests/test_app.py",
+        "reports/browser_test.json",
+        "reports/app_test_results.xml"
+      ],
+      "finding": "Проверки исходников, AppTest и фактического браузера разделены. Реальные разделы/фильтры/пустое состояние/автор проверены; фото остаётся честной загрузкой своего изображения, карта явно учебная без платёжных реквизитов.",
+      "evidence_files": [
+        {
+          "path": "app/main.py",
+          "sha256": "3b11ab4330aaba8edb8458ea7b2dda593ad97f6adc36640d550b15a050554ca5"
+        },
+        {
+          "path": "app/styles.css",
+          "sha256": "754fdcbcfcd31c09bf08ae957ad3fafdad0fcbabc282f5d6776c9127e799a30f"
+        },
+        {
+          "path": ".streamlit/config.toml",
+          "sha256": "0bd5cefe8cfc197bd849f3da21ad9adcaa84770c735514d3d5823cd1598025aa"
+        },
+        {
+          "path": "tests/test_app.py",
+          "sha256": "1c91a0aa76ebdb64cc6e494398dcaf6a48e79d8d2eba3a5c85a742aebb2b4f9d"
+        },
+        {
+          "path": "reports/browser_test.json",
+          "sha256": "ca3e00c09c7f7241d4e1a643b0ca2f0b9904b79a4dbb1a2bc862ed82b22d4f88"
+        },
+        {
+          "path": "reports/app_test_results.xml",
+          "sha256": "f5f3aac5340ca779a4e8947bdf87c9e934fed070ab844bc30e2a063b33d62fae"
+        }
+      ]
+    },
+    {
+      "id": "U01",
+      "category": "deliverable",
+      "level": "mandatory",
+      "requirement": "Сделать законченный работающий проект, а не только отчёт, каркас или прототип интерфейса.",
+      "source_references": [
+        {
+          "source": "user_request",
+          "section": "Цель",
+          "line_start": 15,
+          "line_end": 15,
+          "anchor": "Требуется готовый работающий проект"
+        }
+      ],
+      "acceptance_criteria": [
+        "Приложение запускается из итогового ZIP на целевой Windows.",
+        "Реализованы обработка, аналитика, интерфейс, инструкция, проверки и отчёт."
+      ],
+      "status": "pass",
+      "evidence": [
+        "setup_windows.cmd",
+        "start_app.cmd",
+        "README.md",
+        "requirements.txt",
+        "requirements-lock.txt",
+        "scripts/install_dependencies.py",
+        "reports/setup_windows_test.json",
+        "reports/final_test_status.json",
+        "reports/final_test_results.xml",
+        "reports/pip_check.txt",
+        "app/main.py",
+        "app/styles.css",
+        ".streamlit/config.toml",
+        "tests/test_app.py",
+        "reports/document_check.json",
+        "reports/Системы_больших_данных_Индивидуальная_2_Бондаренко.docx",
+        "reports/Системы_больших_данных_Индивидуальная_2_Бондаренко.pdf",
+        "reports/browser_test.json",
+        "reports/app_test_results.xml"
+      ],
+      "finding": "Законченный проект, исходные/подготовленные данные, программа, тесты, DOCX/PDF и реальные скриншоты подготовлены; кандидат ZIP проверен. Итоговый комплект подготовлен к передаче после пересборки финального архива.",
+      "evidence_files": [
+        {
+          "path": "setup_windows.cmd",
+          "sha256": "cda8854633a6b444eedf08cd1474af5c750968bedfff3dcce4b3c6805e4e8d09"
+        },
+        {
+          "path": "start_app.cmd",
+          "sha256": "e823e68f8ee2a2bd8f23dc44cea346c3c3f37afd234dfe211721175fcbad3a97"
+        },
+        {
+          "path": "README.md",
+          "sha256": "d34ca5e8450bf7ebb5b0cefbcf79d96e2381a3377773fdc6a685a029a4c3cf1e"
+        },
+        {
+          "path": "requirements.txt",
+          "sha256": "319ff22400184d98c10e50012ad914c9d94fc97de3d4fe720166617478f14ffc"
+        },
+        {
+          "path": "requirements-lock.txt",
+          "sha256": "329c3ec30dbeb6592cd6338fdd783d2a72fe07563a9b01d11f3200b738cfb05a"
+        },
+        {
+          "path": "scripts/install_dependencies.py",
+          "sha256": "6d24fd579abf0c451d4e6792896cc20a44f4decda5bfcdb8fbbd8f3e8b6ecd89"
+        },
+        {
+          "path": "reports/setup_windows_test.json",
+          "sha256": "1f55e5acb6ab3db903dc998cf065354509ba17e33a9538a7a0c82f27f4d7cd91"
+        },
+        {
+          "path": "reports/final_test_status.json",
+          "sha256": "7362341ccd780319eda75abd9abf02616a64a0209e3c5ff8b1895ce2fb1724c3"
+        },
+        {
+          "path": "reports/final_test_results.xml",
+          "sha256": "7a8e48ee63979397d3abbc50101c03b8e4271a6f71dd6fe2ed99f51ca20c7e2e"
+        },
+        {
+          "path": "reports/pip_check.txt",
+          "sha256": "672aec65a45bed50e70229c70934a7eebf0462595c459b83023027645d57cccf"
+        },
+        {
+          "path": "app/main.py",
+          "sha256": "3b11ab4330aaba8edb8458ea7b2dda593ad97f6adc36640d550b15a050554ca5"
+        },
+        {
+          "path": "app/styles.css",
+          "sha256": "754fdcbcfcd31c09bf08ae957ad3fafdad0fcbabc282f5d6776c9127e799a30f"
+        },
+        {
+          "path": ".streamlit/config.toml",
+          "sha256": "0bd5cefe8cfc197bd849f3da21ad9adcaa84770c735514d3d5823cd1598025aa"
+        },
+        {
+          "path": "tests/test_app.py",
+          "sha256": "1c91a0aa76ebdb64cc6e494398dcaf6a48e79d8d2eba3a5c85a742aebb2b4f9d"
+        },
+        {
+          "path": "reports/document_check.json",
+          "sha256": "f13539d16f90901c9eff2f237e636cbfbc190cace50356eb48721a874b9bd34d"
+        },
+        {
+          "path": "reports/Системы_больших_данных_Индивидуальная_2_Бондаренко.docx",
+          "sha256": "4bb5c4d558b6355d98f33b7b552047bdd849e011c07720e6b7be02b549741a5c"
+        },
+        {
+          "path": "reports/Системы_больших_данных_Индивидуальная_2_Бондаренко.pdf",
+          "sha256": "842869ce1b57db78d3b951b9a63bf1e5ff68c8f885b52e28c97b73c43e603922"
+        },
+        {
+          "path": "reports/browser_test.json",
+          "sha256": "ca3e00c09c7f7241d4e1a643b0ca2f0b9904b79a4dbb1a2bc862ed82b22d4f88"
+        },
+        {
+          "path": "reports/app_test_results.xml",
+          "sha256": "f5f3aac5340ca779a4e8947bdf87c9e934fed070ab844bc30e2a063b33d62fae"
+        }
+      ]
+    },
+    {
+      "id": "U02",
+      "category": "source_review",
+      "level": "mandatory",
+      "requirement": "Распаковать исходный архив, прочитать все методические материалы и составить внутренний перечень обязательных требований и критериев.",
+      "source_references": [
+        {
+          "source": "user_request",
+          "section": "1. Изучение задания",
+          "line_start": 21,
+          "line_end": 21,
+          "anchor": "Прочитай все методические материалы"
+        },
+        {
+          "source": "user_request",
+          "section": "1. Изучение задания",
+          "line_start": 23,
+          "line_end": 23,
+          "anchor": "Составь внутренний перечень"
+        }
+      ],
+      "acceptance_criteria": [
+        "Есть полный перечень требований с происхождением и критериями; просмотрены все доступные методические файлы."
+      ],
+      "status": "pass",
+      "evidence": [],
+      "finding": "Исходный PDF (1страница), пользовательский текст и матрица72 требований прочитаны; примеры не превращены в обязательные поля, безопасные персональные элементы следуют прямому запросу пользователя.",
+      "evidence_files": []
+    },
+    {
+      "id": "U03",
+      "category": "priority",
+      "level": "mandatory",
+      "requirement": "Если пожелания противоречат методичке, применять задание преподавателя.",
+      "source_references": [
+        {
+          "source": "user_request",
+          "section": "1. Изучение задания",
+          "line_start": 25,
+          "line_end": 25,
+          "anchor": "Если последующие пожелания противоречат методичке"
+        }
+      ],
+      "acceptance_criteria": [
+        "Все расхождения явно разрешены; обязательные M01–M11 не пропущены."
+      ],
+      "status": "pass",
+      "evidence": [],
+      "finding": "Исходный PDF (1страница), пользовательский текст и матрица72 требований прочитаны; примеры не превращены в обязательные поля, безопасные персональные элементы следуют прямому запросу пользователя.",
+      "evidence_files": []
+    },
+    {
+      "id": "U04",
+      "category": "dataset",
+      "level": "mandatory",
+      "requirement": "Тематика — анализ событий сетевой безопасности и сетевого трафика.",
+      "source_references": [
+        {
+          "source": "user_request",
+          "section": "2. Выбор данных",
+          "line_start": 29,
+          "line_end": 29,
+          "anchor": "Тематика проекта:"
+        }
+      ],
+      "acceptance_criteria": [
+        "Реальные записи и аналитические вопросы относятся к сетевым соединениям, трафику и/или атакам."
+      ],
+      "status": "pass",
+      "evidence": [
+        "data/raw/kdd99_kaggle.zip",
+        "data/raw/kddcup99_csv.csv",
+        "data/metadata/dataset_research.json",
+        "data/data_dictionary.json",
+        "data/attack_family_map.json",
+        "data/metadata/original_row_comparison.json",
+        "data/metadata/license_evidence/uci_task.txt"
+      ],
+      "finding": "Проверенный опубликованный Kaggle benchmark KDD99 версии1; 494020 записей,42 поля. Историческая контролируемая DARPA1998 сеть явно отличена от современного реального потока.",
+      "evidence_files": [
+        {
+          "path": "data/raw/kdd99_kaggle.zip",
+          "sha256": "a50c9ce5d83ac5d70e7d0ff986b3abf09a4412b7ca4b5edf63e3d52a850448e8"
+        },
+        {
+          "path": "data/raw/kddcup99_csv.csv",
+          "sha256": "e411f3bb295d2be602f9288b333c15afee0f4cf85f7928916975d7b90b71917f"
+        },
+        {
+          "path": "data/metadata/dataset_research.json",
+          "sha256": "cbdb9ac5c53218a248e7a6182844a21409c378c65243d9b69f48a5da9afb8138"
+        },
+        {
+          "path": "data/data_dictionary.json",
+          "sha256": "15d6b1511bac03fe97f969edea818faf06ea8e276513cb7f100f01ef593c4cc7"
+        },
+        {
+          "path": "data/attack_family_map.json",
+          "sha256": "19830b7dcc01de43f3db04cb7481c929fbae56ba5f65448f6f652f97f77031af"
+        },
+        {
+          "path": "data/metadata/original_row_comparison.json",
+          "sha256": "8732e61b1333282e3a43394f42720d3052581b88fe1605a432b64efb05b5107e"
+        },
+        {
+          "path": "data/metadata/license_evidence/uci_task.txt",
+          "sha256": "5f6ce7015f9d41d37b7955ecd92ec0a0362deaa36ef6b4978627555c5ae916ef"
+        }
+      ]
+    },
+    {
+      "id": "U05",
+      "category": "dataset",
+      "level": "mandatory",
+      "requirement": "Выбрать подходящий реальный набор на Kaggle и дать проверяемую ссылку на источник.",
+      "source_references": [
+        {
+          "source": "user_request",
+          "section": "2. Выбор данных",
+          "line_start": 46,
+          "line_end": 46,
+          "anchor": "Реально существующий набор данных на Kaggle"
+        },
+        {
+          "source": "user_request",
+          "section": "2. Выбор данных",
+          "line_start": 47,
+          "line_end": 47,
+          "anchor": "Проверяемая ссылка на источник"
+        }
+      ],
+      "acceptance_criteria": [
+        "В приложении, README и отчёте указан источник, позволяющий сопоставить набор и файлы."
+      ],
+      "status": "pass",
+      "evidence": [
+        "data/raw/kdd99_kaggle.zip",
+        "data/raw/kddcup99_csv.csv",
+        "data/metadata/dataset_research.json",
+        "data/data_dictionary.json",
+        "data/attack_family_map.json",
+        "data/metadata/original_row_comparison.json",
+        "data/metadata/license_evidence/uci_task.txt"
+      ],
+      "finding": "Проверенный опубликованный Kaggle benchmark KDD99 версии1; 494020 записей,42 поля. Историческая контролируемая DARPA1998 сеть явно отличена от современного реального потока.",
+      "evidence_files": [
+        {
+          "path": "data/raw/kdd99_kaggle.zip",
+          "sha256": "a50c9ce5d83ac5d70e7d0ff986b3abf09a4412b7ca4b5edf63e3d52a850448e8"
+        },
+        {
+          "path": "data/raw/kddcup99_csv.csv",
+          "sha256": "e411f3bb295d2be602f9288b333c15afee0f4cf85f7928916975d7b90b71917f"
+        },
+        {
+          "path": "data/metadata/dataset_research.json",
+          "sha256": "cbdb9ac5c53218a248e7a6182844a21409c378c65243d9b69f48a5da9afb8138"
+        },
+        {
+          "path": "data/data_dictionary.json",
+          "sha256": "15d6b1511bac03fe97f969edea818faf06ea8e276513cb7f100f01ef593c4cc7"
+        },
+        {
+          "path": "data/attack_family_map.json",
+          "sha256": "19830b7dcc01de43f3db04cb7481c929fbae56ba5f65448f6f652f97f77031af"
+        },
+        {
+          "path": "data/metadata/original_row_comparison.json",
+          "sha256": "8732e61b1333282e3a43394f42720d3052581b88fe1605a432b64efb05b5107e"
+        },
+        {
+          "path": "data/metadata/license_evidence/uci_task.txt",
+          "sha256": "5f6ce7015f9d41d37b7955ecd92ec0a0362deaa36ef6b4978627555c5ae916ef"
+        }
+      ]
+    },
+    {
+      "id": "U06",
+      "category": "dataset",
+      "level": "mandatory",
+      "requirement": "Описать поля и происхождение данных.",
+      "source_references": [
+        {
+          "source": "user_request",
+          "section": "2. Выбор данных",
+          "line_start": 48,
+          "line_end": 48,
+          "anchor": "Описанные поля и происхождение данных"
+        }
+      ],
+      "acceptance_criteria": [
+        "Есть словарь полей, типов и единиц, исходные источники происхождения.",
+        "Различены Kaggle-зеркало и первичный создатель, если это разные источники."
+      ],
+      "status": "pass",
+      "evidence": [
+        "data/data_dictionary.json",
+        "data/attack_family_map.json",
+        "data/metadata/original_row_comparison.json",
+        "data/metadata/license_evidence/uci_task.txt"
+      ],
+      "finding": "Словарь42 полей с единицами/источниками и8 алиасами; официальные22 атаки плюс normal сопоставлены семействам. Происхождение подтверждено порядковым сравнением всех корректных строк оригинального ZIP.",
+      "evidence_files": [
+        {
+          "path": "data/data_dictionary.json",
+          "sha256": "15d6b1511bac03fe97f969edea818faf06ea8e276513cb7f100f01ef593c4cc7"
+        },
+        {
+          "path": "data/attack_family_map.json",
+          "sha256": "19830b7dcc01de43f3db04cb7481c929fbae56ba5f65448f6f652f97f77031af"
+        },
+        {
+          "path": "data/metadata/original_row_comparison.json",
+          "sha256": "8732e61b1333282e3a43394f42720d3052581b88fe1605a432b64efb05b5107e"
+        },
+        {
+          "path": "data/metadata/license_evidence/uci_task.txt",
+          "sha256": "5f6ce7015f9d41d37b7955ecd92ec0a0362deaa36ef6b4978627555c5ae916ef"
+        }
+      ]
+    },
+    {
+      "id": "U07",
+      "category": "dataset",
+      "level": "mandatory",
+      "requirement": "Объём записей должен быть достаточным для содержательного анализа и минимум8 разных визуализаций.",
+      "source_references": [
+        {
+          "source": "user_request",
+          "section": "2. Выбор данных",
+          "line_start": 49,
+          "line_end": 49,
+          "anchor": "Достаточный объём записей"
+        },
+        {
+          "source": "user_request",
+          "section": "2. Выбор данных",
+          "line_start": 50,
+          "line_end": 50,
+          "anchor": "Возможность построить не менее восьми"
+        }
+      ],
+      "acceptance_criteria": [
+        "Сообщены фактические числа сырых и подготовленных записей.",
+        "Признаков и вариативности хватает для8 разных вопросов."
+      ],
+      "interpretation_notes": "Ни PDF, ни пользователь не задают числового минимума строк, МБ/ГБ, числа категорий или доли выборки.",
+      "status": "pass",
+      "evidence": [
+        "analysis/analytics.py",
+        "tests/test_analytics.py",
+        "reports/final_test_results.xml"
+      ],
+      "finding": "Реализованы9 разных аналитических представлений на реальных полях. График04 — точная CDF длительности вместо вырожденного boxplot; независимые данные графиков проверены тестами.",
+      "evidence_files": [
+        {
+          "path": "analysis/analytics.py",
+          "sha256": "382bf5f120263727e6ac705a434df4859f42346a04a8406858dce17622f0335a"
+        },
+        {
+          "path": "tests/test_analytics.py",
+          "sha256": "c6587bf2f0d0532bdb1a680f376253da31c4d6be1b7c69c3a0c117dff99a4ee3"
+        },
+        {
+          "path": "reports/final_test_results.xml",
+          "sha256": "7a8e48ee63979397d3abbc50101c03b8e4271a6f71dd6fe2ed99f51ca20c7e2e"
+        }
+      ]
+    },
+    {
+      "id": "U08",
+      "category": "privacy",
+      "level": "mandatory",
+      "requirement": "Не выбирать набор, для использования которого нужны реальные персональные данные.",
+      "source_references": [
+        {
+          "source": "user_request",
+          "section": "2. Выбор данных",
+          "line_start": 51,
+          "line_end": 51,
+          "anchor": "Отсутствие необходимости использовать реальные персональные данные"
+        }
+      ],
+      "acceptance_criteria": [
+        "Аналитика и демонстрация работают на обезличенных сетевых признаках; чувствительные ПДн не добавляются."
+      ],
+      "status": "pass",
+      "evidence": [
+        "data/raw/kdd99_kaggle.zip",
+        "data/raw/kddcup99_csv.csv",
+        "data/metadata/dataset_research.json",
+        "data/data_dictionary.json",
+        "data/attack_family_map.json",
+        "data/metadata/original_row_comparison.json",
+        "data/metadata/license_evidence/uci_task.txt"
+      ],
+      "finding": "42 предоставленных поля содержат признаки и метку; календарных timestamps, адресов и реальных персональных идентификаторов нет.",
+      "evidence_files": [
+        {
+          "path": "data/raw/kdd99_kaggle.zip",
+          "sha256": "a50c9ce5d83ac5d70e7d0ff986b3abf09a4412b7ca4b5edf63e3d52a850448e8"
+        },
+        {
+          "path": "data/raw/kddcup99_csv.csv",
+          "sha256": "e411f3bb295d2be602f9288b333c15afee0f4cf85f7928916975d7b90b71917f"
+        },
+        {
+          "path": "data/metadata/dataset_research.json",
+          "sha256": "cbdb9ac5c53218a248e7a6182844a21409c378c65243d9b69f48a5da9afb8138"
+        },
+        {
+          "path": "data/data_dictionary.json",
+          "sha256": "15d6b1511bac03fe97f969edea818faf06ea8e276513cb7f100f01ef593c4cc7"
+        },
+        {
+          "path": "data/attack_family_map.json",
+          "sha256": "19830b7dcc01de43f3db04cb7481c929fbae56ba5f65448f6f652f97f77031af"
+        },
+        {
+          "path": "data/metadata/original_row_comparison.json",
+          "sha256": "8732e61b1333282e3a43394f42720d3052581b88fe1605a432b64efb05b5107e"
+        },
+        {
+          "path": "data/metadata/license_evidence/uci_task.txt",
+          "sha256": "5f6ce7015f9d41d37b7955ecd92ec0a0362deaa36ef6b4978627555c5ae916ef"
+        }
+      ]
+    },
+    {
+      "id": "U09",
+      "category": "license",
+      "level": "mandatory",
+      "requirement": "Проверить лицензию и возможность включения датасета в итоговый проект.",
+      "source_references": [
+        {
+          "source": "user_request",
+          "section": "2. Выбор данных",
+          "line_start": 55,
+          "line_end": 55,
+          "anchor": "Проверь лицензию датасета"
+        }
+      ],
+      "acceptance_criteria": [
+        "Приведены фактическая лицензия и источник её проверки.",
+        "Выполнены требования об атрибуции/уведомлениях.",
+        "Данные включены в ZIP только при разрешённом распространении."
+      ],
+      "status": "pass",
+      "evidence": [
+        "data/metadata/SOURCE_ATTRIBUTION.txt",
+        "data/metadata/license_evidence/kaggle_toobajamal_metadata.json",
+        "data/metadata/license_evidence/uci_page.txt"
+      ],
+      "finding": "Kaggle API декларирует CC0-1.0; первичный UCI источник разрешает перераспространение с атрибуцией по CC BY4.0. Первичные свидетельства и атрибуция сохранены, исходная лицензия не подменена лицензией кода.",
+      "evidence_files": [
+        {
+          "path": "data/metadata/SOURCE_ATTRIBUTION.txt",
+          "sha256": "c70ac58b74855747d8af4054280efc615b030cf4127cf1cb841f4265d098e7a9"
+        },
+        {
+          "path": "data/metadata/license_evidence/kaggle_toobajamal_metadata.json",
+          "sha256": "6420100142d09285d901bd5c7de3cf14b603d2608f5a4e1530ecc29dff17a2f1"
+        },
+        {
+          "path": "data/metadata/license_evidence/uci_page.txt",
+          "sha256": "6226731268a3df714c42205483832749cfb102114790c172f672ac2c0da90266"
+        }
+      ]
+    },
+    {
+      "id": "U10",
+      "category": "download",
+      "level": "conditional",
+      "requirement": "Если требуется авторизация Kaggle, сначала попробовать публичную загрузку; при невозможности дать конкретную инструкцию пользователю.",
+      "source_references": [
+        {
+          "source": "user_request",
+          "section": "2. Выбор данных",
+          "line_start": 57,
+          "line_end": 57,
+          "anchor": "Если Kaggle требует авторизацию"
+        }
+      ],
+      "acceptance_criteria": [
+        "Способ получения данных проверен; при внешнем блокере есть точные шаги загрузки и ожидаемые имена файлов."
+      ],
+      "condition": "Публичная загрузка выбранного набора недоступна без учётных данных.",
+      "status": "pass",
+      "evidence": [
+        "analysis/download.py",
+        "tests/test_download.py",
+        "data/metadata/download_version_1.json",
+        "reports/final_test_status.json",
+        "reports/final_test_results.xml",
+        "reports/pip_check.txt"
+      ],
+      "finding": "Публичный pinned endpoint версии1 реально скачан без Authorization/Cookie, ZIP/CSV SHA подтверждены; локальное восстановление без сети и ответы401/403 с конкретной ручной инструкцией проверены.",
+      "evidence_files": [
+        {
+          "path": "analysis/download.py",
+          "sha256": "a0687ee2c72fdb0fc44dc481f486bcdd8090fd26387b12c586f5de82d93c51c4"
+        },
+        {
+          "path": "tests/test_download.py",
+          "sha256": "40ae867608f9b06611ce9eac2eb496bd1d3198ab63667edb3ed0090c61fde88a"
+        },
+        {
+          "path": "data/metadata/download_version_1.json",
+          "sha256": "a0c13005c6c2225f15abdba669b483406e72e97e99e5652fdbb9ad4a68400197"
+        },
+        {
+          "path": "reports/final_test_status.json",
+          "sha256": "7362341ccd780319eda75abd9abf02616a64a0209e3c5ff8b1895ce2fb1724c3"
+        },
+        {
+          "path": "reports/final_test_results.xml",
+          "sha256": "7a8e48ee63979397d3abbc50101c03b8e4271a6f71dd6fe2ed99f51ca20c7e2e"
+        },
+        {
+          "path": "reports/pip_check.txt",
+          "sha256": "672aec65a45bed50e70229c70934a7eebf0462595c459b83023027645d57cccf"
+        }
+      ]
+    },
+    {
+      "id": "U11",
+      "category": "security",
+      "level": "mandatory",
+      "requirement": "Не использовать чужие токены и не обходить авторизацию.",
+      "source_references": [
+        {
+          "source": "user_request",
+          "section": "2. Выбор данных",
+          "line_start": 57,
+          "line_end": 57,
+          "anchor": "Не используй чужие токены"
+        }
+      ],
+      "acceptance_criteria": [
+        "Нет извлечения чужих учётных данных, обхода входа и включения токенов в проект."
+      ],
+      "status": "pass",
+      "evidence": [
+        "analysis/download.py",
+        "tests/test_download.py",
+        "data/metadata/download_version_1.json",
+        "reports/final_test_status.json",
+        "reports/final_test_results.xml",
+        "reports/pip_check.txt"
+      ],
+      "finding": "Публичный pinned endpoint версии1 реально скачан без Authorization/Cookie, ZIP/CSV SHA подтверждены; локальное восстановление без сети и ответы401/403 с конкретной ручной инструкцией проверены.",
+      "evidence_files": [
+        {
+          "path": "analysis/download.py",
+          "sha256": "a0687ee2c72fdb0fc44dc481f486bcdd8090fd26387b12c586f5de82d93c51c4"
+        },
+        {
+          "path": "tests/test_download.py",
+          "sha256": "40ae867608f9b06611ce9eac2eb496bd1d3198ab63667edb3ed0090c61fde88a"
+        },
+        {
+          "path": "data/metadata/download_version_1.json",
+          "sha256": "a0c13005c6c2225f15abdba669b483406e72e97e99e5652fdbb9ad4a68400197"
+        },
+        {
+          "path": "reports/final_test_status.json",
+          "sha256": "7362341ccd780319eda75abd9abf02616a64a0209e3c5ff8b1895ce2fb1724c3"
+        },
+        {
+          "path": "reports/final_test_results.xml",
+          "sha256": "7a8e48ee63979397d3abbc50101c03b8e4271a6f71dd6fe2ed99f51ca20c7e2e"
+        },
+        {
+          "path": "reports/pip_check.txt",
+          "sha256": "672aec65a45bed50e70229c70934a7eebf0462595c459b83023027645d57cccf"
+        }
+      ]
+    },
+    {
+      "id": "U12",
+      "category": "processing",
+      "level": "mandatory",
+      "requirement": "Реализовать воспроизводимую загрузку исходного датасета.",
+      "source_references": [
+        {
+          "source": "user_request",
+          "section": "3. Обработка данных",
+          "line_start": 63,
+          "line_end": 63,
+          "anchor": "Загрузка исходного датасета"
+        }
+      ],
+      "acceptance_criteria": [
+        "Повторяемая команда/процедура читает зафиксированные исходные файлы и даёт тот же подготовленный набор."
+      ],
+      "status": "pass",
+      "evidence": [
+        "analysis/download.py",
+        "tests/test_download.py",
+        "data/metadata/download_version_1.json",
+        "reports/final_test_status.json",
+        "reports/final_test_results.xml",
+        "reports/pip_check.txt"
+      ],
+      "finding": "Публичный pinned endpoint версии1 реально скачан без Authorization/Cookie, ZIP/CSV SHA подтверждены; локальное восстановление без сети и ответы401/403 с конкретной ручной инструкцией проверены.",
+      "evidence_files": [
+        {
+          "path": "analysis/download.py",
+          "sha256": "a0687ee2c72fdb0fc44dc481f486bcdd8090fd26387b12c586f5de82d93c51c4"
+        },
+        {
+          "path": "tests/test_download.py",
+          "sha256": "40ae867608f9b06611ce9eac2eb496bd1d3198ab63667edb3ed0090c61fde88a"
+        },
+        {
+          "path": "data/metadata/download_version_1.json",
+          "sha256": "a0c13005c6c2225f15abdba669b483406e72e97e99e5652fdbb9ad4a68400197"
+        },
+        {
+          "path": "reports/final_test_status.json",
+          "sha256": "7362341ccd780319eda75abd9abf02616a64a0209e3c5ff8b1895ce2fb1724c3"
+        },
+        {
+          "path": "reports/final_test_results.xml",
+          "sha256": "7a8e48ee63979397d3abbc50101c03b8e4271a6f71dd6fe2ed99f51ca20c7e2e"
+        },
+        {
+          "path": "reports/pip_check.txt",
+          "sha256": "672aec65a45bed50e70229c70934a7eebf0462595c459b83023027645d57cccf"
+        }
+      ]
+    },
+    {
+      "id": "U13",
+      "category": "processing",
+      "level": "mandatory",
+      "requirement": "Проанализировать структуру и типы столбцов.",
+      "source_references": [
+        {
+          "source": "user_request",
+          "section": "3. Обработка данных",
+          "line_start": 64,
+          "line_end": 64,
+          "anchor": "Анализ структуры и типов столбцов"
+        }
+      ],
+      "acceptance_criteria": [
+        "Выведены фактические столбцы, типы, размер и проверки схемы."
+      ],
+      "status": "pass",
+      "evidence": [
+        "analysis/pipeline.py",
+        "data/processed/quality.json",
+        "data/processed/normalization.json",
+        "tests/test_pipeline.py",
+        "data/data_dictionary.json",
+        "data/attack_family_map.json",
+        "data/metadata/original_row_comparison.json",
+        "data/metadata/license_evidence/uci_task.txt"
+      ],
+      "finding": "Фактическая схема, исходные/канонические имена и типы сохранены;8 l-алиасов переименовываются только в подготовленной копии по официальному порядку.",
+      "evidence_files": [
+        {
+          "path": "analysis/pipeline.py",
+          "sha256": "16090c063bd5c71fc1291dcaf77fc1199107db631639e6795eed40ee138ffd1d"
+        },
+        {
+          "path": "data/processed/quality.json",
+          "sha256": "18ff0576278fc269d2d41e006e244c78116e6b58fda9fdd1bef68c64d611b7d2"
+        },
+        {
+          "path": "data/processed/normalization.json",
+          "sha256": "03f05b589f4cf100942334f39e5a87ba4a99e6134c1510ffbebc876522ab8d36"
+        },
+        {
+          "path": "tests/test_pipeline.py",
+          "sha256": "5e77e0dc0d7a51b612beb0bc0bbc80fbf6784e0fb6bcf3ec38b4d12ea618aee5"
+        },
+        {
+          "path": "data/data_dictionary.json",
+          "sha256": "15d6b1511bac03fe97f969edea818faf06ea8e276513cb7f100f01ef593c4cc7"
+        },
+        {
+          "path": "data/attack_family_map.json",
+          "sha256": "19830b7dcc01de43f3db04cb7481c929fbae56ba5f65448f6f652f97f77031af"
+        },
+        {
+          "path": "data/metadata/original_row_comparison.json",
+          "sha256": "8732e61b1333282e3a43394f42720d3052581b88fe1605a432b64efb05b5107e"
+        },
+        {
+          "path": "data/metadata/license_evidence/uci_task.txt",
+          "sha256": "5f6ce7015f9d41d37b7955ecd92ec0a0362deaa36ef6b4978627555c5ae916ef"
+        }
+      ]
+    },
+    {
+      "id": "U14",
+      "category": "processing",
+      "level": "mandatory",
+      "requirement": "Определить пропуски.",
+      "source_references": [
+        {
+          "source": "user_request",
+          "section": "3. Обработка данных",
+          "line_start": 65,
+          "line_end": 65,
+          "anchor": "Определение пропусков"
+        }
+      ],
+      "acceptance_criteria": [
+        "Есть число/доля пропусков по полям и объяснённая стратегия обработки."
+      ],
+      "status": "pass",
+      "evidence": [
+        "analysis/pipeline.py",
+        "data/processed/quality.json",
+        "data/processed/normalization.json",
+        "tests/test_pipeline.py"
+      ],
+      "finding": "494020 исходных строк,0 недопустимых,348435 полных повторов-профилей удалено,145585 осталось; реальные пропуски/ошибки кодировки не обнаружены. su_attempted=2 сохранён с предупреждением.",
+      "evidence_files": [
+        {
+          "path": "analysis/pipeline.py",
+          "sha256": "16090c063bd5c71fc1291dcaf77fc1199107db631639e6795eed40ee138ffd1d"
+        },
+        {
+          "path": "data/processed/quality.json",
+          "sha256": "18ff0576278fc269d2d41e006e244c78116e6b58fda9fdd1bef68c64d611b7d2"
+        },
+        {
+          "path": "data/processed/normalization.json",
+          "sha256": "03f05b589f4cf100942334f39e5a87ba4a99e6134c1510ffbebc876522ab8d36"
+        },
+        {
+          "path": "tests/test_pipeline.py",
+          "sha256": "5e77e0dc0d7a51b612beb0bc0bbc80fbf6784e0fb6bcf3ec38b4d12ea618aee5"
+        }
+      ]
+    },
+    {
+      "id": "U15",
+      "category": "processing",
+      "level": "mandatory",
+      "requirement": "Найти дубликаты.",
+      "source_references": [
+        {
+          "source": "user_request",
+          "section": "3. Обработка данных",
+          "line_start": 66,
+          "line_end": 66,
+          "anchor": "Поиск дубликатов"
+        }
+      ],
+      "acceptance_criteria": [
+        "Есть точное число повторов и определение ключа/полной строки, по которым они определялись."
+      ],
+      "status": "pass",
+      "evidence": [
+        "analysis/pipeline.py",
+        "data/processed/quality.json",
+        "data/processed/normalization.json",
+        "tests/test_pipeline.py"
+      ],
+      "finding": "494020 исходных строк,0 недопустимых,348435 полных повторов-профилей удалено,145585 осталось; реальные пропуски/ошибки кодировки не обнаружены. su_attempted=2 сохранён с предупреждением.",
+      "evidence_files": [
+        {
+          "path": "analysis/pipeline.py",
+          "sha256": "16090c063bd5c71fc1291dcaf77fc1199107db631639e6795eed40ee138ffd1d"
+        },
+        {
+          "path": "data/processed/quality.json",
+          "sha256": "18ff0576278fc269d2d41e006e244c78116e6b58fda9fdd1bef68c64d611b7d2"
+        },
+        {
+          "path": "data/processed/normalization.json",
+          "sha256": "03f05b589f4cf100942334f39e5a87ba4a99e6134c1510ffbebc876522ab8d36"
+        },
+        {
+          "path": "tests/test_pipeline.py",
+          "sha256": "5e77e0dc0d7a51b612beb0bc0bbc80fbf6784e0fb6bcf3ec38b4d12ea618aee5"
+        }
+      ]
+    },
+    {
+      "id": "U16",
+      "category": "processing",
+      "level": "mandatory",
+      "requirement": "Обработать некорректные значения.",
+      "source_references": [
+        {
+          "source": "user_request",
+          "section": "3. Обработка данных",
+          "line_start": 67,
+          "line_end": 67,
+          "anchor": "Обработка некорректных значений"
+        }
+      ],
+      "acceptance_criteria": [
+        "Проверены типы, диапазоны и категориальные значения; изменения учтены по числу строк/ячеек."
+      ],
+      "status": "pass",
+      "evidence": [
+        "analysis/pipeline.py",
+        "data/processed/quality.json",
+        "data/processed/normalization.json",
+        "tests/test_pipeline.py"
+      ],
+      "finding": "494020 исходных строк,0 недопустимых,348435 полных повторов-профилей удалено,145585 осталось; реальные пропуски/ошибки кодировки не обнаружены. su_attempted=2 сохранён с предупреждением.",
+      "evidence_files": [
+        {
+          "path": "analysis/pipeline.py",
+          "sha256": "16090c063bd5c71fc1291dcaf77fc1199107db631639e6795eed40ee138ffd1d"
+        },
+        {
+          "path": "data/processed/quality.json",
+          "sha256": "18ff0576278fc269d2d41e006e244c78116e6b58fda9fdd1bef68c64d611b7d2"
+        },
+        {
+          "path": "data/processed/normalization.json",
+          "sha256": "03f05b589f4cf100942334f39e5a87ba4a99e6134c1510ffbebc876522ab8d36"
+        },
+        {
+          "path": "tests/test_pipeline.py",
+          "sha256": "5e77e0dc0d7a51b612beb0bc0bbc80fbf6784e0fb6bcf3ec38b4d12ea618aee5"
+        }
+      ]
+    },
+    {
+      "id": "U17",
+      "category": "processing",
+      "level": "mandatory",
+      "requirement": "Проверить выбросы.",
+      "source_references": [
+        {
+          "source": "user_request",
+          "section": "3. Обработка данных",
+          "line_start": 68,
+          "line_end": 68,
+          "anchor": "Проверка выбросов"
+        }
+      ],
+      "acceptance_criteria": [
+        "Названы метод обнаружения и фактические результаты; не объявлено, что выбросов нет без расчёта."
+      ],
+      "status": "pass",
+      "evidence": [
+        "analysis/pipeline.py",
+        "data/processed/quality.json",
+        "data/processed/normalization.json",
+        "tests/test_pipeline.py"
+      ],
+      "finding": "Статистические хвосты помечаются по IQR/квантилю,38734 профиля имеют флаг; выбросы не удаляются и не объявляются автоматически доказанными атаками.",
+      "evidence_files": [
+        {
+          "path": "analysis/pipeline.py",
+          "sha256": "16090c063bd5c71fc1291dcaf77fc1199107db631639e6795eed40ee138ffd1d"
+        },
+        {
+          "path": "data/processed/quality.json",
+          "sha256": "18ff0576278fc269d2d41e006e244c78116e6b58fda9fdd1bef68c64d611b7d2"
+        },
+        {
+          "path": "data/processed/normalization.json",
+          "sha256": "03f05b589f4cf100942334f39e5a87ba4a99e6134c1510ffbebc876522ab8d36"
+        },
+        {
+          "path": "tests/test_pipeline.py",
+          "sha256": "5e77e0dc0d7a51b612beb0bc0bbc80fbf6784e0fb6bcf3ec38b4d12ea618aee5"
+        }
+      ]
+    },
+    {
+      "id": "U18",
+      "category": "processing",
+      "level": "mandatory",
+      "requirement": "Не удалять выбросы автоматически: экстремальные значения атак могут быть существенными.",
+      "source_references": [
+        {
+          "source": "user_request",
+          "section": "3. Обработка данных",
+          "line_start": 73,
+          "line_end": 73,
+          "anchor": "Не удаляй выбросы автоматически"
+        }
+      ],
+      "acceptance_criteria": [
+        "Экстремальные корректные сетевые наблюдения сохранены или каждое исключение обосновано отдельным правилом качества."
+      ],
+      "status": "pass",
+      "evidence": [
+        "analysis/pipeline.py",
+        "data/processed/quality.json",
+        "data/processed/normalization.json",
+        "tests/test_pipeline.py"
+      ],
+      "finding": "Статистические хвосты помечаются по IQR/квантилю,38734 профиля имеют флаг; выбросы не удаляются и не объявляются автоматически доказанными атаками.",
+      "evidence_files": [
+        {
+          "path": "analysis/pipeline.py",
+          "sha256": "16090c063bd5c71fc1291dcaf77fc1199107db631639e6795eed40ee138ffd1d"
+        },
+        {
+          "path": "data/processed/quality.json",
+          "sha256": "18ff0576278fc269d2d41e006e244c78116e6b58fda9fdd1bef68c64d611b7d2"
+        },
+        {
+          "path": "data/processed/normalization.json",
+          "sha256": "03f05b589f4cf100942334f39e5a87ba4a99e6134c1510ffbebc876522ab8d36"
+        },
+        {
+          "path": "tests/test_pipeline.py",
+          "sha256": "5e77e0dc0d7a51b612beb0bc0bbc80fbf6784e0fb6bcf3ec38b4d12ea618aee5"
+        }
+      ]
+    },
+    {
+      "id": "U19",
+      "category": "processing",
+      "level": "mandatory",
+      "requirement": "Выполнить обоснованную очистку и нормализацию, объяснив причину каждого преобразования.",
+      "source_references": [
+        {
+          "source": "user_request",
+          "section": "3. Обработка данных",
+          "line_start": 69,
+          "line_end": 69,
+          "anchor": "Очистка и нормализация"
+        },
+        {
+          "source": "user_request",
+          "section": "3. Обработка данных",
+          "line_start": 75,
+          "line_end": 75,
+          "anchor": "Для каждого преобразования объясни причину"
+        }
+      ],
+      "acceptance_criteria": [
+        "Есть список правил и причин их применения.",
+        "Обязательная нормализация M03 реализована с подходящим для анализа смыслом."
+      ],
+      "status": "pass",
+      "evidence": [
+        "analysis/pipeline.py",
+        "data/processed/quality.json",
+        "data/processed/normalization.json",
+        "tests/test_pipeline.py"
+      ],
+      "finding": "Для пяти признаков сохранены отдельные log1p/minmax столбцы и параметры, исходные физические величины сохранены; причины преобразований раскрыты в журнале.",
+      "evidence_files": [
+        {
+          "path": "analysis/pipeline.py",
+          "sha256": "16090c063bd5c71fc1291dcaf77fc1199107db631639e6795eed40ee138ffd1d"
+        },
+        {
+          "path": "data/processed/quality.json",
+          "sha256": "18ff0576278fc269d2d41e006e244c78116e6b58fda9fdd1bef68c64d611b7d2"
+        },
+        {
+          "path": "data/processed/normalization.json",
+          "sha256": "03f05b589f4cf100942334f39e5a87ba4a99e6134c1510ffbebc876522ab8d36"
+        },
+        {
+          "path": "tests/test_pipeline.py",
+          "sha256": "5e77e0dc0d7a51b612beb0bc0bbc80fbf6784e0fb6bcf3ec38b4d12ea618aee5"
+        }
+      ]
+    },
+    {
+      "id": "U20",
+      "category": "processing",
+      "level": "mandatory",
+      "requirement": "Сохранить подготовленный набор и статистические сводки.",
+      "source_references": [
+        {
+          "source": "user_request",
+          "section": "3. Обработка данных",
+          "line_start": 70,
+          "line_end": 70,
+          "anchor": "Сохранение подготовленного набора"
+        },
+        {
+          "source": "user_request",
+          "section": "3. Обработка данных",
+          "line_start": 71,
+          "line_end": 71,
+          "anchor": "Подготовка статистических сводок"
+        }
+      ],
+      "acceptance_criteria": [
+        "Итоговые очищенные/нормализованные файлы и сводки реально созданы и читаются приложением."
+      ],
+      "status": "pass",
+      "evidence": [
+        "data/processed/connections.parquet",
+        "data/processed/summary.json",
+        "data/processed/attack_counts.csv",
+        "analysis/pipeline.py",
+        "data/processed/quality.json",
+        "data/processed/normalization.json",
+        "tests/test_pipeline.py"
+      ],
+      "finding": "Подготовленный Parquet и JSON/CSV сводки существуют; они построены реальным setup и независимо проверены тестами.",
+      "evidence_files": [
+        {
+          "path": "data/processed/connections.parquet",
+          "sha256": "bb2c9f7acf03f355a24af300691f34bd1d5a10af357b39dbf692fbe3eb88a98d"
+        },
+        {
+          "path": "data/processed/summary.json",
+          "sha256": "057bd3fb4c338334a21d7ec13700f23d960f7d5578e25fecaf73dafdaf2464da"
+        },
+        {
+          "path": "data/processed/attack_counts.csv",
+          "sha256": "83c7bf57db126c601bdd415c719875d2fea51aefdd555b6d61fdf72d9eabea42"
+        },
+        {
+          "path": "analysis/pipeline.py",
+          "sha256": "16090c063bd5c71fc1291dcaf77fc1199107db631639e6795eed40ee138ffd1d"
+        },
+        {
+          "path": "data/processed/quality.json",
+          "sha256": "18ff0576278fc269d2d41e006e244c78116e6b58fda9fdd1bef68c64d611b7d2"
+        },
+        {
+          "path": "data/processed/normalization.json",
+          "sha256": "03f05b589f4cf100942334f39e5a87ba4a99e6134c1510ffbebc876522ab8d36"
+        },
+        {
+          "path": "tests/test_pipeline.py",
+          "sha256": "5e77e0dc0d7a51b612beb0bc0bbc80fbf6784e0fb6bcf3ec38b4d12ea618aee5"
+        }
+      ]
+    },
+    {
+      "id": "U21",
+      "category": "integrity",
+      "level": "mandatory",
+      "requirement": "Сохранить исходные данные неизменными.",
+      "source_references": [
+        {
+          "source": "user_request",
+          "section": "3. Обработка данных",
+          "line_start": 77,
+          "line_end": 77,
+          "anchor": "Сохраняй исходные данные неизменными"
+        }
+      ],
+      "acceptance_criteria": [
+        "Очистка пишет отдельные выходы; сырой файл не перезаписан. Хеш до/после — подходящее доказательство, хотя конкретный алгоритм хеширования не предписан."
+      ],
+      "status": "pass",
+      "evidence": [
+        "data/raw/kdd99_kaggle.zip",
+        "data/raw/kddcup99_csv.csv",
+        "data/metadata/dataset_research.json",
+        "setup_windows.cmd",
+        "start_app.cmd",
+        "README.md",
+        "requirements.txt",
+        "requirements-lock.txt",
+        "scripts/install_dependencies.py",
+        "reports/setup_windows_test.json",
+        "reports/final_test_status.json",
+        "reports/final_test_results.xml",
+        "reports/pip_check.txt"
+      ],
+      "finding": "SHA исходного ZIP/CSV совпали до/после холодного и повторного cached setup, pipeline и полного pytest; raw не изменён.",
+      "evidence_files": [
+        {
+          "path": "data/raw/kdd99_kaggle.zip",
+          "sha256": "a50c9ce5d83ac5d70e7d0ff986b3abf09a4412b7ca4b5edf63e3d52a850448e8"
+        },
+        {
+          "path": "data/raw/kddcup99_csv.csv",
+          "sha256": "e411f3bb295d2be602f9288b333c15afee0f4cf85f7928916975d7b90b71917f"
+        },
+        {
+          "path": "data/metadata/dataset_research.json",
+          "sha256": "cbdb9ac5c53218a248e7a6182844a21409c378c65243d9b69f48a5da9afb8138"
+        },
+        {
+          "path": "setup_windows.cmd",
+          "sha256": "cda8854633a6b444eedf08cd1474af5c750968bedfff3dcce4b3c6805e4e8d09"
+        },
+        {
+          "path": "start_app.cmd",
+          "sha256": "e823e68f8ee2a2bd8f23dc44cea346c3c3f37afd234dfe211721175fcbad3a97"
+        },
+        {
+          "path": "README.md",
+          "sha256": "d34ca5e8450bf7ebb5b0cefbcf79d96e2381a3377773fdc6a685a029a4c3cf1e"
+        },
+        {
+          "path": "requirements.txt",
+          "sha256": "319ff22400184d98c10e50012ad914c9d94fc97de3d4fe720166617478f14ffc"
+        },
+        {
+          "path": "requirements-lock.txt",
+          "sha256": "329c3ec30dbeb6592cd6338fdd783d2a72fe07563a9b01d11f3200b738cfb05a"
+        },
+        {
+          "path": "scripts/install_dependencies.py",
+          "sha256": "6d24fd579abf0c451d4e6792896cc20a44f4decda5bfcdb8fbbd8f3e8b6ecd89"
+        },
+        {
+          "path": "reports/setup_windows_test.json",
+          "sha256": "1f55e5acb6ab3db903dc998cf065354509ba17e33a9538a7a0c82f27f4d7cd91"
+        },
+        {
+          "path": "reports/final_test_status.json",
+          "sha256": "7362341ccd780319eda75abd9abf02616a64a0209e3c5ff8b1895ce2fb1724c3"
+        },
+        {
+          "path": "reports/final_test_results.xml",
+          "sha256": "7a8e48ee63979397d3abbc50101c03b8e4271a6f71dd6fe2ed99f51ca20c7e2e"
+        },
+        {
+          "path": "reports/pip_check.txt",
+          "sha256": "672aec65a45bed50e70229c70934a7eebf0462595c459b83023027645d57cccf"
+        }
+      ]
+    },
+    {
+      "id": "U22",
+      "category": "truthfulness",
+      "level": "mandatory",
+      "requirement": "Не придумывать датасет, поля, статистику и результаты.",
+      "source_references": [
+        {
+          "source": "user_request",
+          "section": "2. Выбор данных",
+          "line_start": 53,
+          "line_end": 53,
+          "anchor": "Не придумывай набор данных и статистику"
+        },
+        {
+          "source": "user_request",
+          "section": "4. Аналитика",
+          "line_start": 96,
+          "line_end": 96,
+          "anchor": "Не создавай графики из вымышленных колонок"
+        }
+      ],
+      "acceptance_criteria": [
+        "Каждая вычисленная метрика и каждый график прослеживаются к действительным столбцам и строкам."
+      ],
+      "status": "pass",
+      "evidence": [
+        "data/raw/kdd99_kaggle.zip",
+        "data/raw/kddcup99_csv.csv",
+        "data/metadata/dataset_research.json",
+        "data/data_dictionary.json",
+        "data/attack_family_map.json",
+        "data/metadata/original_row_comparison.json",
+        "data/metadata/license_evidence/uci_task.txt",
+        "analysis/analytics.py",
+        "tests/test_analytics.py",
+        "reports/final_test_results.xml",
+        "reports/final_test_status.json",
+        "reports/pip_check.txt"
+      ],
+      "finding": "Статистика получена из скачанного CSV, исходные и подготовленные частоты различены; фиктивные тестовые примеры создавались только в временных папках.",
+      "evidence_files": [
+        {
+          "path": "data/raw/kdd99_kaggle.zip",
+          "sha256": "a50c9ce5d83ac5d70e7d0ff986b3abf09a4412b7ca4b5edf63e3d52a850448e8"
+        },
+        {
+          "path": "data/raw/kddcup99_csv.csv",
+          "sha256": "e411f3bb295d2be602f9288b333c15afee0f4cf85f7928916975d7b90b71917f"
+        },
+        {
+          "path": "data/metadata/dataset_research.json",
+          "sha256": "cbdb9ac5c53218a248e7a6182844a21409c378c65243d9b69f48a5da9afb8138"
+        },
+        {
+          "path": "data/data_dictionary.json",
+          "sha256": "15d6b1511bac03fe97f969edea818faf06ea8e276513cb7f100f01ef593c4cc7"
+        },
+        {
+          "path": "data/attack_family_map.json",
+          "sha256": "19830b7dcc01de43f3db04cb7481c929fbae56ba5f65448f6f652f97f77031af"
+        },
+        {
+          "path": "data/metadata/original_row_comparison.json",
+          "sha256": "8732e61b1333282e3a43394f42720d3052581b88fe1605a432b64efb05b5107e"
+        },
+        {
+          "path": "data/metadata/license_evidence/uci_task.txt",
+          "sha256": "5f6ce7015f9d41d37b7955ecd92ec0a0362deaa36ef6b4978627555c5ae916ef"
+        },
+        {
+          "path": "analysis/analytics.py",
+          "sha256": "382bf5f120263727e6ac705a434df4859f42346a04a8406858dce17622f0335a"
+        },
+        {
+          "path": "tests/test_analytics.py",
+          "sha256": "c6587bf2f0d0532bdb1a680f376253da31c4d6be1b7c69c3a0c117dff99a4ee3"
+        },
+        {
+          "path": "reports/final_test_results.xml",
+          "sha256": "7a8e48ee63979397d3abbc50101c03b8e4271a6f71dd6fe2ed99f51ca20c7e2e"
+        },
+        {
+          "path": "reports/final_test_status.json",
+          "sha256": "7362341ccd780319eda75abd9abf02616a64a0209e3c5ff8b1895ce2fb1724c3"
+        },
+        {
+          "path": "reports/pip_check.txt",
+          "sha256": "672aec65a45bed50e70229c70934a7eebf0462595c459b83023027645d57cccf"
+        }
+      ]
+    },
+    {
+      "id": "U23",
+      "category": "visualization",
+      "level": "mandatory",
+      "requirement": "Сделать минимум8 содержательно разных графиков, адаптированных к фактическим полям.",
+      "source_references": [
+        {
+          "source": "user_request",
+          "section": "4. Аналитика",
+          "line_start": 81,
+          "line_end": 81,
+          "anchor": "не менее восьми содержательно разных графиков"
+        },
+        {
+          "source": "user_request",
+          "section": "4. Аналитика",
+          "line_start": 94,
+          "line_end": 94,
+          "anchor": "Если реальные поля датасета отличаются"
+        }
+      ],
+      "acceptance_criteria": [
+        "Восемь разных аналитических вопросов представлены действующими визуализациями; замена цветовой схемы или типа одного графика не выдаётся за новый аспект."
+      ],
+      "status": "pass",
+      "evidence": [
+        "analysis/analytics.py",
+        "tests/test_analytics.py",
+        "reports/final_test_results.xml"
+      ],
+      "finding": "Реализованы9 разных аналитических представлений на реальных полях. График04 — точная CDF длительности вместо вырожденного boxplot; независимые данные графиков проверены тестами.",
+      "evidence_files": [
+        {
+          "path": "analysis/analytics.py",
+          "sha256": "382bf5f120263727e6ac705a434df4859f42346a04a8406858dce17622f0335a"
+        },
+        {
+          "path": "tests/test_analytics.py",
+          "sha256": "c6587bf2f0d0532bdb1a680f376253da31c4d6be1b7c69c3a0c117dff99a4ee3"
+        },
+        {
+          "path": "reports/final_test_results.xml",
+          "sha256": "7a8e48ee63979397d3abbc50101c03b8e4271a6f71dd6fe2ed99f51ca20c7e2e"
+        }
+      ]
+    },
+    {
+      "id": "U24",
+      "category": "visualization",
+      "level": "mandatory",
+      "requirement": "Для каждой визуализации предусмотреть название, подписи осей, единицы измерения, описание показателя, объяснение результата и конкретный вывод.",
+      "source_references": [
+        {
+          "source": "user_request",
+          "section": "4. Аналитика",
+          "line_start": 98,
+          "line_end": 98,
+          "anchor": "Каждая визуализация должна иметь:"
+        }
+      ],
+      "acceptance_criteria": [
+        "У всех8 графиков доступны все перечисленные элементы.",
+        "Для безразмерных величин это указано явно; для диаграмм без координат единицы/категории отражены в подписях и легенде."
+      ],
+      "interpretation_notes": "Оговорка о диаграммах без осей — интерпретация применимости подписи, а не текст PDF. Самый буквальный способ исполнения — выбирать графики с подписанными координатами.",
+      "status": "pass",
+      "evidence": [
+        "analysis/analytics.py",
+        "tests/test_analytics.py",
+        "reports/final_test_results.xml",
+        "app/main.py",
+        "app/styles.css",
+        ".streamlit/config.toml",
+        "tests/test_app.py",
+        "reports/figures/manifest.json",
+        "reports/figures/visual_qa.json",
+        "reports/browser_test.json",
+        "reports/app_test_results.xml"
+      ],
+      "finding": "Девять графиков имеют подписи, единицы, индивидуальные выводы и три групповых пояснения. Финальные печатные экспорты и реальное приложение визуально проверены.",
+      "evidence_files": [
+        {
+          "path": "analysis/analytics.py",
+          "sha256": "382bf5f120263727e6ac705a434df4859f42346a04a8406858dce17622f0335a"
+        },
+        {
+          "path": "tests/test_analytics.py",
+          "sha256": "c6587bf2f0d0532bdb1a680f376253da31c4d6be1b7c69c3a0c117dff99a4ee3"
+        },
+        {
+          "path": "reports/final_test_results.xml",
+          "sha256": "7a8e48ee63979397d3abbc50101c03b8e4271a6f71dd6fe2ed99f51ca20c7e2e"
+        },
+        {
+          "path": "app/main.py",
+          "sha256": "3b11ab4330aaba8edb8458ea7b2dda593ad97f6adc36640d550b15a050554ca5"
+        },
+        {
+          "path": "app/styles.css",
+          "sha256": "754fdcbcfcd31c09bf08ae957ad3fafdad0fcbabc282f5d6776c9127e799a30f"
+        },
+        {
+          "path": ".streamlit/config.toml",
+          "sha256": "0bd5cefe8cfc197bd849f3da21ad9adcaa84770c735514d3d5823cd1598025aa"
+        },
+        {
+          "path": "tests/test_app.py",
+          "sha256": "1c91a0aa76ebdb64cc6e494398dcaf6a48e79d8d2eba3a5c85a742aebb2b4f9d"
+        },
+        {
+          "path": "reports/figures/manifest.json",
+          "sha256": "02d3c7baf820e4402cbb6351f0c97753626aad670b1a575bae40d919d3122707"
+        },
+        {
+          "path": "reports/figures/visual_qa.json",
+          "sha256": "815d135ed820edb70d9fe54e01179c5b1c9d52234e23359687579db9dc15dcc0"
+        },
+        {
+          "path": "reports/browser_test.json",
+          "sha256": "ca3e00c09c7f7241d4e1a643b0ca2f0b9904b79a4dbb1a2bc862ed82b22d4f88"
+        },
+        {
+          "path": "reports/app_test_results.xml",
+          "sha256": "f5f3aac5340ca779a4e8947bdf87c9e934fed070ab844bc30e2a063b33d62fae"
+        }
+      ]
+    },
+    {
+      "id": "U25",
+      "category": "interface",
+      "level": "mandatory",
+      "requirement": "Сделать полноценное локальное аналитическое веб-приложение на Python.",
+      "source_references": [
+        {
+          "source": "user_request",
+          "section": "5. Пользовательский интерфейс",
+          "line_start": 111,
+          "line_end": 111,
+          "anchor": "Создай полноценное локальное аналитическое веб-приложение на Python"
+        }
+      ],
+      "acceptance_criteria": [
+        "Приложение доступно локально в браузере и выполняет реальную обработку/просмотр данных."
+      ],
+      "status": "pass",
+      "evidence": [
+        "app/main.py",
+        "app/styles.css",
+        ".streamlit/config.toml",
+        "tests/test_app.py",
+        "data/processed/connections.parquet",
+        "data/processed/summary.json",
+        "data/processed/attack_counts.csv"
+      ],
+      "finding": "Реальное Streamlit-приложение содержит6 разделов. AppTest исполнил все разделы,9 графиков, выбор группы, KPI, выгрузку и страницы качества/автора.",
+      "evidence_files": [
+        {
+          "path": "app/main.py",
+          "sha256": "3b11ab4330aaba8edb8458ea7b2dda593ad97f6adc36640d550b15a050554ca5"
+        },
+        {
+          "path": "app/styles.css",
+          "sha256": "754fdcbcfcd31c09bf08ae957ad3fafdad0fcbabc282f5d6776c9127e799a30f"
+        },
+        {
+          "path": ".streamlit/config.toml",
+          "sha256": "0bd5cefe8cfc197bd849f3da21ad9adcaa84770c735514d3d5823cd1598025aa"
+        },
+        {
+          "path": "tests/test_app.py",
+          "sha256": "1c91a0aa76ebdb64cc6e494398dcaf6a48e79d8d2eba3a5c85a742aebb2b4f9d"
+        },
+        {
+          "path": "data/processed/connections.parquet",
+          "sha256": "bb2c9f7acf03f355a24af300691f34bd1d5a10af357b39dbf692fbe3eb88a98d"
+        },
+        {
+          "path": "data/processed/summary.json",
+          "sha256": "057bd3fb4c338334a21d7ec13700f23d960f7d5578e25fecaf73dafdaf2464da"
+        },
+        {
+          "path": "data/processed/attack_counts.csv",
+          "sha256": "83c7bf57db126c601bdd415c719875d2fea51aefdd555b6d61fdf72d9eabea42"
+        }
+      ]
+    },
+    {
+      "id": "U26",
+      "category": "interface",
+      "level": "mandatory",
+      "requirement": "Предусмотреть раздел «Главная»: название исследования, источник и ключевые показатели.",
+      "source_references": [
+        {
+          "source": "user_request",
+          "section": "5. Пользовательский интерфейс",
+          "line_start": 123,
+          "line_end": 123,
+          "anchor": "**Главная:**"
+        }
+      ],
+      "acceptance_criteria": [
+        "На главном экране есть фактическое название, Kaggle-ссылка и вычисленные KPI."
+      ],
+      "status": "pass",
+      "evidence": [
+        "app/main.py",
+        "app/styles.css",
+        ".streamlit/config.toml",
+        "tests/test_app.py",
+        "data/processed/connections.parquet",
+        "data/processed/summary.json",
+        "data/processed/attack_counts.csv"
+      ],
+      "finding": "Реальное Streamlit-приложение содержит6 разделов. AppTest исполнил все разделы,9 графиков, выбор группы, KPI, выгрузку и страницы качества/автора.",
+      "evidence_files": [
+        {
+          "path": "app/main.py",
+          "sha256": "3b11ab4330aaba8edb8458ea7b2dda593ad97f6adc36640d550b15a050554ca5"
+        },
+        {
+          "path": "app/styles.css",
+          "sha256": "754fdcbcfcd31c09bf08ae957ad3fafdad0fcbabc282f5d6776c9127e799a30f"
+        },
+        {
+          "path": ".streamlit/config.toml",
+          "sha256": "0bd5cefe8cfc197bd849f3da21ad9adcaa84770c735514d3d5823cd1598025aa"
+        },
+        {
+          "path": "tests/test_app.py",
+          "sha256": "1c91a0aa76ebdb64cc6e494398dcaf6a48e79d8d2eba3a5c85a742aebb2b4f9d"
+        },
+        {
+          "path": "data/processed/connections.parquet",
+          "sha256": "bb2c9f7acf03f355a24af300691f34bd1d5a10af357b39dbf692fbe3eb88a98d"
+        },
+        {
+          "path": "data/processed/summary.json",
+          "sha256": "057bd3fb4c338334a21d7ec13700f23d960f7d5578e25fecaf73dafdaf2464da"
+        },
+        {
+          "path": "data/processed/attack_counts.csv",
+          "sha256": "83c7bf57db126c601bdd415c719875d2fea51aefdd555b6d61fdf72d9eabea42"
+        }
+      ]
+    },
+    {
+      "id": "U27",
+      "category": "interface",
+      "level": "mandatory",
+      "requirement": "Предусмотреть раздел «Данные»: описание набора, размер, колонки, предпросмотр и качество.",
+      "source_references": [
+        {
+          "source": "user_request",
+          "section": "5. Пользовательский интерфейс",
+          "line_start": 125,
+          "line_end": 125,
+          "anchor": "**Данные:**"
+        }
+      ],
+      "acceptance_criteria": [
+        "Пользователь видит схему, реальные строки и показатели качества текущего набора."
+      ],
+      "status": "pass",
+      "evidence": [
+        "app/main.py",
+        "app/styles.css",
+        ".streamlit/config.toml",
+        "tests/test_app.py",
+        "data/processed/connections.parquet",
+        "data/processed/summary.json",
+        "data/processed/attack_counts.csv"
+      ],
+      "finding": "Реальное Streamlit-приложение содержит6 разделов. AppTest исполнил все разделы,9 графиков, выбор группы, KPI, выгрузку и страницы качества/автора.",
+      "evidence_files": [
+        {
+          "path": "app/main.py",
+          "sha256": "3b11ab4330aaba8edb8458ea7b2dda593ad97f6adc36640d550b15a050554ca5"
+        },
+        {
+          "path": "app/styles.css",
+          "sha256": "754fdcbcfcd31c09bf08ae957ad3fafdad0fcbabc282f5d6776c9127e799a30f"
+        },
+        {
+          "path": ".streamlit/config.toml",
+          "sha256": "0bd5cefe8cfc197bd849f3da21ad9adcaa84770c735514d3d5823cd1598025aa"
+        },
+        {
+          "path": "tests/test_app.py",
+          "sha256": "1c91a0aa76ebdb64cc6e494398dcaf6a48e79d8d2eba3a5c85a742aebb2b4f9d"
+        },
+        {
+          "path": "data/processed/connections.parquet",
+          "sha256": "bb2c9f7acf03f355a24af300691f34bd1d5a10af357b39dbf692fbe3eb88a98d"
+        },
+        {
+          "path": "data/processed/summary.json",
+          "sha256": "057bd3fb4c338334a21d7ec13700f23d960f7d5578e25fecaf73dafdaf2464da"
+        },
+        {
+          "path": "data/processed/attack_counts.csv",
+          "sha256": "83c7bf57db126c601bdd415c719875d2fea51aefdd555b6d61fdf72d9eabea42"
+        }
+      ]
+    },
+    {
+      "id": "U28",
+      "category": "interface",
+      "level": "mandatory",
+      "requirement": "Предусмотреть раздел «Подготовка»: этапы очистки, числа удалённых/исправленных записей и описания преобразований.",
+      "source_references": [
+        {
+          "source": "user_request",
+          "section": "5. Пользовательский интерфейс",
+          "line_start": 127,
+          "line_end": 127,
+          "anchor": "**Подготовка:**"
+        }
+      ],
+      "acceptance_criteria": [
+        "Показаны правила и фактические счётчики до/после, а не только общий текст об очистке."
+      ],
+      "status": "pass",
+      "evidence": [
+        "app/main.py",
+        "app/styles.css",
+        ".streamlit/config.toml",
+        "tests/test_app.py",
+        "data/processed/connections.parquet",
+        "data/processed/summary.json",
+        "data/processed/attack_counts.csv"
+      ],
+      "finding": "Реальное Streamlit-приложение содержит6 разделов. AppTest исполнил все разделы,9 графиков, выбор группы, KPI, выгрузку и страницы качества/автора.",
+      "evidence_files": [
+        {
+          "path": "app/main.py",
+          "sha256": "3b11ab4330aaba8edb8458ea7b2dda593ad97f6adc36640d550b15a050554ca5"
+        },
+        {
+          "path": "app/styles.css",
+          "sha256": "754fdcbcfcd31c09bf08ae957ad3fafdad0fcbabc282f5d6776c9127e799a30f"
+        },
+        {
+          "path": ".streamlit/config.toml",
+          "sha256": "0bd5cefe8cfc197bd849f3da21ad9adcaa84770c735514d3d5823cd1598025aa"
+        },
+        {
+          "path": "tests/test_app.py",
+          "sha256": "1c91a0aa76ebdb64cc6e494398dcaf6a48e79d8d2eba3a5c85a742aebb2b4f9d"
+        },
+        {
+          "path": "data/processed/connections.parquet",
+          "sha256": "bb2c9f7acf03f355a24af300691f34bd1d5a10af357b39dbf692fbe3eb88a98d"
+        },
+        {
+          "path": "data/processed/summary.json",
+          "sha256": "057bd3fb4c338334a21d7ec13700f23d960f7d5578e25fecaf73dafdaf2464da"
+        },
+        {
+          "path": "data/processed/attack_counts.csv",
+          "sha256": "83c7bf57db126c601bdd415c719875d2fea51aefdd555b6d61fdf72d9eabea42"
+        }
+      ]
+    },
+    {
+      "id": "U29",
+      "category": "interface",
+      "level": "mandatory",
+      "requirement": "Предусмотреть раздел «Аналитика»: минимум8 интерактивных визуализаций с фильтрами.",
+      "source_references": [
+        {
+          "source": "user_request",
+          "section": "5. Пользовательский интерфейс",
+          "line_start": 129,
+          "line_end": 129,
+          "anchor": "**Аналитика:**"
+        }
+      ],
+      "acceptance_criteria": [
+        "Графики доступны в живом приложении и отвечают на смену фильтров."
+      ],
+      "status": "pass",
+      "evidence": [
+        "app/main.py",
+        "app/styles.css",
+        ".streamlit/config.toml",
+        "tests/test_app.py",
+        "data/processed/connections.parquet",
+        "data/processed/summary.json",
+        "data/processed/attack_counts.csv"
+      ],
+      "finding": "Реальное Streamlit-приложение содержит6 разделов. AppTest исполнил все разделы,9 графиков, выбор группы, KPI, выгрузку и страницы качества/автора.",
+      "evidence_files": [
+        {
+          "path": "app/main.py",
+          "sha256": "3b11ab4330aaba8edb8458ea7b2dda593ad97f6adc36640d550b15a050554ca5"
+        },
+        {
+          "path": "app/styles.css",
+          "sha256": "754fdcbcfcd31c09bf08ae957ad3fafdad0fcbabc282f5d6776c9127e799a30f"
+        },
+        {
+          "path": ".streamlit/config.toml",
+          "sha256": "0bd5cefe8cfc197bd849f3da21ad9adcaa84770c735514d3d5823cd1598025aa"
+        },
+        {
+          "path": "tests/test_app.py",
+          "sha256": "1c91a0aa76ebdb64cc6e494398dcaf6a48e79d8d2eba3a5c85a742aebb2b4f9d"
+        },
+        {
+          "path": "data/processed/connections.parquet",
+          "sha256": "bb2c9f7acf03f355a24af300691f34bd1d5a10af357b39dbf692fbe3eb88a98d"
+        },
+        {
+          "path": "data/processed/summary.json",
+          "sha256": "057bd3fb4c338334a21d7ec13700f23d960f7d5578e25fecaf73dafdaf2464da"
+        },
+        {
+          "path": "data/processed/attack_counts.csv",
+          "sha256": "83c7bf57db126c601bdd415c719875d2fea51aefdd555b6d61fdf72d9eabea42"
+        }
+      ]
+    },
+    {
+      "id": "U30",
+      "category": "interface",
+      "level": "mandatory",
+      "requirement": "Предусмотреть раздел «Выводы»: закономерности, ограничения данных и итог исследования.",
+      "source_references": [
+        {
+          "source": "user_request",
+          "section": "5. Пользовательский интерфейс",
+          "line_start": 131,
+          "line_end": 131,
+          "anchor": "**Выводы:**"
+        }
+      ],
+      "acceptance_criteria": [
+        "Выводы и ограничения видны в интерфейсе, подкреплены данными и не заявляют недоказанную причинность."
+      ],
+      "status": "pass",
+      "evidence": [
+        "analysis/analytics.py",
+        "tests/test_analytics.py",
+        "reports/final_test_results.xml",
+        "app/main.py",
+        "app/styles.css",
+        ".streamlit/config.toml",
+        "tests/test_app.py",
+        "data/processed/connections.parquet",
+        "data/processed/summary.json",
+        "data/processed/attack_counts.csv"
+      ],
+      "finding": "Аналитика и выводы вычислены по сохранённым данным и текущим фильтрам; дисбаланс, повторы, исторический характер и отсутствие календарных дат раскрыты.",
+      "evidence_files": [
+        {
+          "path": "analysis/analytics.py",
+          "sha256": "382bf5f120263727e6ac705a434df4859f42346a04a8406858dce17622f0335a"
+        },
+        {
+          "path": "tests/test_analytics.py",
+          "sha256": "c6587bf2f0d0532bdb1a680f376253da31c4d6be1b7c69c3a0c117dff99a4ee3"
+        },
+        {
+          "path": "reports/final_test_results.xml",
+          "sha256": "7a8e48ee63979397d3abbc50101c03b8e4271a6f71dd6fe2ed99f51ca20c7e2e"
+        },
+        {
+          "path": "app/main.py",
+          "sha256": "3b11ab4330aaba8edb8458ea7b2dda593ad97f6adc36640d550b15a050554ca5"
+        },
+        {
+          "path": "app/styles.css",
+          "sha256": "754fdcbcfcd31c09bf08ae957ad3fafdad0fcbabc282f5d6776c9127e799a30f"
+        },
+        {
+          "path": ".streamlit/config.toml",
+          "sha256": "0bd5cefe8cfc197bd849f3da21ad9adcaa84770c735514d3d5823cd1598025aa"
+        },
+        {
+          "path": "tests/test_app.py",
+          "sha256": "1c91a0aa76ebdb64cc6e494398dcaf6a48e79d8d2eba3a5c85a742aebb2b4f9d"
+        },
+        {
+          "path": "data/processed/connections.parquet",
+          "sha256": "bb2c9f7acf03f355a24af300691f34bd1d5a10af357b39dbf692fbe3eb88a98d"
+        },
+        {
+          "path": "data/processed/summary.json",
+          "sha256": "057bd3fb4c338334a21d7ec13700f23d960f7d5578e25fecaf73dafdaf2464da"
+        },
+        {
+          "path": "data/processed/attack_counts.csv",
+          "sha256": "83c7bf57db126c601bdd415c719875d2fea51aefdd555b6d61fdf72d9eabea42"
+        }
+      ]
+    },
+    {
+      "id": "U31",
+      "category": "author",
+      "level": "mandatory",
+      "requirement": "Предусмотреть раздел «Об авторе»: ФИО, группа, дисциплина, преподаватель и обязательные сведения методички.",
+      "source_references": [
+        {
+          "source": "user_request",
+          "section": "5. Пользовательский интерфейс",
+          "line_start": 133,
+          "line_end": 133,
+          "anchor": "**Об авторе:**"
+        },
+        {
+          "source": "method_pdf",
+          "pdf_page": 1,
+          "item": "7"
+        }
+      ],
+      "acceptance_criteria": [
+        "Указаны Бондаренко Константин Вячеславович; ИСТZS-3401; 4 курс; «Системы больших данных»; Щербаков; РГЭУ (РИНХ); 2026. Фото/карта исполнены по U32/U33."
+      ],
+      "status": "pass",
+      "evidence": [
+        "app/main.py",
+        "app/styles.css",
+        ".streamlit/config.toml",
+        "tests/test_app.py",
+        "data/processed/connections.parquet",
+        "data/processed/summary.json",
+        "data/processed/attack_counts.csv"
+      ],
+      "finding": "Реальное Streamlit-приложение содержит6 разделов. AppTest исполнил все разделы,9 графиков, выбор группы, KPI, выгрузку и страницы качества/автора.",
+      "evidence_files": [
+        {
+          "path": "app/main.py",
+          "sha256": "3b11ab4330aaba8edb8458ea7b2dda593ad97f6adc36640d550b15a050554ca5"
+        },
+        {
+          "path": "app/styles.css",
+          "sha256": "754fdcbcfcd31c09bf08ae957ad3fafdad0fcbabc282f5d6776c9127e799a30f"
+        },
+        {
+          "path": ".streamlit/config.toml",
+          "sha256": "0bd5cefe8cfc197bd849f3da21ad9adcaa84770c735514d3d5823cd1598025aa"
+        },
+        {
+          "path": "tests/test_app.py",
+          "sha256": "1c91a0aa76ebdb64cc6e494398dcaf6a48e79d8d2eba3a5c85a742aebb2b4f9d"
+        },
+        {
+          "path": "data/processed/connections.parquet",
+          "sha256": "bb2c9f7acf03f355a24af300691f34bd1d5a10af357b39dbf692fbe3eb88a98d"
+        },
+        {
+          "path": "data/processed/summary.json",
+          "sha256": "057bd3fb4c338334a21d7ec13700f23d960f7d5578e25fecaf73dafdaf2464da"
+        },
+        {
+          "path": "data/processed/attack_counts.csv",
+          "sha256": "83c7bf57db126c601bdd415c719875d2fea51aefdd555b6d61fdf72d9eabea42"
+        }
+      ]
+    },
+    {
+      "id": "U32",
+      "category": "author",
+      "level": "mandatory",
+      "requirement": "Фото: оставить место для изображения, которое пользователь добавит самостоятельно; не создавать поддельную личную фотографию.",
+      "source_references": [
+        {
+          "source": "user_request",
+          "section": "5. Пользовательский интерфейс",
+          "line_start": 135,
+          "line_end": 135,
+          "anchor": "Если методичка требует фотографию"
+        }
+      ],
+      "acceptance_criteria": [
+        "Есть явный placeholder и документированный путь/способ добавления собственного фото.",
+        "Placeholder не выдан за реальную фотографию пользователя."
+      ],
+      "interpretation_notes": "Условие наступило: фото явно требуется PDF п.7. Отсутствие предоставленной фотографии допускает подготовленное место, а не вымышленный портрет.",
+      "status": "pass",
+      "evidence": [
+        "app/main.py",
+        "app/styles.css",
+        ".streamlit/config.toml",
+        "tests/test_app.py",
+        "reports/browser_test.json",
+        "reports/app_test_results.xml"
+      ],
+      "finding": "Проверки исходников, AppTest и фактического браузера разделены. Реальные разделы/фильтры/пустое состояние/автор проверены; фото остаётся честной загрузкой своего изображения, карта явно учебная без платёжных реквизитов.",
+      "evidence_files": [
+        {
+          "path": "app/main.py",
+          "sha256": "3b11ab4330aaba8edb8458ea7b2dda593ad97f6adc36640d550b15a050554ca5"
+        },
+        {
+          "path": "app/styles.css",
+          "sha256": "754fdcbcfcd31c09bf08ae957ad3fafdad0fcbabc282f5d6776c9127e799a30f"
+        },
+        {
+          "path": ".streamlit/config.toml",
+          "sha256": "0bd5cefe8cfc197bd849f3da21ad9adcaa84770c735514d3d5823cd1598025aa"
+        },
+        {
+          "path": "tests/test_app.py",
+          "sha256": "1c91a0aa76ebdb64cc6e494398dcaf6a48e79d8d2eba3a5c85a742aebb2b4f9d"
+        },
+        {
+          "path": "reports/browser_test.json",
+          "sha256": "ca3e00c09c7f7241d4e1a643b0ca2f0b9904b79a4dbb1a2bc862ed82b22d4f88"
+        },
+        {
+          "path": "reports/app_test_results.xml",
+          "sha256": "f5f3aac5340ca779a4e8947bdf87c9e934fed070ab844bc30e2a063b33d62fae"
+        }
+      ]
+    },
+    {
+      "id": "U33",
+      "category": "security",
+      "level": "mandatory",
+      "requirement": "Банковская карта: только очевидный демонстрационный элемент, без настоящего номера, CVV, срока действия и платёжных реквизитов.",
+      "source_references": [
+        {
+          "source": "user_request",
+          "section": "5. Пользовательский интерфейс",
+          "line_start": 137,
+          "line_end": 137,
+          "anchor": "Если в методичке требуется банковская карта"
+        }
+      ],
+      "acceptance_criteria": [
+        "Макет ясно подписан как учебная демонстрация, не предназначенная для оплаты.",
+        "Нет полей для сбора PAN/CVV/срока действия и нет чувствительных реквизитов в UI/файлах/логах."
+      ],
+      "interpretation_notes": "Условие наступило: PDF п.7 требует карту, но не настоящие реквизиты. Безопасный макет удовлетворяет пользовательскому уточнению.",
+      "status": "pass",
+      "evidence": [
+        "app/main.py",
+        "app/styles.css",
+        ".streamlit/config.toml",
+        "tests/test_app.py",
+        "reports/browser_test.json",
+        "reports/app_test_results.xml"
+      ],
+      "finding": "Проверки исходников, AppTest и фактического браузера разделены. Реальные разделы/фильтры/пустое состояние/автор проверены; фото остаётся честной загрузкой своего изображения, карта явно учебная без платёжных реквизитов.",
+      "evidence_files": [
+        {
+          "path": "app/main.py",
+          "sha256": "3b11ab4330aaba8edb8458ea7b2dda593ad97f6adc36640d550b15a050554ca5"
+        },
+        {
+          "path": "app/styles.css",
+          "sha256": "754fdcbcfcd31c09bf08ae957ad3fafdad0fcbabc282f5d6776c9127e799a30f"
+        },
+        {
+          "path": ".streamlit/config.toml",
+          "sha256": "0bd5cefe8cfc197bd849f3da21ad9adcaa84770c735514d3d5823cd1598025aa"
+        },
+        {
+          "path": "tests/test_app.py",
+          "sha256": "1c91a0aa76ebdb64cc6e494398dcaf6a48e79d8d2eba3a5c85a742aebb2b4f9d"
+        },
+        {
+          "path": "reports/browser_test.json",
+          "sha256": "ca3e00c09c7f7241d4e1a643b0ca2f0b9904b79a4dbb1a2bc862ed82b22d4f88"
+        },
+        {
+          "path": "reports/app_test_results.xml",
+          "sha256": "f5f3aac5340ca779a4e8947bdf87c9e934fed070ab844bc30e2a063b33d62fae"
+        }
+      ]
+    },
+    {
+      "id": "U34",
+      "category": "privacy",
+      "level": "mandatory",
+      "requirement": "Не собирать и не публиковать чувствительные данные.",
+      "source_references": [
+        {
+          "source": "user_request",
+          "section": "5. Пользовательский интерфейс",
+          "line_start": 137,
+          "line_end": 137,
+          "anchor": "Не собирай и не публикуй чувствительные данные"
+        }
+      ],
+      "acceptance_criteria": [
+        "Нет формы банковских реквизитов, чужих токенов, персональных сетевых журналов или иных чувствительных данных."
+      ],
+      "status": "pass",
+      "evidence": [
+        "app/main.py",
+        "app/styles.css",
+        ".streamlit/config.toml",
+        "tests/test_app.py",
+        "reports/browser_test.json",
+        "reports/app_test_results.xml"
+      ],
+      "finding": "Проверки исходников, AppTest и фактического браузера разделены. Реальные разделы/фильтры/пустое состояние/автор проверены; фото остаётся честной загрузкой своего изображения, карта явно учебная без платёжных реквизитов.",
+      "evidence_files": [
+        {
+          "path": "app/main.py",
+          "sha256": "3b11ab4330aaba8edb8458ea7b2dda593ad97f6adc36640d550b15a050554ca5"
+        },
+        {
+          "path": "app/styles.css",
+          "sha256": "754fdcbcfcd31c09bf08ae957ad3fafdad0fcbabc282f5d6776c9127e799a30f"
+        },
+        {
+          "path": ".streamlit/config.toml",
+          "sha256": "0bd5cefe8cfc197bd849f3da21ad9adcaa84770c735514d3d5823cd1598025aa"
+        },
+        {
+          "path": "tests/test_app.py",
+          "sha256": "1c91a0aa76ebdb64cc6e494398dcaf6a48e79d8d2eba3a5c85a742aebb2b4f9d"
+        },
+        {
+          "path": "reports/browser_test.json",
+          "sha256": "ca3e00c09c7f7241d4e1a643b0ca2f0b9904b79a4dbb1a2bc862ed82b22d4f88"
+        },
+        {
+          "path": "reports/app_test_results.xml",
+          "sha256": "f5f3aac5340ca779a4e8947bdf87c9e934fed070ab844bc30e2a063b33d62fae"
+        }
+      ]
+    },
+    {
+      "id": "U35",
+      "category": "appearance",
+      "level": "mandatory",
+      "requirement": "Тёмная тема по умолчанию; нейтральная палитра с умеренными акцентами; интерфейс не должен быть полностью синим или фиолетовым.",
+      "source_references": [
+        {
+          "source": "user_request",
+          "section": "6. Визуальный стиль",
+          "line_start": 143,
+          "line_end": 143,
+          "anchor": "Используй тёмную тему по умолчанию"
+        },
+        {
+          "source": "user_request",
+          "section": "6. Визуальный стиль",
+          "line_start": 145,
+          "line_end": 145,
+          "anchor": "Не делай весь интерфейс синим или фиолетовым"
+        }
+      ],
+      "acceptance_criteria": [
+        "При первом запуске включена читаемая тёмная тема и визуально умеренные акценты."
+      ],
+      "status": "pass",
+      "evidence": [
+        "app/main.py",
+        "app/styles.css",
+        ".streamlit/config.toml",
+        "tests/test_app.py"
+      ],
+      "finding": "Тёмная тема задана конфигурацией: нейтральный фон#121310/#1D1F1A, янтарный акцент#D9A441; это не полностью синяя/фиолетовая палитра.",
+      "evidence_files": [
+        {
+          "path": "app/main.py",
+          "sha256": "3b11ab4330aaba8edb8458ea7b2dda593ad97f6adc36640d550b15a050554ca5"
+        },
+        {
+          "path": "app/styles.css",
+          "sha256": "754fdcbcfcd31c09bf08ae957ad3fafdad0fcbabc282f5d6776c9127e799a30f"
+        },
+        {
+          "path": ".streamlit/config.toml",
+          "sha256": "0bd5cefe8cfc197bd849f3da21ad9adcaa84770c735514d3d5823cd1598025aa"
+        },
+        {
+          "path": "tests/test_app.py",
+          "sha256": "1c91a0aa76ebdb64cc6e494398dcaf6a48e79d8d2eba3a5c85a742aebb2b4f9d"
+        }
+      ]
+    },
+    {
+      "id": "U36",
+      "category": "appearance",
+      "level": "mandatory",
+      "requirement": "Понятная навигация, читаемые графики, аккуратные таблицы, адаптация к окну, русский язык, единообразные подписи и отсутствие перегруженности.",
+      "source_references": [
+        {
+          "source": "user_request",
+          "section": "6. Визуальный стиль",
+          "line_start": 149,
+          "line_end": 149,
+          "anchor": "Понятная навигация"
+        }
+      ],
+      "acceptance_criteria": [
+        "Проверено отображение минимум на обычном и узком размере окна.",
+        "Надписи и пояснения на русском; таблицы/легенды/оси читаемы; меню понятно."
+      ],
+      "status": "pass",
+      "evidence": [
+        "app/main.py",
+        "app/styles.css",
+        ".streamlit/config.toml",
+        "tests/test_app.py",
+        "reports/browser_test.json",
+        "reports/app_test_results.xml"
+      ],
+      "finding": "Шесть разделов проверены через AppTest. В реальном браузере проверены полная/TCP/пустая выборки, данные, подготовка, автор и CDF; при ширине 390 px горизонтального переполнения нет.",
+      "evidence_files": [
+        {
+          "path": "app/main.py",
+          "sha256": "3b11ab4330aaba8edb8458ea7b2dda593ad97f6adc36640d550b15a050554ca5"
+        },
+        {
+          "path": "app/styles.css",
+          "sha256": "754fdcbcfcd31c09bf08ae957ad3fafdad0fcbabc282f5d6776c9127e799a30f"
+        },
+        {
+          "path": ".streamlit/config.toml",
+          "sha256": "0bd5cefe8cfc197bd849f3da21ad9adcaa84770c735514d3d5823cd1598025aa"
+        },
+        {
+          "path": "tests/test_app.py",
+          "sha256": "1c91a0aa76ebdb64cc6e494398dcaf6a48e79d8d2eba3a5c85a742aebb2b4f9d"
+        },
+        {
+          "path": "reports/browser_test.json",
+          "sha256": "ca3e00c09c7f7241d4e1a643b0ca2f0b9904b79a4dbb1a2bc862ed82b22d4f88"
+        },
+        {
+          "path": "reports/app_test_results.xml",
+          "sha256": "f5f3aac5340ca779a4e8947bdf87c9e934fed070ab844bc30e2a063b33d62fae"
+        }
+      ]
+    },
+    {
+      "id": "U37",
+      "category": "interaction",
+      "level": "mandatory",
+      "requirement": "Интерактивные фильтры должны реально менять визуализации.",
+      "source_references": [
+        {
+          "source": "user_request",
+          "section": "6. Визуальный стиль",
+          "line_start": 157,
+          "line_end": 157,
+          "anchor": "Интерактивные фильтры должны реально менять визуализации"
+        }
+      ],
+      "acceptance_criteria": [
+        "Изменение фильтров фактически изменяет набор/показатели и все зависимые графики; пустое пересечение обработано."
+      ],
+      "status": "pass",
+      "evidence": [
+        "app/main.py",
+        "app/styles.css",
+        ".streamlit/config.toml",
+        "tests/test_app.py",
+        "analysis/analytics.py",
+        "tests/test_analytics.py",
+        "reports/final_test_results.xml",
+        "reports/final_test_status.json",
+        "reports/pip_check.txt"
+      ],
+      "finding": "Реальные AppTest-смены каждого фильтра сопоставлены с полным backend-запросом и KPI; пустой выбор убирает графики, выбор группы меняет видимые графики, CSV включает всю отфильтрованную выборку.",
+      "evidence_files": [
+        {
+          "path": "app/main.py",
+          "sha256": "3b11ab4330aaba8edb8458ea7b2dda593ad97f6adc36640d550b15a050554ca5"
+        },
+        {
+          "path": "app/styles.css",
+          "sha256": "754fdcbcfcd31c09bf08ae957ad3fafdad0fcbabc282f5d6776c9127e799a30f"
+        },
+        {
+          "path": ".streamlit/config.toml",
+          "sha256": "0bd5cefe8cfc197bd849f3da21ad9adcaa84770c735514d3d5823cd1598025aa"
+        },
+        {
+          "path": "tests/test_app.py",
+          "sha256": "1c91a0aa76ebdb64cc6e494398dcaf6a48e79d8d2eba3a5c85a742aebb2b4f9d"
+        },
+        {
+          "path": "analysis/analytics.py",
+          "sha256": "382bf5f120263727e6ac705a434df4859f42346a04a8406858dce17622f0335a"
+        },
+        {
+          "path": "tests/test_analytics.py",
+          "sha256": "c6587bf2f0d0532bdb1a680f376253da31c4d6be1b7c69c3a0c117dff99a4ee3"
+        },
+        {
+          "path": "reports/final_test_results.xml",
+          "sha256": "7a8e48ee63979397d3abbc50101c03b8e4271a6f71dd6fe2ed99f51ca20c7e2e"
+        },
+        {
+          "path": "reports/final_test_status.json",
+          "sha256": "7362341ccd780319eda75abd9abf02616a64a0209e3c5ff8b1895ce2fb1724c3"
+        },
+        {
+          "path": "reports/pip_check.txt",
+          "sha256": "672aec65a45bed50e70229c70934a7eebf0462595c459b83023027645d57cccf"
+        }
+      ]
+    },
+    {
+      "id": "U38",
+      "category": "performance",
+      "level": "mandatory",
+      "requirement": "Целевая среда — Windows11 с16ГБRAM; не загружать большой набор несколько раз без необходимости.",
+      "source_references": [
+        {
+          "source": "user_request",
+          "section": "7. Производительность",
+          "line_start": 161,
+          "line_end": 161,
+          "anchor": "Windows 11 с 16 ГБ"
+        },
+        {
+          "source": "user_request",
+          "section": "7. Производительность",
+          "line_start": 163,
+          "line_end": 163,
+          "anchor": "Не загружай без необходимости"
+        }
+      ],
+      "acceptance_criteria": [
+        "Измеренный/объяснённый путь обработки укладывается в доступную память; нет ненужных копий полного набора."
+      ],
+      "status": "pass",
+      "evidence": [
+        "reports/runtime_profile.json",
+        "analysis/query.py",
+        "app/main.py",
+        "analysis/pipeline.py",
+        "data/processed/quality.json",
+        "data/processed/normalization.json",
+        "tests/test_pipeline.py"
+      ],
+      "finding": "Windows11,16ГБRAM. Подготовленный DataFrame использует экономичные целые/category типы,33.49MB; Parquet2.26MB. UI cache_resource хранит один набор, графики агрегируются; отдельное измерение реального процесса записано в runtime_profile.json.",
+      "evidence_files": [
+        {
+          "path": "reports/runtime_profile.json",
+          "sha256": "c0580edb1174da5cb1d05fcea2937722a4e626fd0041ff0fe51a9b46794c3230"
+        },
+        {
+          "path": "analysis/query.py",
+          "sha256": "71abd517668c54f126fe78f1344f12579b66b856503fc244d142fce22ef5c6b4"
+        },
+        {
+          "path": "app/main.py",
+          "sha256": "3b11ab4330aaba8edb8458ea7b2dda593ad97f6adc36640d550b15a050554ca5"
+        },
+        {
+          "path": "analysis/pipeline.py",
+          "sha256": "16090c063bd5c71fc1291dcaf77fc1199107db631639e6795eed40ee138ffd1d"
+        },
+        {
+          "path": "data/processed/quality.json",
+          "sha256": "18ff0576278fc269d2d41e006e244c78116e6b58fda9fdd1bef68c64d611b7d2"
+        },
+        {
+          "path": "data/processed/normalization.json",
+          "sha256": "03f05b589f4cf100942334f39e5a87ba4a99e6134c1510ffbebc876522ab8d36"
+        },
+        {
+          "path": "tests/test_pipeline.py",
+          "sha256": "5e77e0dc0d7a51b612beb0bc0bbc80fbf6784e0fb6bcf3ec38b4d12ea618aee5"
+        }
+      ]
+    },
+    {
+      "id": "U39",
+      "category": "performance",
+      "level": "mandatory",
+      "requirement": "Использовать кэширование, экономичные типы данных и предварительную агрегацию.",
+      "source_references": [
+        {
+          "source": "user_request",
+          "section": "7. Производительность",
+          "line_start": 165,
+          "line_end": 165,
+          "anchor": "Используй кеширование"
+        }
+      ],
+      "acceptance_criteria": [
+        "Повторное взаимодействие использует кэш/подготовленные сводки и подходящие dtype, а не повторное чтение/полную обработку на каждый график."
+      ],
+      "status": "pass",
+      "evidence": [
+        "reports/runtime_profile.json",
+        "analysis/query.py",
+        "app/main.py",
+        "analysis/pipeline.py",
+        "data/processed/quality.json",
+        "data/processed/normalization.json",
+        "tests/test_pipeline.py"
+      ],
+      "finding": "Windows11,16ГБRAM. Подготовленный DataFrame использует экономичные целые/category типы,33.49MB; Parquet2.26MB. UI cache_resource хранит один набор, графики агрегируются; отдельное измерение реального процесса записано в runtime_profile.json.",
+      "evidence_files": [
+        {
+          "path": "reports/runtime_profile.json",
+          "sha256": "c0580edb1174da5cb1d05fcea2937722a4e626fd0041ff0fe51a9b46794c3230"
+        },
+        {
+          "path": "analysis/query.py",
+          "sha256": "71abd517668c54f126fe78f1344f12579b66b856503fc244d142fce22ef5c6b4"
+        },
+        {
+          "path": "app/main.py",
+          "sha256": "3b11ab4330aaba8edb8458ea7b2dda593ad97f6adc36640d550b15a050554ca5"
+        },
+        {
+          "path": "analysis/pipeline.py",
+          "sha256": "16090c063bd5c71fc1291dcaf77fc1199107db631639e6795eed40ee138ffd1d"
+        },
+        {
+          "path": "data/processed/quality.json",
+          "sha256": "18ff0576278fc269d2d41e006e244c78116e6b58fda9fdd1bef68c64d611b7d2"
+        },
+        {
+          "path": "data/processed/normalization.json",
+          "sha256": "03f05b589f4cf100942334f39e5a87ba4a99e6134c1510ffbebc876522ab8d36"
+        },
+        {
+          "path": "tests/test_pipeline.py",
+          "sha256": "5e77e0dc0d7a51b612beb0bc0bbc80fbf6784e0fb6bcf3ec38b4d12ea618aee5"
+        }
+      ]
+    },
+    {
+      "id": "U40",
+      "category": "performance",
+      "level": "conditional",
+      "requirement": "При слишком большом наборе применять пакетную обработку, DuckDB, Polars либо иной подходящий инструмент с объяснением.",
+      "source_references": [
+        {
+          "source": "user_request",
+          "section": "7. Производительность",
+          "line_start": 167,
+          "line_end": 167,
+          "anchor": "Если датасет слишком большой"
+        }
+      ],
+      "acceptance_criteria": [
+        "Выбран подход обработки, соответствующий реальному размеру и памяти; причина выбора документирована."
+      ],
+      "condition": "Обработка выбранного набора обычным способом не помещается в целевую память или непрактично медленна.",
+      "status": "not_applicable",
+      "evidence": [
+        "reports/runtime_profile.json",
+        "analysis/query.py",
+        "app/main.py"
+      ],
+      "finding": "Условие очень большого набора не наступает: исходный CSV74.89MB, подготовленная таблица145585 профилей и33.49MB в памяти. Pandas с кэшированием/типами/Parquet достаточен; DuckDB/Polars не объявляются использованными.",
+      "evidence_files": [
+        {
+          "path": "reports/runtime_profile.json",
+          "sha256": "c0580edb1174da5cb1d05fcea2937722a4e626fd0041ff0fe51a9b46794c3230"
+        },
+        {
+          "path": "analysis/query.py",
+          "sha256": "71abd517668c54f126fe78f1344f12579b66b856503fc244d142fce22ef5c6b4"
+        },
+        {
+          "path": "app/main.py",
+          "sha256": "3b11ab4330aaba8edb8458ea7b2dda593ad97f6adc36640d550b15a050554ca5"
+        }
+      ]
+    },
+    {
+      "id": "U41",
+      "category": "sampling",
+      "level": "conditional",
+      "requirement": "Если график использует выборку, сообщать её объём и метод; не подменять итоговую статистику статистикой случайной выборки незаметно.",
+      "source_references": [
+        {
+          "source": "user_request",
+          "section": "7. Производительность",
+          "line_start": 169,
+          "line_end": 169,
+          "anchor": "Если используется выборка для интерактивного графика"
+        }
+      ],
+      "acceptance_criteria": [
+        "В UI и отчёте рядом с sampled-графиком указаны n, генеральный объём и способ отбора.",
+        "Агрегаты всего набора рассчитаны по всему заявленному набору, а не по скрытой выборке."
+      ],
+      "condition": "Для интерактивной визуализации применяется подвыборка.",
+      "status": "pass",
+      "evidence": [
+        "analysis/analytics.py",
+        "tests/test_analytics.py",
+        "reports/final_test_results.xml",
+        "app/main.py",
+        "app/styles.css",
+        ".streamlit/config.toml",
+        "tests/test_app.py"
+      ],
+      "finding": "Девять графиков используют все записи текущего фильтра и точные агрегаты без случайной подвыборки. Превью500 строк явно подписано и не меняет KPI или выгрузку.",
+      "evidence_files": [
+        {
+          "path": "analysis/analytics.py",
+          "sha256": "382bf5f120263727e6ac705a434df4859f42346a04a8406858dce17622f0335a"
+        },
+        {
+          "path": "tests/test_analytics.py",
+          "sha256": "c6587bf2f0d0532bdb1a680f376253da31c4d6be1b7c69c3a0c117dff99a4ee3"
+        },
+        {
+          "path": "reports/final_test_results.xml",
+          "sha256": "7a8e48ee63979397d3abbc50101c03b8e4271a6f71dd6fe2ed99f51ca20c7e2e"
+        },
+        {
+          "path": "app/main.py",
+          "sha256": "3b11ab4330aaba8edb8458ea7b2dda593ad97f6adc36640d550b15a050554ca5"
+        },
+        {
+          "path": "app/styles.css",
+          "sha256": "754fdcbcfcd31c09bf08ae957ad3fafdad0fcbabc282f5d6776c9127e799a30f"
+        },
+        {
+          "path": ".streamlit/config.toml",
+          "sha256": "0bd5cefe8cfc197bd849f3da21ad9adcaa84770c735514d3d5823cd1598025aa"
+        },
+        {
+          "path": "tests/test_app.py",
+          "sha256": "1c91a0aa76ebdb64cc6e494398dcaf6a48e79d8d2eba3a5c85a742aebb2b4f9d"
+        }
+      ]
+    },
+    {
+      "id": "U42",
+      "category": "verification",
+      "level": "mandatory",
+      "requirement": "Проверить установку зависимостей.",
+      "source_references": [
+        {
+          "source": "user_request",
+          "section": "8. Проверка работы",
+          "line_start": 175,
+          "line_end": 175,
+          "anchor": "Проверку установки зависимостей"
+        }
+      ],
+      "acceptance_criteria": [
+        "Проверен setup/изолированное окружение; результат и версии зафиксированы."
+      ],
+      "status": "pass",
+      "evidence": [
+        "setup_windows.cmd",
+        "start_app.cmd",
+        "README.md",
+        "requirements.txt",
+        "requirements-lock.txt",
+        "scripts/install_dependencies.py",
+        "reports/setup_windows_test.json",
+        "reports/final_test_status.json",
+        "reports/final_test_results.xml",
+        "reports/pip_check.txt"
+      ],
+      "finding": "Реальный cmd.exe setup с BIGDATA_NO_PAUSE=1 прошёл: cold368.48с, финальный cached10.24с. Все55 pinned версии и55 SHA официальных PyPI wheels подтверждены; отдельный pip check чистый.",
+      "evidence_files": [
+        {
+          "path": "setup_windows.cmd",
+          "sha256": "cda8854633a6b444eedf08cd1474af5c750968bedfff3dcce4b3c6805e4e8d09"
+        },
+        {
+          "path": "start_app.cmd",
+          "sha256": "e823e68f8ee2a2bd8f23dc44cea346c3c3f37afd234dfe211721175fcbad3a97"
+        },
+        {
+          "path": "README.md",
+          "sha256": "d34ca5e8450bf7ebb5b0cefbcf79d96e2381a3377773fdc6a685a029a4c3cf1e"
+        },
+        {
+          "path": "requirements.txt",
+          "sha256": "319ff22400184d98c10e50012ad914c9d94fc97de3d4fe720166617478f14ffc"
+        },
+        {
+          "path": "requirements-lock.txt",
+          "sha256": "329c3ec30dbeb6592cd6338fdd783d2a72fe07563a9b01d11f3200b738cfb05a"
+        },
+        {
+          "path": "scripts/install_dependencies.py",
+          "sha256": "6d24fd579abf0c451d4e6792896cc20a44f4decda5bfcdb8fbbd8f3e8b6ecd89"
+        },
+        {
+          "path": "reports/setup_windows_test.json",
+          "sha256": "1f55e5acb6ab3db903dc998cf065354509ba17e33a9538a7a0c82f27f4d7cd91"
+        },
+        {
+          "path": "reports/final_test_status.json",
+          "sha256": "7362341ccd780319eda75abd9abf02616a64a0209e3c5ff8b1895ce2fb1724c3"
+        },
+        {
+          "path": "reports/final_test_results.xml",
+          "sha256": "7a8e48ee63979397d3abbc50101c03b8e4271a6f71dd6fe2ed99f51ca20c7e2e"
+        },
+        {
+          "path": "reports/pip_check.txt",
+          "sha256": "672aec65a45bed50e70229c70934a7eebf0462595c459b83023027645d57cccf"
+        }
+      ]
+    },
+    {
+      "id": "U43",
+      "category": "verification",
+      "level": "mandatory",
+      "requirement": "Проверить загрузку датасета.",
+      "source_references": [
+        {
+          "source": "user_request",
+          "section": "8. Проверка работы",
+          "line_start": 176,
+          "line_end": 176,
+          "anchor": "Проверку загрузки датасета"
+        }
+      ],
+      "acceptance_criteria": [
+        "Фактическая загрузка/чтение исходного файла успешно выполнены; проверена схема."
+      ],
+      "status": "pass",
+      "evidence": [
+        "analysis/download.py",
+        "tests/test_download.py",
+        "data/metadata/download_version_1.json",
+        "reports/final_test_status.json",
+        "reports/final_test_results.xml",
+        "reports/pip_check.txt"
+      ],
+      "finding": "Публичный pinned endpoint версии1 реально скачан без Authorization/Cookie, ZIP/CSV SHA подтверждены; локальное восстановление без сети и ответы401/403 с конкретной ручной инструкцией проверены.",
+      "evidence_files": [
+        {
+          "path": "analysis/download.py",
+          "sha256": "a0687ee2c72fdb0fc44dc481f486bcdd8090fd26387b12c586f5de82d93c51c4"
+        },
+        {
+          "path": "tests/test_download.py",
+          "sha256": "40ae867608f9b06611ce9eac2eb496bd1d3198ab63667edb3ed0090c61fde88a"
+        },
+        {
+          "path": "data/metadata/download_version_1.json",
+          "sha256": "a0c13005c6c2225f15abdba669b483406e72e97e99e5652fdbb9ad4a68400197"
+        },
+        {
+          "path": "reports/final_test_status.json",
+          "sha256": "7362341ccd780319eda75abd9abf02616a64a0209e3c5ff8b1895ce2fb1724c3"
+        },
+        {
+          "path": "reports/final_test_results.xml",
+          "sha256": "7a8e48ee63979397d3abbc50101c03b8e4271a6f71dd6fe2ed99f51ca20c7e2e"
+        },
+        {
+          "path": "reports/pip_check.txt",
+          "sha256": "672aec65a45bed50e70229c70934a7eebf0462595c459b83023027645d57cccf"
+        }
+      ]
+    },
+    {
+      "id": "U44",
+      "category": "verification",
+      "level": "mandatory",
+      "requirement": "Проверить все преобразования данных.",
+      "source_references": [
+        {
+          "source": "user_request",
+          "section": "8. Проверка работы",
+          "line_start": 177,
+          "line_end": 177,
+          "anchor": "Проверку всех преобразований данных"
+        }
+      ],
+      "acceptance_criteria": [
+        "Проверены счётчики, диапазоны, типы, дубликаты и сохранение исходных данных."
+      ],
+      "status": "pass",
+      "evidence": [
+        "analysis/pipeline.py",
+        "data/processed/quality.json",
+        "data/processed/normalization.json",
+        "tests/test_pipeline.py",
+        "analysis/analytics.py",
+        "tests/test_analytics.py",
+        "reports/final_test_results.xml",
+        "reports/final_test_status.json",
+        "reports/pip_check.txt"
+      ],
+      "finding": "Полный независимый pytest исполнил преобразования, счетчики, нормализацию, фильтры, данные всех9 графиков и контроль сырого файла; числовая проверка не заменяет отдельный визуальный просмотр.",
+      "evidence_files": [
+        {
+          "path": "analysis/pipeline.py",
+          "sha256": "16090c063bd5c71fc1291dcaf77fc1199107db631639e6795eed40ee138ffd1d"
+        },
+        {
+          "path": "data/processed/quality.json",
+          "sha256": "18ff0576278fc269d2d41e006e244c78116e6b58fda9fdd1bef68c64d611b7d2"
+        },
+        {
+          "path": "data/processed/normalization.json",
+          "sha256": "03f05b589f4cf100942334f39e5a87ba4a99e6134c1510ffbebc876522ab8d36"
+        },
+        {
+          "path": "tests/test_pipeline.py",
+          "sha256": "5e77e0dc0d7a51b612beb0bc0bbc80fbf6784e0fb6bcf3ec38b4d12ea618aee5"
+        },
+        {
+          "path": "analysis/analytics.py",
+          "sha256": "382bf5f120263727e6ac705a434df4859f42346a04a8406858dce17622f0335a"
+        },
+        {
+          "path": "tests/test_analytics.py",
+          "sha256": "c6587bf2f0d0532bdb1a680f376253da31c4d6be1b7c69c3a0c117dff99a4ee3"
+        },
+        {
+          "path": "reports/final_test_results.xml",
+          "sha256": "7a8e48ee63979397d3abbc50101c03b8e4271a6f71dd6fe2ed99f51ca20c7e2e"
+        },
+        {
+          "path": "reports/final_test_status.json",
+          "sha256": "7362341ccd780319eda75abd9abf02616a64a0209e3c5ff8b1895ce2fb1724c3"
+        },
+        {
+          "path": "reports/pip_check.txt",
+          "sha256": "672aec65a45bed50e70229c70934a7eebf0462595c459b83023027645d57cccf"
+        }
+      ]
+    },
+    {
+      "id": "U45",
+      "category": "verification",
+      "level": "mandatory",
+      "requirement": "Проверить вычисленные показатели.",
+      "source_references": [
+        {
+          "source": "user_request",
+          "section": "8. Проверка работы",
+          "line_start": 178,
+          "line_end": 178,
+          "anchor": "Проверку вычисленных показателей"
+        }
+      ],
+      "acceptance_criteria": [
+        "Ключевые агрегаты независимо перепроверены; суммы/доли согласованы с числом строк."
+      ],
+      "status": "pass",
+      "evidence": [
+        "analysis/pipeline.py",
+        "data/processed/quality.json",
+        "data/processed/normalization.json",
+        "tests/test_pipeline.py",
+        "analysis/analytics.py",
+        "tests/test_analytics.py",
+        "reports/final_test_results.xml",
+        "reports/final_test_status.json",
+        "reports/pip_check.txt"
+      ],
+      "finding": "Полный независимый pytest исполнил преобразования, счетчики, нормализацию, фильтры, данные всех9 графиков и контроль сырого файла; числовая проверка не заменяет отдельный визуальный просмотр.",
+      "evidence_files": [
+        {
+          "path": "analysis/pipeline.py",
+          "sha256": "16090c063bd5c71fc1291dcaf77fc1199107db631639e6795eed40ee138ffd1d"
+        },
+        {
+          "path": "data/processed/quality.json",
+          "sha256": "18ff0576278fc269d2d41e006e244c78116e6b58fda9fdd1bef68c64d611b7d2"
+        },
+        {
+          "path": "data/processed/normalization.json",
+          "sha256": "03f05b589f4cf100942334f39e5a87ba4a99e6134c1510ffbebc876522ab8d36"
+        },
+        {
+          "path": "tests/test_pipeline.py",
+          "sha256": "5e77e0dc0d7a51b612beb0bc0bbc80fbf6784e0fb6bcf3ec38b4d12ea618aee5"
+        },
+        {
+          "path": "analysis/analytics.py",
+          "sha256": "382bf5f120263727e6ac705a434df4859f42346a04a8406858dce17622f0335a"
+        },
+        {
+          "path": "tests/test_analytics.py",
+          "sha256": "c6587bf2f0d0532bdb1a680f376253da31c4d6be1b7c69c3a0c117dff99a4ee3"
+        },
+        {
+          "path": "reports/final_test_results.xml",
+          "sha256": "7a8e48ee63979397d3abbc50101c03b8e4271a6f71dd6fe2ed99f51ca20c7e2e"
+        },
+        {
+          "path": "reports/final_test_status.json",
+          "sha256": "7362341ccd780319eda75abd9abf02616a64a0209e3c5ff8b1895ce2fb1724c3"
+        },
+        {
+          "path": "reports/pip_check.txt",
+          "sha256": "672aec65a45bed50e70229c70934a7eebf0462595c459b83023027645d57cccf"
+        }
+      ]
+    },
+    {
+      "id": "U46",
+      "category": "verification",
+      "level": "mandatory",
+      "requirement": "Проверить все графики.",
+      "source_references": [
+        {
+          "source": "user_request",
+          "section": "8. Проверка работы",
+          "line_start": 179,
+          "line_end": 179,
+          "anchor": "Проверку всех графиков"
+        }
+      ],
+      "acceptance_criteria": [
+        "Каждый из минимум8 графиков реально построен, осмотрен и связан с фактическими полями."
+      ],
+      "status": "pass",
+      "evidence": [
+        "analysis/analytics.py",
+        "tests/test_analytics.py",
+        "reports/final_test_results.xml",
+        "reports/final_test_status.json",
+        "reports/pip_check.txt",
+        "reports/figures/manifest.json",
+        "reports/figures/visual_qa.json",
+        "reports/browser_test.json",
+        "reports/app_test_results.xml"
+      ],
+      "finding": "Все девять графиков проверены численно и по отдельным PNG в исходном разрешении; финальные SHA изображений совпадают. Реальные UI-графики также проверены в браузере.",
+      "evidence_files": [
+        {
+          "path": "analysis/analytics.py",
+          "sha256": "382bf5f120263727e6ac705a434df4859f42346a04a8406858dce17622f0335a"
+        },
+        {
+          "path": "tests/test_analytics.py",
+          "sha256": "c6587bf2f0d0532bdb1a680f376253da31c4d6be1b7c69c3a0c117dff99a4ee3"
+        },
+        {
+          "path": "reports/final_test_results.xml",
+          "sha256": "7a8e48ee63979397d3abbc50101c03b8e4271a6f71dd6fe2ed99f51ca20c7e2e"
+        },
+        {
+          "path": "reports/final_test_status.json",
+          "sha256": "7362341ccd780319eda75abd9abf02616a64a0209e3c5ff8b1895ce2fb1724c3"
+        },
+        {
+          "path": "reports/pip_check.txt",
+          "sha256": "672aec65a45bed50e70229c70934a7eebf0462595c459b83023027645d57cccf"
+        },
+        {
+          "path": "reports/figures/manifest.json",
+          "sha256": "02d3c7baf820e4402cbb6351f0c97753626aad670b1a575bae40d919d3122707"
+        },
+        {
+          "path": "reports/figures/visual_qa.json",
+          "sha256": "815d135ed820edb70d9fe54e01179c5b1c9d52234e23359687579db9dc15dcc0"
+        },
+        {
+          "path": "reports/browser_test.json",
+          "sha256": "ca3e00c09c7f7241d4e1a643b0ca2f0b9904b79a4dbb1a2bc862ed82b22d4f88"
+        },
+        {
+          "path": "reports/app_test_results.xml",
+          "sha256": "f5f3aac5340ca779a4e8947bdf87c9e934fed070ab844bc30e2a063b33d62fae"
+        }
+      ]
+    },
+    {
+      "id": "U47",
+      "category": "verification",
+      "level": "mandatory",
+      "requirement": "Проверить интерактивные фильтры.",
+      "source_references": [
+        {
+          "source": "user_request",
+          "section": "8. Проверка работы",
+          "line_start": 180,
+          "line_end": 180,
+          "anchor": "Проверку интерактивных фильтров"
+        }
+      ],
+      "acceptance_criteria": [
+        "Фильтры фактически изменены в работающем приложении; результат проверен."
+      ],
+      "status": "pass",
+      "evidence": [
+        "app/main.py",
+        "app/styles.css",
+        ".streamlit/config.toml",
+        "tests/test_app.py",
+        "analysis/analytics.py",
+        "tests/test_analytics.py",
+        "reports/final_test_results.xml",
+        "reports/final_test_status.json",
+        "reports/pip_check.txt"
+      ],
+      "finding": "Реальные AppTest-смены каждого фильтра сопоставлены с полным backend-запросом и KPI; пустой выбор убирает графики, выбор группы меняет видимые графики, CSV включает всю отфильтрованную выборку.",
+      "evidence_files": [
+        {
+          "path": "app/main.py",
+          "sha256": "3b11ab4330aaba8edb8458ea7b2dda593ad97f6adc36640d550b15a050554ca5"
+        },
+        {
+          "path": "app/styles.css",
+          "sha256": "754fdcbcfcd31c09bf08ae957ad3fafdad0fcbabc282f5d6776c9127e799a30f"
+        },
+        {
+          "path": ".streamlit/config.toml",
+          "sha256": "0bd5cefe8cfc197bd849f3da21ad9adcaa84770c735514d3d5823cd1598025aa"
+        },
+        {
+          "path": "tests/test_app.py",
+          "sha256": "1c91a0aa76ebdb64cc6e494398dcaf6a48e79d8d2eba3a5c85a742aebb2b4f9d"
+        },
+        {
+          "path": "analysis/analytics.py",
+          "sha256": "382bf5f120263727e6ac705a434df4859f42346a04a8406858dce17622f0335a"
+        },
+        {
+          "path": "tests/test_analytics.py",
+          "sha256": "c6587bf2f0d0532bdb1a680f376253da31c4d6be1b7c69c3a0c117dff99a4ee3"
+        },
+        {
+          "path": "reports/final_test_results.xml",
+          "sha256": "7a8e48ee63979397d3abbc50101c03b8e4271a6f71dd6fe2ed99f51ca20c7e2e"
+        },
+        {
+          "path": "reports/final_test_status.json",
+          "sha256": "7362341ccd780319eda75abd9abf02616a64a0209e3c5ff8b1895ce2fb1724c3"
+        },
+        {
+          "path": "reports/pip_check.txt",
+          "sha256": "672aec65a45bed50e70229c70934a7eebf0462595c459b83023027645d57cccf"
+        }
+      ]
+    },
+    {
+      "id": "U48",
+      "category": "verification",
+      "level": "mandatory",
+      "requirement": "Проверить обработку пустых выборок.",
+      "source_references": [
+        {
+          "source": "user_request",
+          "section": "8. Проверка работы",
+          "line_start": 181,
+          "line_end": 181,
+          "anchor": "Проверку обработки пустых выборок"
+        }
+      ],
+      "acceptance_criteria": [
+        "Комбинация без строк даёт понятное сообщение без traceback и некорректного графика."
+      ],
+      "status": "pass",
+      "evidence": [
+        "app/main.py",
+        "app/styles.css",
+        ".streamlit/config.toml",
+        "tests/test_app.py",
+        "analysis/pipeline.py",
+        "data/processed/quality.json",
+        "data/processed/normalization.json",
+        "tests/test_pipeline.py",
+        "analysis/download.py",
+        "tests/test_download.py",
+        "data/metadata/download_version_1.json",
+        "reports/final_test_status.json",
+        "reports/final_test_results.xml",
+        "reports/pip_check.txt"
+      ],
+      "finding": "Пустые выборки, отсутствующие prepared/raw файлы, несовпавшие SHA и неверные значения проверены реальными тестами; штатные сообщения UI/CLI исполнялись.",
+      "evidence_files": [
+        {
+          "path": "app/main.py",
+          "sha256": "3b11ab4330aaba8edb8458ea7b2dda593ad97f6adc36640d550b15a050554ca5"
+        },
+        {
+          "path": "app/styles.css",
+          "sha256": "754fdcbcfcd31c09bf08ae957ad3fafdad0fcbabc282f5d6776c9127e799a30f"
+        },
+        {
+          "path": ".streamlit/config.toml",
+          "sha256": "0bd5cefe8cfc197bd849f3da21ad9adcaa84770c735514d3d5823cd1598025aa"
+        },
+        {
+          "path": "tests/test_app.py",
+          "sha256": "1c91a0aa76ebdb64cc6e494398dcaf6a48e79d8d2eba3a5c85a742aebb2b4f9d"
+        },
+        {
+          "path": "analysis/pipeline.py",
+          "sha256": "16090c063bd5c71fc1291dcaf77fc1199107db631639e6795eed40ee138ffd1d"
+        },
+        {
+          "path": "data/processed/quality.json",
+          "sha256": "18ff0576278fc269d2d41e006e244c78116e6b58fda9fdd1bef68c64d611b7d2"
+        },
+        {
+          "path": "data/processed/normalization.json",
+          "sha256": "03f05b589f4cf100942334f39e5a87ba4a99e6134c1510ffbebc876522ab8d36"
+        },
+        {
+          "path": "tests/test_pipeline.py",
+          "sha256": "5e77e0dc0d7a51b612beb0bc0bbc80fbf6784e0fb6bcf3ec38b4d12ea618aee5"
+        },
+        {
+          "path": "analysis/download.py",
+          "sha256": "a0687ee2c72fdb0fc44dc481f486bcdd8090fd26387b12c586f5de82d93c51c4"
+        },
+        {
+          "path": "tests/test_download.py",
+          "sha256": "40ae867608f9b06611ce9eac2eb496bd1d3198ab63667edb3ed0090c61fde88a"
+        },
+        {
+          "path": "data/metadata/download_version_1.json",
+          "sha256": "a0c13005c6c2225f15abdba669b483406e72e97e99e5652fdbb9ad4a68400197"
+        },
+        {
+          "path": "reports/final_test_status.json",
+          "sha256": "7362341ccd780319eda75abd9abf02616a64a0209e3c5ff8b1895ce2fb1724c3"
+        },
+        {
+          "path": "reports/final_test_results.xml",
+          "sha256": "7a8e48ee63979397d3abbc50101c03b8e4271a6f71dd6fe2ed99f51ca20c7e2e"
+        },
+        {
+          "path": "reports/pip_check.txt",
+          "sha256": "672aec65a45bed50e70229c70934a7eebf0462595c459b83023027645d57cccf"
+        }
+      ]
+    },
+    {
+      "id": "U49",
+      "category": "verification",
+      "level": "mandatory",
+      "requirement": "Проверить обработку отсутствующих файлов.",
+      "source_references": [
+        {
+          "source": "user_request",
+          "section": "8. Проверка работы",
+          "line_start": 182,
+          "line_end": 182,
+          "anchor": "Проверку отсутствующих файлов"
+        }
+      ],
+      "acceptance_criteria": [
+        "Приложение/запуск сообщает, какого файла нет и как восстановить данные."
+      ],
+      "status": "pass",
+      "evidence": [
+        "app/main.py",
+        "app/styles.css",
+        ".streamlit/config.toml",
+        "tests/test_app.py",
+        "analysis/pipeline.py",
+        "data/processed/quality.json",
+        "data/processed/normalization.json",
+        "tests/test_pipeline.py",
+        "analysis/download.py",
+        "tests/test_download.py",
+        "data/metadata/download_version_1.json",
+        "reports/final_test_status.json",
+        "reports/final_test_results.xml",
+        "reports/pip_check.txt"
+      ],
+      "finding": "Пустые выборки, отсутствующие prepared/raw файлы, несовпавшие SHA и неверные значения проверены реальными тестами; штатные сообщения UI/CLI исполнялись.",
+      "evidence_files": [
+        {
+          "path": "app/main.py",
+          "sha256": "3b11ab4330aaba8edb8458ea7b2dda593ad97f6adc36640d550b15a050554ca5"
+        },
+        {
+          "path": "app/styles.css",
+          "sha256": "754fdcbcfcd31c09bf08ae957ad3fafdad0fcbabc282f5d6776c9127e799a30f"
+        },
+        {
+          "path": ".streamlit/config.toml",
+          "sha256": "0bd5cefe8cfc197bd849f3da21ad9adcaa84770c735514d3d5823cd1598025aa"
+        },
+        {
+          "path": "tests/test_app.py",
+          "sha256": "1c91a0aa76ebdb64cc6e494398dcaf6a48e79d8d2eba3a5c85a742aebb2b4f9d"
+        },
+        {
+          "path": "analysis/pipeline.py",
+          "sha256": "16090c063bd5c71fc1291dcaf77fc1199107db631639e6795eed40ee138ffd1d"
+        },
+        {
+          "path": "data/processed/quality.json",
+          "sha256": "18ff0576278fc269d2d41e006e244c78116e6b58fda9fdd1bef68c64d611b7d2"
+        },
+        {
+          "path": "data/processed/normalization.json",
+          "sha256": "03f05b589f4cf100942334f39e5a87ba4a99e6134c1510ffbebc876522ab8d36"
+        },
+        {
+          "path": "tests/test_pipeline.py",
+          "sha256": "5e77e0dc0d7a51b612beb0bc0bbc80fbf6784e0fb6bcf3ec38b4d12ea618aee5"
+        },
+        {
+          "path": "analysis/download.py",
+          "sha256": "a0687ee2c72fdb0fc44dc481f486bcdd8090fd26387b12c586f5de82d93c51c4"
+        },
+        {
+          "path": "tests/test_download.py",
+          "sha256": "40ae867608f9b06611ce9eac2eb496bd1d3198ab63667edb3ed0090c61fde88a"
+        },
+        {
+          "path": "data/metadata/download_version_1.json",
+          "sha256": "a0c13005c6c2225f15abdba669b483406e72e97e99e5652fdbb9ad4a68400197"
+        },
+        {
+          "path": "reports/final_test_status.json",
+          "sha256": "7362341ccd780319eda75abd9abf02616a64a0209e3c5ff8b1895ce2fb1724c3"
+        },
+        {
+          "path": "reports/final_test_results.xml",
+          "sha256": "7a8e48ee63979397d3abbc50101c03b8e4271a6f71dd6fe2ed99f51ca20c7e2e"
+        },
+        {
+          "path": "reports/pip_check.txt",
+          "sha256": "672aec65a45bed50e70229c70934a7eebf0462595c459b83023027645d57cccf"
+        }
+      ]
+    },
+    {
+      "id": "U50",
+      "category": "verification",
+      "level": "mandatory",
+      "requirement": "Проверить запуск на Windows.",
+      "source_references": [
+        {
+          "source": "user_request",
+          "section": "8. Проверка работы",
+          "line_start": 183,
+          "line_end": 183,
+          "anchor": "Проверку запуска на Windows"
+        }
+      ],
+      "acceptance_criteria": [
+        "setup/start фактически запускаются на Windows11; не заявлен Linux-only результат как Windows-проверка."
+      ],
+      "status": "pass",
+      "evidence": [
+        "setup_windows.cmd",
+        "start_app.cmd",
+        "README.md",
+        "requirements.txt",
+        "requirements-lock.txt",
+        "scripts/install_dependencies.py",
+        "reports/setup_windows_test.json",
+        "reports/final_test_status.json",
+        "reports/final_test_results.xml",
+        "reports/pip_check.txt",
+        "reports/browser_test.json",
+        "reports/app_test_results.xml"
+      ],
+      "finding": "Реальный Windows setup завершился успешно; приложение фактически запущено через cmd.exe start_app.cmd. HTTP 200 / health ok и реальные браузерные действия записаны с SHA финальных UI-исходников.",
+      "evidence_files": [
+        {
+          "path": "setup_windows.cmd",
+          "sha256": "cda8854633a6b444eedf08cd1474af5c750968bedfff3dcce4b3c6805e4e8d09"
+        },
+        {
+          "path": "start_app.cmd",
+          "sha256": "e823e68f8ee2a2bd8f23dc44cea346c3c3f37afd234dfe211721175fcbad3a97"
+        },
+        {
+          "path": "README.md",
+          "sha256": "d34ca5e8450bf7ebb5b0cefbcf79d96e2381a3377773fdc6a685a029a4c3cf1e"
+        },
+        {
+          "path": "requirements.txt",
+          "sha256": "319ff22400184d98c10e50012ad914c9d94fc97de3d4fe720166617478f14ffc"
+        },
+        {
+          "path": "requirements-lock.txt",
+          "sha256": "329c3ec30dbeb6592cd6338fdd783d2a72fe07563a9b01d11f3200b738cfb05a"
+        },
+        {
+          "path": "scripts/install_dependencies.py",
+          "sha256": "6d24fd579abf0c451d4e6792896cc20a44f4decda5bfcdb8fbbd8f3e8b6ecd89"
+        },
+        {
+          "path": "reports/setup_windows_test.json",
+          "sha256": "1f55e5acb6ab3db903dc998cf065354509ba17e33a9538a7a0c82f27f4d7cd91"
+        },
+        {
+          "path": "reports/final_test_status.json",
+          "sha256": "7362341ccd780319eda75abd9abf02616a64a0209e3c5ff8b1895ce2fb1724c3"
+        },
+        {
+          "path": "reports/final_test_results.xml",
+          "sha256": "7a8e48ee63979397d3abbc50101c03b8e4271a6f71dd6fe2ed99f51ca20c7e2e"
+        },
+        {
+          "path": "reports/pip_check.txt",
+          "sha256": "672aec65a45bed50e70229c70934a7eebf0462595c459b83023027645d57cccf"
+        },
+        {
+          "path": "reports/browser_test.json",
+          "sha256": "ca3e00c09c7f7241d4e1a643b0ca2f0b9904b79a4dbb1a2bc862ed82b22d4f88"
+        },
+        {
+          "path": "reports/app_test_results.xml",
+          "sha256": "f5f3aac5340ca779a4e8947bdf87c9e934fed070ab844bc30e2a063b33d62fae"
+        }
+      ]
+    },
+    {
+      "id": "U51",
+      "category": "verification",
+      "level": "mandatory",
+      "requirement": "Проверить соответствие заданию преподавателя.",
+      "source_references": [
+        {
+          "source": "user_request",
+          "section": "8. Проверка работы",
+          "line_start": 184,
+          "line_end": 184,
+          "anchor": "Проверку соответствия заданию преподавателя"
+        }
+      ],
+      "acceptance_criteria": [
+        "M01–M11 сведены с реально реализованными элементами и доказательствами."
+      ],
+      "status": "pass",
+      "evidence": [
+        "reports/document_check.json",
+        "reports/browser_test.json"
+      ],
+      "finding": "Сопоставлены все 72 требования. Уникальность набора в группе явно основана на сообщении пользователя; условие огромного набора неприменимо. Проверки документов, интерфейса и упаковки подтверждаются отдельными доказательствами.",
+      "evidence_files": [
+        {
+          "path": "reports/document_check.json",
+          "sha256": "f13539d16f90901c9eff2f237e636cbfbc190cace50356eb48721a874b9bd34d"
+        },
+        {
+          "path": "reports/browser_test.json",
+          "sha256": "ca3e00c09c7f7241d4e1a643b0ca2f0b9904b79a4dbb1a2bc862ed82b22d4f88"
+        }
+      ]
+    },
+    {
+      "id": "U52",
+      "category": "truthfulness",
+      "level": "mandatory",
+      "requirement": "Не утверждать, что интерактивные элементы работают, без фактической проверки.",
+      "source_references": [
+        {
+          "source": "user_request",
+          "section": "8. Проверка работы",
+          "line_start": 186,
+          "line_end": 186,
+          "anchor": "Не утверждай, что интерактивные элементы работают"
+        }
+      ],
+      "acceptance_criteria": [
+        "Отчёт о проверке различает выполненные действия, статический анализ и непроверенные ограничения."
+      ],
+      "status": "pass",
+      "evidence": [
+        "reports/final_test_status.json",
+        "reports/final_test_results.xml",
+        "reports/pip_check.txt",
+        "app/main.py",
+        "app/styles.css",
+        ".streamlit/config.toml",
+        "tests/test_app.py",
+        "reports/browser_test.json",
+        "reports/app_test_results.xml"
+      ],
+      "finding": "Проверки исходников, AppTest и фактического браузера разделены. Реальные разделы/фильтры/пустое состояние/автор проверены; фото остаётся честной загрузкой своего изображения, карта явно учебная без платёжных реквизитов.",
+      "evidence_files": [
+        {
+          "path": "reports/final_test_status.json",
+          "sha256": "7362341ccd780319eda75abd9abf02616a64a0209e3c5ff8b1895ce2fb1724c3"
+        },
+        {
+          "path": "reports/final_test_results.xml",
+          "sha256": "7a8e48ee63979397d3abbc50101c03b8e4271a6f71dd6fe2ed99f51ca20c7e2e"
+        },
+        {
+          "path": "reports/pip_check.txt",
+          "sha256": "672aec65a45bed50e70229c70934a7eebf0462595c459b83023027645d57cccf"
+        },
+        {
+          "path": "app/main.py",
+          "sha256": "3b11ab4330aaba8edb8458ea7b2dda593ad97f6adc36640d550b15a050554ca5"
+        },
+        {
+          "path": "app/styles.css",
+          "sha256": "754fdcbcfcd31c09bf08ae957ad3fafdad0fcbabc282f5d6776c9127e799a30f"
+        },
+        {
+          "path": ".streamlit/config.toml",
+          "sha256": "0bd5cefe8cfc197bd849f3da21ad9adcaa84770c735514d3d5823cd1598025aa"
+        },
+        {
+          "path": "tests/test_app.py",
+          "sha256": "1c91a0aa76ebdb64cc6e494398dcaf6a48e79d8d2eba3a5c85a742aebb2b4f9d"
+        },
+        {
+          "path": "reports/browser_test.json",
+          "sha256": "ca3e00c09c7f7241d4e1a643b0ca2f0b9904b79a4dbb1a2bc862ed82b22d4f88"
+        },
+        {
+          "path": "reports/app_test_results.xml",
+          "sha256": "f5f3aac5340ca779a4e8947bdf87c9e934fed070ab844bc30e2a063b33d62fae"
+        }
+      ]
+    },
+    {
+      "id": "U53",
+      "category": "launch",
+      "level": "mandatory",
+      "requirement": "Подготовить простой запуск на Windows11: setup_windows.cmd, start_app.cmd, README.md и requirements.txt либо эквивалент зависимостей.",
+      "source_references": [
+        {
+          "source": "user_request",
+          "section": "9. Запуск пользователем",
+          "line_start": 194,
+          "line_end": 194,
+          "anchor": "setup_windows.cmd"
+        },
+        {
+          "source": "user_request",
+          "section": "9. Запуск пользователем",
+          "line_start": 195,
+          "line_end": 195,
+          "anchor": "start_app.cmd"
+        },
+        {
+          "source": "user_request",
+          "section": "9. Запуск пользователем",
+          "line_start": 196,
+          "line_end": 196,
+          "anchor": "README.md"
+        },
+        {
+          "source": "user_request",
+          "section": "9. Запуск пользователем",
+          "line_start": 197,
+          "line_end": 197,
+          "anchor": "requirements.txt"
+        }
+      ],
+      "acceptance_criteria": [
+        "setup_windows.cmd создаёт/настраивает окружение и устанавливает зависимости.",
+        "start_app.cmd запускает локальное приложение из распакованного проекта.",
+        "README содержит пошаговые действия, данные/лицензию и устранение типовых проблем.",
+        "Зависимости явно перечислены и воспроизводимо устанавливаются."
+      ],
+      "status": "pass",
+      "evidence": [
+        "setup_windows.cmd",
+        "start_app.cmd",
+        "README.md",
+        "requirements.txt",
+        "requirements-lock.txt",
+        "scripts/install_dependencies.py",
+        "reports/setup_windows_test.json"
+      ],
+      "finding": "Файлы Windows-запуска, README и фиксированные зависимости присутствуют, используют локальное .venv/PyPI и127.0.0.1:8501. Docker/WSL/отдельный сервер или отключение защиты Windows не требуются; системные настройки защиты не менялись.",
+      "evidence_files": [
+        {
+          "path": "setup_windows.cmd",
+          "sha256": "cda8854633a6b444eedf08cd1474af5c750968bedfff3dcce4b3c6805e4e8d09"
+        },
+        {
+          "path": "start_app.cmd",
+          "sha256": "e823e68f8ee2a2bd8f23dc44cea346c3c3f37afd234dfe211721175fcbad3a97"
+        },
+        {
+          "path": "README.md",
+          "sha256": "d34ca5e8450bf7ebb5b0cefbcf79d96e2381a3377773fdc6a685a029a4c3cf1e"
+        },
+        {
+          "path": "requirements.txt",
+          "sha256": "319ff22400184d98c10e50012ad914c9d94fc97de3d4fe720166617478f14ffc"
+        },
+        {
+          "path": "requirements-lock.txt",
+          "sha256": "329c3ec30dbeb6592cd6338fdd783d2a72fe07563a9b01d11f3200b738cfb05a"
+        },
+        {
+          "path": "scripts/install_dependencies.py",
+          "sha256": "6d24fd579abf0c451d4e6792896cc20a44f4decda5bfcdb8fbbd8f3e8b6ecd89"
+        },
+        {
+          "path": "reports/setup_windows_test.json",
+          "sha256": "1f55e5acb6ab3db903dc998cf065354509ba17e33a9538a7a0c82f27f4d7cd91"
+        }
+      ]
+    },
+    {
+      "id": "U54",
+      "category": "launch",
+      "level": "mandatory",
+      "requirement": "Не требовать Docker, WSL2 или отдельный сервер без технической необходимости.",
+      "source_references": [
+        {
+          "source": "user_request",
+          "section": "9. Запуск пользователем",
+          "line_start": 199,
+          "line_end": 199,
+          "anchor": "Не требуй установки Docker"
+        }
+      ],
+      "acceptance_criteria": [
+        "Обычный запуск работает средствами Windows и Python; любой дополнительный обязательный компонент отдельно обоснован."
+      ],
+      "status": "pass",
+      "evidence": [
+        "setup_windows.cmd",
+        "start_app.cmd",
+        "README.md",
+        "requirements.txt",
+        "requirements-lock.txt",
+        "scripts/install_dependencies.py",
+        "reports/setup_windows_test.json"
+      ],
+      "finding": "Файлы Windows-запуска, README и фиксированные зависимости присутствуют, используют локальное .venv/PyPI и127.0.0.1:8501. Docker/WSL/отдельный сервер или отключение защиты Windows не требуются; системные настройки защиты не менялись.",
+      "evidence_files": [
+        {
+          "path": "setup_windows.cmd",
+          "sha256": "cda8854633a6b444eedf08cd1474af5c750968bedfff3dcce4b3c6805e4e8d09"
+        },
+        {
+          "path": "start_app.cmd",
+          "sha256": "e823e68f8ee2a2bd8f23dc44cea346c3c3f37afd234dfe211721175fcbad3a97"
+        },
+        {
+          "path": "README.md",
+          "sha256": "d34ca5e8450bf7ebb5b0cefbcf79d96e2381a3377773fdc6a685a029a4c3cf1e"
+        },
+        {
+          "path": "requirements.txt",
+          "sha256": "319ff22400184d98c10e50012ad914c9d94fc97de3d4fe720166617478f14ffc"
+        },
+        {
+          "path": "requirements-lock.txt",
+          "sha256": "329c3ec30dbeb6592cd6338fdd783d2a72fe07563a9b01d11f3200b738cfb05a"
+        },
+        {
+          "path": "scripts/install_dependencies.py",
+          "sha256": "6d24fd579abf0c451d4e6792896cc20a44f4decda5bfcdb8fbbd8f3e8b6ecd89"
+        },
+        {
+          "path": "reports/setup_windows_test.json",
+          "sha256": "1f55e5acb6ab3db903dc998cf065354509ba17e33a9538a7a0c82f27f4d7cd91"
+        }
+      ]
+    },
+    {
+      "id": "U55",
+      "category": "security",
+      "level": "mandatory",
+      "requirement": "Не отключать защиту Windows.",
+      "source_references": [
+        {
+          "source": "user_request",
+          "section": "9. Запуск пользователем",
+          "line_start": 201,
+          "line_end": 201,
+          "anchor": "Не отключай защиту Windows"
+        }
+      ],
+      "acceptance_criteria": [
+        "Нет инструкций или команд отключения Defender/другой защиты, ослабления системной безопасности."
+      ],
+      "status": "pass",
+      "evidence": [
+        "setup_windows.cmd",
+        "start_app.cmd",
+        "README.md",
+        "requirements.txt",
+        "requirements-lock.txt",
+        "scripts/install_dependencies.py",
+        "reports/setup_windows_test.json"
+      ],
+      "finding": "Файлы Windows-запуска, README и фиксированные зависимости присутствуют, используют локальное .venv/PyPI и127.0.0.1:8501. Docker/WSL/отдельный сервер или отключение защиты Windows не требуются; системные настройки защиты не менялись.",
+      "evidence_files": [
+        {
+          "path": "setup_windows.cmd",
+          "sha256": "cda8854633a6b444eedf08cd1474af5c750968bedfff3dcce4b3c6805e4e8d09"
+        },
+        {
+          "path": "start_app.cmd",
+          "sha256": "e823e68f8ee2a2bd8f23dc44cea346c3c3f37afd234dfe211721175fcbad3a97"
+        },
+        {
+          "path": "README.md",
+          "sha256": "d34ca5e8450bf7ebb5b0cefbcf79d96e2381a3377773fdc6a685a029a4c3cf1e"
+        },
+        {
+          "path": "requirements.txt",
+          "sha256": "319ff22400184d98c10e50012ad914c9d94fc97de3d4fe720166617478f14ffc"
+        },
+        {
+          "path": "requirements-lock.txt",
+          "sha256": "329c3ec30dbeb6592cd6338fdd783d2a72fe07563a9b01d11f3200b738cfb05a"
+        },
+        {
+          "path": "scripts/install_dependencies.py",
+          "sha256": "6d24fd579abf0c451d4e6792896cc20a44f4decda5bfcdb8fbbd8f3e8b6ecd89"
+        },
+        {
+          "path": "reports/setup_windows_test.json",
+          "sha256": "1f55e5acb6ab3db903dc998cf065354509ba17e33a9538a7a0c82f27f4d7cd91"
+        }
+      ]
+    },
+    {
+      "id": "U56",
+      "category": "report",
+      "level": "mandatory",
+      "requirement": "Подготовить Word-отчёт с титульным листом РГЭУ(РИНХ), целью, описанием и происхождением данных, очисткой, инструментами, реальными скриншотами, всеми8 визуализациями, анализом, собственными выводами и источниками.",
+      "source_references": [
+        {
+          "source": "user_request",
+          "section": "10. Отчёт для преподавателя",
+          "line_start": 205,
+          "line_end": 205,
+          "anchor": "Подготовь Word-отчёт:"
+        }
+      ],
+      "acceptance_criteria": [
+        "Реальный DOCX содержит все11 перечисленных блоков содержания.",
+        "Отчёт соответствует готовому приложению и фактическим значениям."
+      ],
+      "interpretation_notes": "Пользователь не требует точного количества страниц, ГОСТ-библиографии, содержания или фиксированной нумерации разделов. Их добавление допустимо, но это не обязательные критерии исходного задания.",
+      "status": "pass",
+      "evidence": [
+        "reports/document_check.json",
+        "reports/Системы_больших_данных_Индивидуальная_2_Бондаренко.docx",
+        "reports/Системы_больших_данных_Индивидуальная_2_Бондаренко.pdf"
+      ],
+      "finding": "Финальные DOCX и PDF созданы и совпадают с проверенными SHA. Структурное, содержательное и визуальное QA всех 30 страниц PASS; 32 числовые проверки и исправления C01/C02 подтверждены.",
+      "evidence_files": [
+        {
+          "path": "reports/document_check.json",
+          "sha256": "f13539d16f90901c9eff2f237e636cbfbc190cace50356eb48721a874b9bd34d"
+        },
+        {
+          "path": "reports/Системы_больших_данных_Индивидуальная_2_Бондаренко.docx",
+          "sha256": "4bb5c4d558b6355d98f33b7b552047bdd849e011c07720e6b7be02b549741a5c"
+        },
+        {
+          "path": "reports/Системы_больших_данных_Индивидуальная_2_Бондаренко.pdf",
+          "sha256": "842869ce1b57db78d3b951b9a63bf1e5ff68c8f885b52e28c97b73c43e603922"
+        }
+      ]
+    },
+    {
+      "id": "U57",
+      "category": "report_format",
+      "level": "mandatory",
+      "requirement": "Оформить отчёт A4, TimesNewRoman14, интервал1.5, чёрные заголовки и таблицы без декоративной заливки.",
+      "source_references": [
+        {
+          "source": "user_request",
+          "section": "10. Отчёт для преподавателя",
+          "line_start": 219,
+          "line_end": 219,
+          "anchor": "Оформление: A4"
+        }
+      ],
+      "acceptance_criteria": [
+        "Параметры DOCX и визуальный PDF соответствуют требованиям, нет цветных заголовков/декоративных заливок таблиц."
+      ],
+      "status": "pass",
+      "evidence": [
+        "reports/document_check.json",
+        "reports/Системы_больших_данных_Индивидуальная_2_Бондаренко.docx",
+        "reports/Системы_больших_данных_Индивидуальная_2_Бондаренко.pdf"
+      ],
+      "finding": "Финальные DOCX и PDF созданы и совпадают с проверенными SHA. Структурное, содержательное и визуальное QA всех 30 страниц PASS; 32 числовые проверки и исправления C01/C02 подтверждены.",
+      "evidence_files": [
+        {
+          "path": "reports/document_check.json",
+          "sha256": "f13539d16f90901c9eff2f237e636cbfbc190cace50356eb48721a874b9bd34d"
+        },
+        {
+          "path": "reports/Системы_больших_данных_Индивидуальная_2_Бондаренко.docx",
+          "sha256": "4bb5c4d558b6355d98f33b7b552047bdd849e011c07720e6b7be02b549741a5c"
+        },
+        {
+          "path": "reports/Системы_больших_данных_Индивидуальная_2_Бондаренко.pdf",
+          "sha256": "842869ce1b57db78d3b951b9a63bf1e5ff68c8f885b52e28c97b73c43e603922"
+        }
+      ]
+    },
+    {
+      "id": "U58",
+      "category": "report",
+      "level": "mandatory",
+      "requirement": "Создать PDF-копию Word-отчёта.",
+      "source_references": [
+        {
+          "source": "user_request",
+          "section": "10. Отчёт для преподавателя",
+          "line_start": 221,
+          "line_end": 221,
+          "anchor": "Также создай PDF-копию"
+        }
+      ],
+      "acceptance_criteria": [
+        "PDF открывается, соответствует окончательному DOCX, читаем и не обрезан."
+      ],
+      "status": "pass",
+      "evidence": [
+        "reports/document_check.json",
+        "reports/Системы_больших_данных_Индивидуальная_2_Бондаренко.docx",
+        "reports/Системы_больших_данных_Индивидуальная_2_Бондаренко.pdf"
+      ],
+      "finding": "Финальные DOCX и PDF созданы и совпадают с проверенными SHA. Структурное, содержательное и визуальное QA всех 30 страниц PASS; 32 числовые проверки и исправления C01/C02 подтверждены.",
+      "evidence_files": [
+        {
+          "path": "reports/document_check.json",
+          "sha256": "f13539d16f90901c9eff2f237e636cbfbc190cace50356eb48721a874b9bd34d"
+        },
+        {
+          "path": "reports/Системы_больших_данных_Индивидуальная_2_Бондаренко.docx",
+          "sha256": "4bb5c4d558b6355d98f33b7b552047bdd849e011c07720e6b7be02b549741a5c"
+        },
+        {
+          "path": "reports/Системы_больших_данных_Индивидуальная_2_Бондаренко.pdf",
+          "sha256": "842869ce1b57db78d3b951b9a63bf1e5ff68c8f885b52e28c97b73c43e603922"
+        }
+      ]
+    },
+    {
+      "id": "U59",
+      "category": "evidence",
+      "level": "mandatory",
+      "requirement": "Скриншоты делать из реально запущенного приложения, не генерировать их как иллюстрации.",
+      "source_references": [
+        {
+          "source": "user_request",
+          "section": "10. Отчёт для преподавателя",
+          "line_start": 223,
+          "line_end": 223,
+          "anchor": "Скриншоты должны быть сделаны из реально запущенного приложения"
+        }
+      ],
+      "acceptance_criteria": [
+        "Есть реальные снимки работающего локального приложения; они соответствуют реализованному интерфейсу и данным."
+      ],
+      "status": "pass",
+      "evidence": [
+        "reports/browser_test.json",
+        "reports/app_test_results.xml",
+        "reports/screenshots/01_home.png",
+        "reports/screenshots/02_preparation.png",
+        "reports/screenshots/03_empty_filter.png",
+        "reports/screenshots/04_tcp_filter.png",
+        "reports/screenshots/05_analytics_duration.png",
+        "reports/screenshots/06_author.png",
+        "reports/screenshots/07_data.png",
+        "reports/screenshots/08_mobile_home.png",
+        "reports/screenshots/09_mobile_analytics.png",
+        "reports/screenshots/10_author_card.png"
+      ],
+      "finding": "Реальные скриншоты работающего локального приложения проверены по SHA и привязаны к browser_test.json. Они отделены от печатных экспортов Plotly и включены в комплект.",
+      "evidence_files": [
+        {
+          "path": "reports/browser_test.json",
+          "sha256": "ca3e00c09c7f7241d4e1a643b0ca2f0b9904b79a4dbb1a2bc862ed82b22d4f88"
+        },
+        {
+          "path": "reports/app_test_results.xml",
+          "sha256": "f5f3aac5340ca779a4e8947bdf87c9e934fed070ab844bc30e2a063b33d62fae"
+        },
+        {
+          "path": "reports/screenshots/01_home.png",
+          "sha256": "2e7b5e965613b3b05c2c50e1f1e884af9fe2f4903cd608f76c577733b95785f2"
+        },
+        {
+          "path": "reports/screenshots/02_preparation.png",
+          "sha256": "6057dbc45ddbc2a06396921c6c53fc2a4074f09a9582eb0203b9195c63575646"
+        },
+        {
+          "path": "reports/screenshots/03_empty_filter.png",
+          "sha256": "25b19d712574e166f102aa7c74a5fcbff2928284653bdb126798088d9f0c14e1"
+        },
+        {
+          "path": "reports/screenshots/04_tcp_filter.png",
+          "sha256": "e5d777025bc014310bd21e25da568f2ac366c2f06f7cfb5d4b20b2ea5226692f"
+        },
+        {
+          "path": "reports/screenshots/05_analytics_duration.png",
+          "sha256": "5da10eae011bc2600952ae0b40b397148b6867f5bbde910c04c10ec9f830df12"
+        },
+        {
+          "path": "reports/screenshots/06_author.png",
+          "sha256": "9d6a6d4c1a79a3100845a323f9df46a848929994bad86cb2ea4da2e5d9f41430"
+        },
+        {
+          "path": "reports/screenshots/07_data.png",
+          "sha256": "dac797fd181c1dcb4853ee2045380bf93ec8d5e78958f026943ba1e26a595da8"
+        },
+        {
+          "path": "reports/screenshots/08_mobile_home.png",
+          "sha256": "f5f1fa809663fba0b980e1f8210155c1dbf8d5950dcdb653c32ba107941eed99"
+        },
+        {
+          "path": "reports/screenshots/09_mobile_analytics.png",
+          "sha256": "52fe2cf65750d94b2a27e4f7a81fe5de3b6301f02a86865d52777ec0495e0e60"
+        },
+        {
+          "path": "reports/screenshots/10_author_card.png",
+          "sha256": "9d6a6d4c1a79a3100845a323f9df46a848929994bad86cb2ea4da2e5d9f41430"
+        }
+      ]
+    },
+    {
+      "id": "U60",
+      "category": "packaging",
+      "level": "mandatory",
+      "requirement": "Предоставить проект, который можно распаковать и запустить на Windows; упаковать итоговые материалы в ZIP.",
+      "source_references": [
+        {
+          "source": "user_request",
+          "section": "11. Итог",
+          "line_start": 227,
+          "line_end": 227,
+          "anchor": "Предоставь проект, который можно распаковать"
+        },
+        {
+          "source": "user_request",
+          "section": "11. Итог",
+          "line_start": 242,
+          "line_end": 242,
+          "anchor": "Упакуй итоговые материалы в ZIP"
+        }
+      ],
+      "acceptance_criteria": [
+        "ZIP содержит работающие исходники, необходимые разрешённые данные/процедуру их получения, запуск, зависимости, инструкцию и отчёты."
+      ],
+      "status": "pass",
+      "evidence": [
+        "README.md",
+        "setup_windows.cmd",
+        "start_app.cmd",
+        "reports/document_check.json",
+        "reports/Системы_больших_данных_Индивидуальная_2_Бондаренко.docx",
+        "reports/Системы_больших_данных_Индивидуальная_2_Бондаренко.pdf"
+      ],
+      "finding": "Кандидат ZIP фактически создан, CRC и SHA каждого элемента проверены; выполнена реальная распаковка с проверкой. После обновления аудита формируется итоговый ZIP. Его SHA хранится только во внешнем манифесте для исключения циклической зависимости.",
+      "evidence_files": [
+        {
+          "path": "README.md",
+          "sha256": "d34ca5e8450bf7ebb5b0cefbcf79d96e2381a3377773fdc6a685a029a4c3cf1e"
+        },
+        {
+          "path": "setup_windows.cmd",
+          "sha256": "cda8854633a6b444eedf08cd1474af5c750968bedfff3dcce4b3c6805e4e8d09"
+        },
+        {
+          "path": "start_app.cmd",
+          "sha256": "e823e68f8ee2a2bd8f23dc44cea346c3c3f37afd234dfe211721175fcbad3a97"
+        },
+        {
+          "path": "reports/document_check.json",
+          "sha256": "f13539d16f90901c9eff2f237e636cbfbc190cace50356eb48721a874b9bd34d"
+        },
+        {
+          "path": "reports/Системы_больших_данных_Индивидуальная_2_Бондаренко.docx",
+          "sha256": "4bb5c4d558b6355d98f33b7b552047bdd849e011c07720e6b7be02b549741a5c"
+        },
+        {
+          "path": "reports/Системы_больших_данных_Индивидуальная_2_Бондаренко.pdf",
+          "sha256": "842869ce1b57db78d3b951b9a63bf1e5ff68c8f885b52e28c97b73c43e603922"
+        }
+      ]
+    },
+    {
+      "id": "U61",
+      "category": "final_response",
+      "level": "mandatory",
+      "requirement": "В финале указать ссылку на датасет, число записей, преобразования, графики, результаты тестирования и остающиеся ограничения.",
+      "source_references": [
+        {
+          "source": "user_request",
+          "section": "11. Итог",
+          "line_start": 244,
+          "line_end": 244,
+          "anchor": "В финальном сообщении укажи"
+        }
+      ],
+      "acceptance_criteria": [
+        "Финальная сводка содержит все6 пунктов, ограничения честно отделены от выполненного."
+      ],
+      "status": "prepared_for_delivery",
+      "evidence": [
+        "reports/document_check.json",
+        "reports/Системы_больших_данных_Индивидуальная_2_Бондаренко.docx",
+        "reports/Системы_больших_данных_Индивидуальная_2_Бондаренко.pdf",
+        "reports/browser_test.json",
+        "reports/app_test_results.xml"
+      ],
+      "finding": "Материалы подготовлены к передаче. Финальное сообщение должно содержать ссылку на Kaggle, 494020/145585 записей, преобразования, девять графиков, тесты и ограничения. Факт отправки пользователю этим аудитом не утверждается.",
+      "evidence_files": [
+        {
+          "path": "reports/document_check.json",
+          "sha256": "f13539d16f90901c9eff2f237e636cbfbc190cace50356eb48721a874b9bd34d"
+        },
+        {
+          "path": "reports/Системы_больших_данных_Индивидуальная_2_Бондаренко.docx",
+          "sha256": "4bb5c4d558b6355d98f33b7b552047bdd849e011c07720e6b7be02b549741a5c"
+        },
+        {
+          "path": "reports/Системы_больших_данных_Индивидуальная_2_Бондаренко.pdf",
+          "sha256": "842869ce1b57db78d3b951b9a63bf1e5ff68c8f885b52e28c97b73c43e603922"
+        },
+        {
+          "path": "reports/browser_test.json",
+          "sha256": "ca3e00c09c7f7241d4e1a643b0ca2f0b9904b79a4dbb1a2bc862ed82b22d4f88"
+        },
+        {
+          "path": "reports/app_test_results.xml",
+          "sha256": "f5f3aac5340ca779a4e8947bdf87c9e934fed070ab844bc30e2a063b33d62fae"
+        }
+      ]
+    }
+  ],
+  "pending_owner": "The final archive must be rebuilt after this audit update; the main executor attaches the external archive hash and sends the user-facing links.",
+  "finalized_utc": "2026-10-24T21:34:43.432563+00:00",
+  "document_check": "reports/document_check.json",
+  "browser_test": "reports/browser_test.json",
+  "package_verification": {
+    "status": "pass",
+    "candidate_archive": "BigData_Bondarenko_candidate.zip",
+    "candidate_entry_count": 106,
+    "member_SHA_and_CRC_verified": true,
+    "actual_extraction_verified": true,
+    "final_archive": "BigData_Bondarenko_Готовый_проект.zip",
+    "scope": "A real candidate ZIP was created, all members verified, and actual extraction checked. The final ZIP must be rebuilt after this audit update. Its SHA is kept only externally."
+  }
+}

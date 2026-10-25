@@ -1,0 +1,8 @@
+{
+  "url": "https://www.kaggle.com/api/v1/datasets/download/toobajamal/kdd99-dataset?datasetVersionNumber=1",
+  "http_status": 200,
+  "bytes": 2298679,
+  "sha256": "a50c9ce5d83ac5d70e7d0ff986b3abf09a4412b7ca4b5edf63e3d52a850448e8",
+  "authentication_used": false,
+  "cookies_used": false
+}

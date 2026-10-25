@@ -1,0 +1,72 @@
+{
+  "status": "pass",
+  "created_utc": "2026-10-24T20:56:47.933543+00:00",
+  "commands": [
+    {
+      "name": "pip_check",
+      "command": [
+        "python.exe",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.4064786000017193,
+      "log": "reports/pip_check.txt",
+      "log_sha256": "672aec65a45bed50e70229c70934a7eebf0462595c459b83023027645d57cccf"
+    },
+    {
+      "name": "final_pytest",
+      "command": [
+        "python.exe",
+        "-m",
+        "pytest",
+        "tests",
+        "-q",
+        "--junitxml=reports/final_test_results.xml"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 15.828363400003582,
+      "log": "reports/final_pytest.txt",
+      "log_sha256": "16c47e88b733206a5d11a258e7e80ae4d37197b0ed113a82bfd7dc0ca7ab7457"
+    }
+  ],
+  "pytest_primary_passed": 55,
+  "pytest_subtests_passed": 7,
+  "junit_suites": [
+    {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "tests": "62",
+      "time": "15.225",
+      "timestamp": "2026-10-24T23:56:32.380006+03:00",
+      "hostname": "ZXCpc"
+    }
+  ],
+  "junit": "reports/final_test_results.xml",
+  "junit_sha256": "7a8e48ee63979397d3abbc50101c03b8e4271a6f71dd6fe2ed99f51ca20c7e2e",
+  "test_file_sha256": {
+    "tests/test_analytics.py": "c6587bf2f0d0532bdb1a680f376253da31c4d6be1b7c69c3a0c117dff99a4ee3",
+    "tests/test_app.py": "2bd41806f4151496056121df736ceba84235a0c21ca0801ffeea91369fbf6e12",
+    "tests/test_download.py": "40ae867608f9b06611ce9eac2eb496bd1d3198ab63667edb3ed0090c61fde88a",
+    "tests/test_installer.py": "e950f089b10957ab4f9c26a420ad4dbdb106995cacec7377555a015ad06c2d28",
+    "tests/test_pipeline.py": "5e77e0dc0d7a51b612beb0bc0bbc80fbf6784e0fb6bcf3ec38b4d12ea618aee5"
+  },
+  "raw_sha256_before_after_unchanged": {
+    "kdd99_kaggle.zip": "a50c9ce5d83ac5d70e7d0ff986b3abf09a4412b7ca4b5edf63e3d52a850448e8",
+    "kddcup99_csv.csv": "e411f3bb295d2be602f9288b333c15afee0f4cf85f7928916975d7b90b71917f"
+  },
+  "processed_sha256_before_after_unchanged": {
+    "attack_counts.csv": "83c7bf57db126c601bdd415c719875d2fea51aefdd555b6d61fdf72d9eabea42",
+    "connections.parquet": "bb2c9f7acf03f355a24af300691f34bd1d5a10af357b39dbf692fbe3eb88a98d",
+    "family_counts.csv": "6aa7f1bd3df78d4ea6836ff15be846edfdccb68004a9dfd03a504365e196b415",
+    "normalization.json": "03f05b589f4cf100942334f39e5a87ba4a99e6134c1510ffbebc876522ab8d36",
+    "protocol_counts.csv": "cfb4fd8a73fe1e26e1207235f22e8a5636207d2d713a85961a5d081aa5385595",
+    "quality.json": "18ff0576278fc269d2d41e006e244c78116e6b58fda9fdd1bef68c64d611b7d2",
+    "summary.json": "057bd3fb4c338334a21d7ec13700f23d960f7d5578e25fecaf73dafdaf2464da"
+  },
+  "app_CDF_source_sha256": "382bf5f120263727e6ac705a434df4859f42346a04a8406858dce17622f0335a",
+  "windows_setup_status": "reports/setup_windows_test.json"
+}

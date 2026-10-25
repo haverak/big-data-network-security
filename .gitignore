@@ -1,0 +1,34 @@
+# Local Python environment and caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.cache/
+.dependency_cache/
+.wheelhouse/
+installation_manifest.json
+.coverage
+htmlcov/
+
+# Local logs and editor state
+*.log
+.vscode/
+.idea/
+Thumbs.db
+Desktop.ini
+
+# Credentials must never be committed
+.env
+.env.*
+kaggle.json
+*.pem
+*.key
+
+# A real author photograph is added locally by its owner
+assets/author_photo.*
+
+# Raw/processed data and final reports are intentionally not ignored:
+# redistribution must follow data/metadata/dataset_research.json.
